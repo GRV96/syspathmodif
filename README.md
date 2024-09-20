@@ -15,6 +15,18 @@ Elles convertissent les arguments de type `pathlib.Path` en `str` puisque
 * `sp_contains` indique si `sys.path` contient le chemin donné.
 * `sp_remove` enlève le chemin donné de `sys.path`.
 
+### Tests automatiques
+
+Installez `pytest`.
+```
+pip install pytest
+```
+
+Exécutez les tests.
+```
+pytest tests/test_syspathmodif.py
+```
+
 ## ENGLISH
 
 This library helps to modify the content of list `sys.path`.
@@ -29,3 +41,15 @@ supposed to contain only character strings.
 * `sp_append` appends the given path to the end of `sys.path`.
 * `sp_contains` indicates whether `sys.path` contains the given path.
 * `sp_remove` removes the given path from `sys.path`.
+
+### Automated tests
+
+Install `pytest`.
+```
+pip install pytest
+```
+
+Run the tests.
+```
+pytest tests/test_syspathmodif.py
+```
