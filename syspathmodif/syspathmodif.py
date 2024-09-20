@@ -25,7 +25,7 @@ def sp_append(some_path):
 
 def sp_contains(some_path):
 	"""
-	Verifies whether list sys.path contains the given path.
+	Indicates whether list sys.path contains the given path.
 
 	Args:
 		some_path (str or pathlib.Path): the path whose presence is verified.
