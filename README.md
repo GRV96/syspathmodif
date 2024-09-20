@@ -42,7 +42,7 @@ supposed to contain only character strings.
 * `sp_contains` indicates whether `sys.path` contains the given path.
 * `sp_remove` removes the given path from `sys.path`.
 
-### Automated tests
+### Automated Tests
 
 Install `pytest`.
 ```
