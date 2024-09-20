@@ -11,16 +11,17 @@ _REPO_ROOT = _LOCAL_DIR.parent
 _LIB_DIR = _REPO_ROOT/"syspathmodif"
 
 
+def _reset_sys_path():
+	# Copying the list is necessary to preserve the initial state.
+	sys.path = list(_INIT_SYS_PATH)
+
+
 sys.path.append(str(_REPO_ROOT))
 from syspathmodif import\
 	sp_append,\
 	sp_contains,\
 	sp_remove
-sys.path = list(_INIT_SYS_PATH)
-
-
-def reset_sys_path():
-	sys.path = list(_INIT_SYS_PATH)
+_reset_sys_path()
 
 
 def test_sp_contains_str():
@@ -44,21 +45,35 @@ def test_sp_contains_exception():
 		sp_contains(3.14159)
 
 
-def test_sp_append_and_remove_str():
+def test_sp_append_str():
 	try:
 		sp_append(str(_LIB_DIR))
 		assert sp_contains(str(_LIB_DIR))
-		sp_remove(str(_LIB_DIR))
-		assert not sp_contains(str(_LIB_DIR))
 	finally:
-		reset_sys_path()
+		_reset_sys_path()
 
 
-def test_sp_append_and_remove_pathlib():
+def test_sp_append_pathlib():
 	try:
 		sp_append(_LIB_DIR)
 		assert sp_contains(_LIB_DIR)
+	finally:
+		_reset_sys_path()
+
+
+def test_sp_remove_str():
+	try:
+		sys.path.append(str(_LIB_DIR))
+		sp_remove(str(_LIB_DIR))
+		assert not sp_contains(str(_LIB_DIR))
+	finally:
+		_reset_sys_path()
+
+
+def test_sp_remove_pathlib():
+	try:
+		sys.path.append(str(_LIB_DIR))
 		sp_remove(_LIB_DIR)
 		assert not sp_contains(_LIB_DIR)
 	finally:
-		reset_sys_path()
+		_reset_sys_path()
