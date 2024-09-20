@@ -6,7 +6,7 @@ import sys
 
 _INIT_SYS_PATH = list(sys.path)
 
-_LOCAL_DIR = Path(__file__).parent.resolve()
+_LOCAL_DIR = Path(__file__).resolve().parent
 _REPO_ROOT = _LOCAL_DIR.parent
 _LIB_DIR = _REPO_ROOT/"syspathmodif"
 
@@ -24,24 +24,32 @@ from syspathmodif import\
 _reset_sys_path()
 
 
-def test_sp_contains_str():
+def test_sp_contains_true_str():
 	# This test does not change the content of sys.path.
 	dir0 = str(sys.path[0])
 	assert sp_contains(dir0)
-	assert not sp_contains(str(_LIB_DIR))
 
 
-def test_sp_contains_pathlib():
+def test_sp_contains_true_pathlib():
 	# This test does not change the content of sys.path.
 	dir0 = Path(sys.path[0])
 	assert sp_contains(dir0)
+
+
+def test_sp_contains_false_str():
+	# This test does not change the content of sys.path.
+	assert not sp_contains(str(_LIB_DIR))
+
+
+def test_sp_contains_false_pathlib():
+	# This test does not change the content of sys.path.
 	assert not sp_contains(_LIB_DIR)
 
 
 def test_sp_contains_exception():
 	# This test does not change the content of sys.path.
 	except_msg = "A path must be of type str or pathlib.Path."
-	with pytest.raises(TypeError, match = except_msg):
+	with pytest.raises(TypeError, match=except_msg):
 		sp_contains(3.14159)
 
 
