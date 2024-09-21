@@ -41,6 +41,10 @@ def test_sp_contains_false_str():
 	assert not sp_contains(str(_LIB_DIR))
 
 
+def test_sp_contains_none():
+	assert not sp_contains(None)
+
+
 def test_sp_contains_false_pathlib():
 	# This test does not change the content of sys.path.
 	assert not sp_contains(_LIB_DIR)
@@ -48,7 +52,8 @@ def test_sp_contains_false_pathlib():
 
 def test_sp_contains_exception():
 	# This test does not change the content of sys.path.
-	except_msg = "A path must be of type str or pathlib.Path."
+	except_msg =\
+		"syspathmodif: A path must be None or of type str or pathlib.Path."
 	with pytest.raises(TypeError, match=except_msg):
 		sp_contains(3.14159)
 
