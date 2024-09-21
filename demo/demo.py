@@ -22,6 +22,7 @@ _print_sys_path(
 	"\nRepository root appended to sys.path to import package syspathmodif")
 from syspathmodif import\
 	sp_append,\
+	sp_contains,\
 	sp_remove
 sys.path = list(_INIT_SYS_PATH)
 _print_sys_path("\nsys.path reset after the importation")
@@ -35,6 +36,7 @@ _print_sys_path(
 from demo_package import\
 	Ajxo,\
 	Point
+print(f"\nsys.path contains the repository's root: {sp_contains(_REPO_ROOT)}")
 sp_remove(_REPO_ROOT)
 _print_sys_path(
 	"\nRepository root removed from sys.path after the importation")
