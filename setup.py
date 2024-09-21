@@ -17,7 +17,7 @@ def _make_long_description():
 if __name__ == "__main__":
 	setuptools.setup(
 		name = "syspathmodif",
-		version = "0.0.1",
+		version = "0.0.2",
 		author = "Guyllaume Rousseau",
 		description = "This library offers concise manners to modify list sys.path. The user should not need to import module sys.",
 		long_description = _make_long_description(),
