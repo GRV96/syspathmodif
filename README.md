@@ -18,7 +18,7 @@ Elles convertissent les arguments de type `pathlib.Path` en `str` puisque
 ### Démo
 
 Le script dans le dossier `demo` montre comment `syspathmodif` permet
-d'importer un paquet indisponible sans l'ajout d'un chemin à `sys.path`.
+d'importer un paquet indisponible sans l'ajout de son chemin à `sys.path`.
 Il dépend du paquet `demo_package`.
 Lancez la démo avec la commande suivante.
 
@@ -56,7 +56,7 @@ supposed to contain only character strings.
 ### Demo
 
 The script in directory `demo` shows how `syspathmodif` allows to import a
-package unavailable without adding a path to `sys.path`.
+package unavailable unless its path is added to `sys.path`.
 It depends on `demo_package`.
 Run the demo with the following command.
 
