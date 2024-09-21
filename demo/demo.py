@@ -30,6 +30,7 @@ _print_sys_path("\nsys.path reset after the importation")
 
 
 # syspathmodif is used here.
+print(f"\nsys.path contains the repository's root: {sp_contains(_REPO_ROOT)}")
 sp_append(_REPO_ROOT)
 _print_sys_path(
 	"\nRepository root appended to sys.path to import demo_package")
@@ -40,6 +41,7 @@ print(f"\nsys.path contains the repository's root: {sp_contains(_REPO_ROOT)}")
 sp_remove(_REPO_ROOT)
 _print_sys_path(
 	"\nRepository root removed from sys.path after the importation")
+print(f"\nsys.path contains the repository's root: {sp_contains(_REPO_ROOT)}")
 # End of syspathmodif's use
 
 
