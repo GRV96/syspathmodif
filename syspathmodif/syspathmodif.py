@@ -2,9 +2,6 @@ from pathlib import Path
 import sys
 
 
-_SYS_PATH = sys.path
-
-
 def sp_append(some_path):
 	"""
 	Appends the given path to the end of list sys.path if it does not already
@@ -19,8 +16,8 @@ def sp_append(some_path):
 	"""
 	some_path = _ensure_path_is_str(some_path)
 
-	if some_path not in _SYS_PATH:
-		_SYS_PATH.append(some_path)
+	if some_path not in sys.path:
+		sys.path.append(some_path)
 
 
 def sp_contains(some_path):
@@ -37,7 +34,7 @@ def sp_contains(some_path):
 		TypeError: if argument some_path is not of type str or pathlib.Path.
 	"""
 	some_path = _ensure_path_is_str(some_path)
-	return some_path in _SYS_PATH
+	return some_path in sys.path
 
 
 def sp_remove(some_path):
@@ -52,8 +49,8 @@ def sp_remove(some_path):
 	"""
 	some_path = _ensure_path_is_str(some_path)
 
-	if some_path in _SYS_PATH:
-		_SYS_PATH.remove(some_path)
+	if some_path in sys.path:
+		sys.path.remove(some_path)
 
 
 def _ensure_path_is_str(some_path):
