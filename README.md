@@ -2,9 +2,10 @@
 
 ## FRANÇAIS
 
-Cette bibliothèque aide à modifier le contenu de la liste `sys.path`.
+Cette bibliothèque offre des manières concises de modifier la liste `sys.path`.
+L'utilisateur ne devrait pas avoir besoin d'importer le module `sys`.
 
-### Fonctions
+### Contenu
 
 Les fonctions de `syspathmodif` prennent un chemin de type `str` ou
 `pathlib.Path` comme argument.
@@ -40,9 +41,10 @@ pytest tests/test_syspathmodif.py
 
 ## ENGLISH
 
-This library helps to modify the content of list `sys.path`.
+This library offers concise manners to modify list `sys.path`.
+The user should not need to import module `sys`.
 
-### Functions
+### Content
 
 The functions in `syspathmodif` take a path of type `str` or `pathlib.Path`
 as an argument.
