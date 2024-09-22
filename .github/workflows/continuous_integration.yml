@@ -18,3 +18,11 @@ jobs:
         run: pip3 install --no-cache-dir -r requirements-dev.txt
       - name: Execute unit tests
         run: pytest tests/test_syspathmodif.py
+  test_pypi_package_build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+      - name: Test the build
+        run: python3 .github/workflows/test_pypi_package_build.py
+
