@@ -15,4 +15,3 @@ system(f"python3 {_REPO_ROOT}/setup.py sdist")
 latest_dist = list((_REPO_ROOT/"dist").glob("syspathmodif-*.tar.gz"))[-1]
 
 system(f"pip3 install --no-cache-dir {latest_dist}")
-
