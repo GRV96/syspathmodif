@@ -12,7 +12,7 @@ _REPO_ROOT = Path(__file__).resolve().parents[2]
 
 system(f"python3 {_REPO_ROOT}/setup.py sdist")
 
-latest_dist = (_REPO_ROOT/"dist").glob("syspathmodif-*.tar.gz")[-1]
+latest_dist = list((_REPO_ROOT/"dist").glob("syspathmodif-*.tar.gz"))[-1]
 
 system(f"pip3 install --no-cache-dir {latest_dist}")
 
