@@ -52,5 +52,5 @@ print("\nInstances of imported classes")
 print(ajxo)
 print(point)
 
-print(f"\nsys.path is the same as before the demo: "\
+print("\nsys.path is the same as before the demo: "\
 		+ str(sys.path == _INIT_SYS_PATH))

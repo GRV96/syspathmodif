@@ -41,13 +41,14 @@ def test_sp_contains_false_str():
 	assert not sp_contains(str(_LIB_DIR))
 
 
-def test_sp_contains_none():
-	assert not sp_contains(None)
-
-
 def test_sp_contains_false_pathlib():
 	# This test does not change the content of sys.path.
 	assert not sp_contains(_LIB_DIR)
+
+
+def test_sp_contains_none():
+	# This test does not change the content of sys.path.
+	assert not sp_contains(None)
 
 
 def test_sp_contains_exception():
@@ -74,6 +75,14 @@ def test_sp_append_pathlib():
 		_reset_sys_path()
 
 
+def test_sp_append_none():
+	try:
+		sp_append(None)
+		assert sys.path == _INIT_SYS_PATH
+	finally:
+		_reset_sys_path()
+
+
 def test_sp_remove_str():
 	try:
 		sys.path.append(str(_LIB_DIR))
@@ -88,5 +97,13 @@ def test_sp_remove_pathlib():
 		sys.path.append(str(_LIB_DIR))
 		sp_remove(_LIB_DIR)
 		assert not sp_contains(_LIB_DIR)
+	finally:
+		_reset_sys_path()
+
+
+def test_sp_remove_none():
+	try:
+		sp_remove(None)
+		assert sys.path == _INIT_SYS_PATH
 	finally:
 		_reset_sys_path()
