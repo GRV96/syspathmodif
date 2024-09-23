@@ -32,6 +32,7 @@ if __name__ == "__main__":
 			"Topic :: Software Development :: Libraries :: Python Modules",
 			"Topic :: Utilities"
 		],
-		packages = setuptools.find_packages(exclude=(".github", "demo", "demo_package",)),
+		packages = setuptools.find_packages(
+			exclude=(".github", "demo", "demo_package", "tests")),
 		license = "MIT",
 		license_files = ("LICENSE",))
