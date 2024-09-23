@@ -7,7 +7,8 @@ from pathlib import Path
 _REPO_ROOT = Path(__file__).resolve().parents[2]
 
 
-# This script builds the PyPI package and installs it to ensure the
+# This script is meant to run on GitHub's virtual machine ubuntu-latest in a CI
+# workflow. It builds the PyPI package and installs it to ensure the
 # installation works. However, the script does not upload the package to PyPI.
 
 system(f"python3 {_REPO_ROOT}/setup.py sdist")
