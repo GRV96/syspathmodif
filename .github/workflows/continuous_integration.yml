@@ -24,4 +24,4 @@ jobs:
       - name: Checkout the repository
         uses: actions/checkout@v2
       - name: Test the build
-        run: python3 .github/workflows/test_pypi_package_build.py
+        run: .github/workflows/test_pypi_package_build.py
