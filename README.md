@@ -22,11 +22,15 @@ Le script dans le dossier `demo` montre comment `syspathmodif` permet
 d'importer un paquet qui est indisponible tant qu'on n'a pas ajouté son chemin
 à `sys.path`.
 Il dépend du paquet `demo_package`.
+
 Lancez la démo avec la commande suivante.
 
 ```
 python demo/demo.py
 ```
+
+**AVERTISSEMENT!** La démo ne fonctionnera pas de la manière prévue si elle est
+exécutée dans un environnement Python où `syspathmodif` est installée.
 
 ### Tests automatiques
 
@@ -61,11 +65,15 @@ supposed to contain only character strings.
 The script in directory `demo` shows how `syspathmodif` allows to import a
 package unavailable unless its path is added to `sys.path`.
 It depends on `demo_package`.
+
 Run the demo with the following command.
 
 ```
 python demo/demo.py
 ```
+
+**WARNING!** The demo will not work as expected if it is executed in a Python
+environment where `syspathmodif` is installed.
 
 ### Automated Tests
 
