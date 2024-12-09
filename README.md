@@ -17,6 +17,9 @@ Elles convertissent les arguments de type `pathlib.Path` en `str` puisque
 * `sp_contains` indique si `sys.path` contient le chemin donné.
 * `sp_remove` enlève le chemin donné de `sys.path`.
 
+La documentation complète des fonctions est disponible dans le dépôt de code
+source.
+
 ### Démo
 
 Le script dans le dossier `demo` montre comment `syspathmodif` permet
@@ -60,6 +63,8 @@ supposed to contain only character strings.
 * `sp_append` appends the given path to the end of `sys.path`.
 * `sp_contains` indicates whether `sys.path` contains the given path.
 * `sp_remove` removes the given path from `sys.path`.
+
+The functions' full documentation is available in the source code repository.
 
 ### Demo
 
