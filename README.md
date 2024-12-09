@@ -3,7 +3,8 @@
 ## FRANÇAIS
 
 Cette bibliothèque offre des manières concises de modifier la liste `sys.path`.
-L'utilisateur ne devrait pas avoir besoin d'importer le module `sys`.
+L'utilisateur ne devrait pas avoir besoin d'interagir directement avec cette
+liste.
 
 ### Contenu
 
@@ -47,7 +48,7 @@ pytest tests/test_syspathmodif.py
 ## ENGLISH
 
 This library offers concise manners to modify list `sys.path`.
-The user should not need to import module `sys`.
+The user should not need to directly interact with that list.
 
 ### Content
 

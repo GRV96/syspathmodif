@@ -19,7 +19,7 @@ if __name__ == "__main__":
 		name = "syspathmodif",
 		version = "1.1.0",
 		author = "Guyllaume Rousseau",
-		description = "This library offers concise manners to modify list sys.path. The user should not need to import module sys.",
+		description = "This library offers concise manners to modify list sys.path. The user should not need to directly interact with that list.",
 		long_description = _make_long_description(),
 		long_description_content_type = "text/markdown",
 		url = "https://github.com/GRV96/syspathmodif",
