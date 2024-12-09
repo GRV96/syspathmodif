@@ -15,14 +15,21 @@ def sp_append(some_path):
 	Args:
 		some_path (str or pathlib.Path): the path to append to sys.path.
 
+	Returns:
+		bool: True if some_path was appended to sys.path, False otherwise.
+
 	Throws:
 		TypeError: if the type of argument some_path is not str or
 			pathlib.Path and some_path is not None.
 	"""
 	some_path = _ensure_path_is_str(some_path)
+	was_path_appended = False
 
 	if some_path not in sys.path and some_path is not None:
 		sys.path.append(some_path)
+		was_path_appended = True
+
+	return was_path_appended
 
 
 def sp_contains(some_path):
@@ -50,14 +57,21 @@ def sp_remove(some_path):
 	Args:
 		some_path (str or pathlib.Path): the path to remove from sys.path.
 
+	Returns:
+		bool: True if some_path was removed from sys.path, False otherwise.
+
 	Throws:
 		TypeError: if the type of argument some_path is not str or
 			pathlib.Path and some_path is not None.
 	"""
 	some_path = _ensure_path_is_str(some_path)
+	was_path_removed = False
 
 	if some_path in sys.path:
 		sys.path.remove(some_path)
+		was_path_removed = True
+
+	return was_path_removed
 
 
 def _ensure_path_is_str(some_path):
