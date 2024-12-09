@@ -6,18 +6,18 @@ def _make_long_description():
 		readme_content = readme_file.read()
 
 	fr_index = readme_content.index("## FRANÇAIS")
-	fr_demos_index = readme_content.index("### Démo")
+	fr_demo_index = readme_content.index("### Démo")
 	en_index = readme_content.index("## ENGLISH")
-	en_demos_index = readme_content.index("### Demo")
+	en_demo_index = readme_content.index("### Demo")
 
-	return readme_content[fr_index:fr_demos_index]\
-		+ readme_content[en_index:en_demos_index].rstrip()
+	return readme_content[fr_index:fr_demo_index]\
+		+ readme_content[en_index:en_demo_index].rstrip()
 
 
 if __name__ == "__main__":
 	setuptools.setup(
 		name = "syspathmodif",
-		version = "1.0.0",
+		version = "1.1.0",
 		author = "Guyllaume Rousseau",
 		description = "This library offers concise manners to modify list sys.path. The user should not need to import module sys.",
 		long_description = _make_long_description(),
