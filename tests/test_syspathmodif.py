@@ -126,10 +126,20 @@ def test_sp_remove_no_success():
 		_reset_sys_path()
 
 
-def test_sp_remove_none():
+def test_sp_remove_none_no_success():
 	try:
 		success = sp_remove(None)
 		assert not success
+		assert sys.path == _INIT_SYS_PATH
+	finally:
+		_reset_sys_path()
+
+
+def test_sp_remove_none_success():
+	try:
+		sys.path.append(None)
+		success = sp_remove(None)
+		assert success
 		assert sys.path == _INIT_SYS_PATH
 	finally:
 		_reset_sys_path()
