@@ -1,26 +1,41 @@
 import setuptools
 
 
-def _make_long_description():
+def _make_descriptions():
 	with open("README.md", "r", encoding="utf-8") as readme_file:
 		readme_content = readme_file.read()
 
-	fr_index = readme_content.index("## FRANÇAIS")
-	fr_demo_index = readme_content.index("### Démo")
-	en_index = readme_content.index("## ENGLISH")
-	en_demo_index = readme_content.index("### Demo")
+	fr_title = "## FRANÇAIS"
+	en_title = "## ENGLISH"
 
-	return readme_content[fr_index:fr_demo_index]\
+	fr_index = readme_content.index(fr_title)
+	fr_demo_index = readme_content.index("### Démo")
+
+	en_index = readme_content.index(en_title)
+	en_desc_index = en_index + len(en_title)
+	en_content_index = readme_content.index("### Content", en_desc_index)
+	en_demo_index = readme_content.index("### Demo", en_index)
+
+	short_description = readme_content[en_desc_index: en_content_index]
+	short_description = short_description.replace("\n", " ")
+	short_description = short_description.replace("`", "")
+	short_description = short_description.strip()
+
+	long_description = readme_content[fr_index: fr_demo_index]\
 		+ readme_content[en_index:en_demo_index].rstrip()
+
+	return short_description, long_description
 
 
 if __name__ == "__main__":
+	short_desc, long_desc = _make_descriptions()
+
 	setuptools.setup(
 		name = "syspathmodif",
 		version = "1.1.0",
 		author = "Guyllaume Rousseau",
-		description = "This library offers concise manners to modify list sys.path. The user should not need to directly interact with that list.",
-		long_description = _make_long_description(),
+		description = short_desc,
+		long_description = long_desc,
 		long_description_content_type = "text/markdown",
 		url = "https://github.com/GRV96/syspathmodif",
 		classifiers = [
