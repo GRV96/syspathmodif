@@ -52,7 +52,8 @@ def sp_contains(some_path):
 
 def sp_remove(some_path):
 	"""
-	Removes the given path from list sys.path if it contains the path.
+	Removes the given path from list sys.path if it contains the path. If the
+	path is None, this method does not change sys.path.
 
 	Args:
 		some_path (str or pathlib.Path): the path to remove from sys.path.
