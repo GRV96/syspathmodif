@@ -20,13 +20,17 @@ print(f"Repository root: {_REPO_ROOT}")
 
 # syspathmodif is imported here.
 sys.path.append(str(_REPO_ROOT))
+
 _print_sys_path(
 	"\nRepository root appended to sys.path to import package syspathmodif")
+
 from syspathmodif import\
 	sp_append,\
 	sp_contains,\
 	sp_remove
+
 sys.path = list(_INIT_SYS_PATH)
+
 _print_sys_path("\nsys.path reset after the importation")
 # End of syspathmodif's importation
 
