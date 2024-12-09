@@ -77,6 +77,16 @@ def test_sp_append_pathlib():
 		_reset_sys_path()
 
 
+def test_sp_append_no_success():
+	try:
+		sys.path.append(str(_LIB_DIR))
+		success = sp_append(_LIB_DIR)
+		assert not success
+		assert sp_contains(_LIB_DIR)
+	finally:
+		_reset_sys_path()
+
+
 def test_sp_append_none():
 	try:
 		success = sp_append(None)
@@ -101,6 +111,16 @@ def test_sp_remove_pathlib():
 		sys.path.append(str(_LIB_DIR))
 		success = sp_remove(_LIB_DIR)
 		assert success
+		assert not sp_contains(_LIB_DIR)
+	finally:
+		_reset_sys_path()
+
+
+def test_sp_remove_no_success():
+	try:
+		# sys.path does not contain _LIB_DIR.
+		success = sp_remove(_LIB_DIR)
+		assert not success
 		assert not sp_contains(_LIB_DIR)
 	finally:
 		_reset_sys_path()
