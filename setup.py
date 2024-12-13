@@ -1,30 +1,51 @@
 import setuptools
 
 
+_ENCODING_UTF8 = "utf-8"
+_MODE_R = "r"
+
+_NEW_LINE = "\n"
+
+
 def _make_descriptions():
 	with open("README.md", "r", encoding="utf-8") as readme_file:
 		readme_content = readme_file.read()
 
-	fr_title = "## FRANÇAIS"
-	en_title = "## ENGLISH"
+	title_fr = "## FRANÇAIS"
+	title_en = "## ENGLISH"
 
-	fr_index = readme_content.index(fr_title)
-	fr_demo_index = readme_content.index("### Démo")
+	index_fr = readme_content.index(title_fr)
+	index_demo_fr = readme_content.index("### Démo")
 
-	en_index = readme_content.index(en_title)
-	en_desc_index = en_index + len(en_title)
-	en_content_index = readme_content.index("### Content", en_desc_index)
-	en_demo_index = readme_content.index("### Demo", en_index)
+	index_en = readme_content.index(title_en)
+	index_desc_en = index_en + len(title_en)
+	index_desc_end_en = readme_content.index("### Content", index_desc_en)
+	index_demo_en = readme_content.index("### Demo", index_en)
 
-	short_description = readme_content[en_desc_index: en_content_index]
-	short_description = short_description.replace("\n", " ")
-	short_description = short_description.replace("`", "")
+	short_description = readme_content[index_desc_en: index_desc_end_en]
 	short_description = short_description.strip()
+	short_description = short_description.replace(_NEW_LINE, " ")
+	short_description = short_description.replace("`", "")
 
-	long_description = readme_content[fr_index: fr_demo_index]\
-		+ readme_content[en_index:en_demo_index].rstrip()
+	long_description = readme_content[index_fr: index_demo_fr]\
+		+ readme_content[index_en:index_demo_en].rstrip()
 
 	return short_description, long_description
+
+
+def _make_requirement_list():
+	with open("requirements.txt",
+			_MODE_R, encoding=_ENCODING_UTF8) as req_file:
+		req_str = req_file.read()
+
+	raw_requirements = req_str.split(_NEW_LINE)
+
+	requirements = list()
+	for requirement in raw_requirements:
+		if len(requirement) > 0:
+			requirements.append(requirement)
+
+	return requirements
 
 
 if __name__ == "__main__":
@@ -32,7 +53,7 @@ if __name__ == "__main__":
 
 	setuptools.setup(
 		name = "syspathmodif",
-		version = "1.1.0",
+		version = "1.1.1",
 		author = "Guyllaume Rousseau",
 		description = short_desc,
 		long_description = long_desc,
@@ -47,6 +68,7 @@ if __name__ == "__main__":
 			"Topic :: Software Development :: Libraries :: Python Modules",
 			"Topic :: Utilities"
 		],
+		install_requires = _make_requirement_list(),
 		packages = setuptools.find_packages(
 			exclude=(".github", "demo", "demo_package", "tests")),
 		license = "MIT",
