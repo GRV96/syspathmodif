@@ -14,10 +14,17 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
-      - name: Intall dependencies
+      - name: Intall the development dependencies
         run: pip3 install --no-cache-dir -r requirements-dev.txt
       - name: Execute the unit tests
         run: pytest tests
+  test_demo_no_error:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+      - name: Ensure the demo runs with no errors
+        run: python3 demo/demo.py
   test_pypi_package_build:
     runs-on: ubuntu-latest
     steps:
