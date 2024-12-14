@@ -4,8 +4,8 @@ from pathlib import Path
 import sys
 
 
-# syspathmodif's users are not supposed to directly use the packages' modules.
-# These tests ensure that the wildcard import does not include them.
+# The packages' modules are not supposed to be directly used out of their
+# package. These tests ensure that the wildcard import does not include them.
 
 # Since wildcard imports are not allowed within classes and functions,
 # the tests perform them with exec.
