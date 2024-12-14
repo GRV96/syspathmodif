@@ -23,14 +23,12 @@ dans le dépôt de code source.
 ### Dépendances
 
 Installez les dépendances de `syspathmodif` avant de l'utiliser.
-
 ```
 pip install -r requirements.txt
 ```
 
 Cette commande installe les dépendances de développement en plus des
 dépendances ordinaires.
-
 ```
 pip install -r requirements-dev.txt
 ```
@@ -43,13 +41,9 @@ d'importer un paquet qui est indisponible tant qu'on n'a pas ajouté son chemin
 Il dépend du paquet `demo_package`.
 
 Lancez la démo avec la commande suivante.
-
 ```
 python demo/demo.py
 ```
-
-**AVERTISSEMENT!** La démo ne fonctionnera pas de la manière prévue si elle est
-exécutée dans un environnement Python où `syspathmodif` est installée.
 
 ### Tests automatiques
 
@@ -80,14 +74,12 @@ source code repository.
 ### Dependencies
 
 Install the dependencies before using `syspathmodif`.
-
 ```
 pip install -r requirements.txt
 ```
 
 This command installs the development dependencies in addition to the ordinary
 dependencies.
-
 ```
 pip install -r requirements-dev.txt
 ```
@@ -99,13 +91,9 @@ package unavailable unless its path is added to `sys.path`.
 It depends on `demo_package`.
 
 Run the demo with the following command.
-
 ```
 python demo/demo.py
 ```
-
-**WARNING!** The demo will not work as expected if it is executed in a Python
-environment where `syspathmodif` is installed.
 
 ### Automated Tests
 
