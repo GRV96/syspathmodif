@@ -64,8 +64,10 @@ def sp_remove(some_path):
 	some_path = ensure_path_is_str(some_path, True)
 	was_path_removed = False
 
-	if some_path in sys.path:
-		sys.path.remove(some_path)
+	try:
+		sys.path.remove(some_path) # ValueError if argument not in list
 		was_path_removed = True
+	except ValueError:
+		pass
 
 	return was_path_removed
