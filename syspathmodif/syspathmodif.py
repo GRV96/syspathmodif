@@ -1,9 +1,6 @@
-from pathlib import Path
 import sys
 
-
-_PATH_TYPE_ERROR_MSG =\
-	"syspathmodif: A path must be None or of type str or pathlib.Path."
+from strath import ensure_path_is_str
 
 
 def sp_append(some_path):
@@ -19,10 +16,10 @@ def sp_append(some_path):
 		bool: True if some_path was appended to sys.path, False otherwise.
 
 	Throws:
-		TypeError: if the type of argument some_path is not str or
-			pathlib.Path and some_path is not None.
+		TypeError: if argument some_path is not None and it is not an instance
+			of str or pathlib.Path.
 	"""
-	some_path = _ensure_path_is_str(some_path)
+	some_path = ensure_path_is_str(some_path, True)
 	was_path_appended = False
 
 	if some_path not in sys.path and some_path is not None:
@@ -43,10 +40,10 @@ def sp_contains(some_path):
 		bool: True if sys.path contains argument some_path, False otherwise.
 
 	Throws:
-		TypeError: if the type of argument some_path is not str or
-			pathlib.Path and some_path is not None.
+		TypeError: if argument some_path is not None and it is not an instance
+			of str or pathlib.Path.
 	"""
-	some_path = _ensure_path_is_str(some_path)
+	some_path = ensure_path_is_str(some_path, True)
 	return some_path in sys.path
 
 
@@ -61,10 +58,10 @@ def sp_remove(some_path):
 		bool: True if some_path was removed from sys.path, False otherwise.
 
 	Throws:
-		TypeError: if the type of argument some_path is not str or
-			pathlib.Path and some_path is not None.
+		TypeError: if argument some_path is not None and it is not an instance
+			of str or pathlib.Path.
 	"""
-	some_path = _ensure_path_is_str(some_path)
+	some_path = ensure_path_is_str(some_path, True)
 	was_path_removed = False
 
 	if some_path in sys.path:
@@ -72,12 +69,3 @@ def sp_remove(some_path):
 		was_path_removed = True
 
 	return was_path_removed
-
-
-def _ensure_path_is_str(some_path):
-	if isinstance(some_path, str) or some_path is None:
-		return some_path
-	elif isinstance(some_path, Path):
-		return str(some_path)
-	else:
-		raise TypeError(_PATH_TYPE_ERROR_MSG)

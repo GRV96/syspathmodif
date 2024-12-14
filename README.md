@@ -17,8 +17,23 @@ Elles convertissent les arguments de type `pathlib.Path` en `str` puisque
 * `sp_contains` indique si `sys.path` contient le chemin donné.
 * `sp_remove` enlève le chemin donné de `sys.path`.
 
-La documentation complète des fonctions est disponible dans le dépôt de code
-source.
+Pour plus d'informations, consultez la documentation des fonctions et les démos
+dans le dépôt de code source.
+
+### Dépendances
+
+Installez les dépendances de `syspathmodif` avant de l'utiliser.
+
+```
+pip install -r requirements.txt
+```
+
+Cette commande installe les dépendances de développement en plus des
+dépendances ordinaires.
+
+```
+pip install -r requirements-dev.txt
+```
 
 ### Démo
 
@@ -38,14 +53,9 @@ exécutée dans un environnement Python où `syspathmodif` est installée.
 
 ### Tests automatiques
 
-Installez `pytest`.
+Cette commande exécute les tests automatiques.
 ```
-pip install pytest
-```
-
-Exécutez les tests.
-```
-pytest tests/test_syspathmodif.py
+pytest tests
 ```
 
 ## ENGLISH
@@ -64,7 +74,23 @@ supposed to contain only character strings.
 * `sp_contains` indicates whether `sys.path` contains the given path.
 * `sp_remove` removes the given path from `sys.path`.
 
-The functions' full documentation is available in the source code repository.
+For more information, consult the functions' documentation and the demos in the
+source code repository.
+
+### Dependencies
+
+Install the dependencies before using `syspathmodif`.
+
+```
+pip install -r requirements.txt
+```
+
+This command installs the development dependencies in addition to the ordinary
+dependencies.
+
+```
+pip install -r requirements-dev.txt
+```
 
 ### Demo
 
@@ -83,12 +109,7 @@ environment where `syspathmodif` is installed.
 
 ### Automated Tests
 
-Install `pytest`.
-```
-pip install pytest
-```
-
 Run the tests.
 ```
-pytest tests/test_syspathmodif.py
+pytest tests
 ```
