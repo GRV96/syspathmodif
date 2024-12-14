@@ -10,6 +10,8 @@ _LOCAL_DIR = Path(__file__).resolve().parent
 _REPO_ROOT = _LOCAL_DIR.parent
 _LIB_DIR = _REPO_ROOT/"syspathmodif"
 
+_PATH_TYPE_ERROR_MSG = "The path must be None or of type str or pathlib.Path."
+
 
 def _reset_sys_path():
 	# Copying the list is necessary to preserve the initial state.
@@ -53,9 +55,7 @@ def test_sp_contains_none():
 
 def test_sp_contains_exception():
 	# This test does not change the content of sys.path.
-	except_msg =\
-		"syspathmodif: A path must be None or of type str or pathlib.Path."
-	with pytest.raises(TypeError, match=except_msg):
+	with pytest.raises(TypeError, match=_PATH_TYPE_ERROR_MSG):
 		sp_contains(3.14159)
 
 
