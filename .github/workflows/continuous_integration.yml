@@ -23,6 +23,8 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
+      - name: Intall the dependencies
+        run: pip3 install --no-cache-dir -r requirements.txt
       - name: Ensure the demo runs with no errors
         run: python3 demo/demo.py
   test_pypi_package_build:
