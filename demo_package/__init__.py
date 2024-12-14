@@ -1,2 +1,2 @@
-from .ajxo import Ajxo
-from .point import Point
+from ._ajxo import Ajxo
+from ._point import Point
