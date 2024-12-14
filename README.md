@@ -53,14 +53,9 @@ exécutée dans un environnement Python où `syspathmodif` est installée.
 
 ### Tests automatiques
 
-Installez `pytest`.
+Cette commande exécute les tests automatiques.
 ```
-pip install pytest
-```
-
-Exécutez les tests.
-```
-pytest tests/test_syspathmodif.py
+pytest tests
 ```
 
 ## ENGLISH
@@ -114,12 +109,7 @@ environment where `syspathmodif` is installed.
 
 ### Automated Tests
 
-Install `pytest`.
-```
-pip install pytest
-```
-
 Run the tests.
 ```
-pytest tests/test_syspathmodif.py
+pytest tests
 ```

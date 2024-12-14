@@ -16,8 +16,8 @@ jobs:
         uses: actions/checkout@v2
       - name: Intall dependencies
         run: pip3 install --no-cache-dir -r requirements-dev.txt
-      - name: Execute unit tests
-        run: pytest tests/test_syspathmodif.py
+      - name: Execute the unit tests
+        run: pytest tests
   test_pypi_package_build:
     runs-on: ubuntu-latest
     steps:
