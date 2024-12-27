@@ -31,5 +31,8 @@ def test_module_import_syspathmodif():
 	exec("from syspathmodif import *")
 	sys.path.remove(_REPO_ROOT)
 
+	with pytest.raises(NameError, match=".*_no_path_check.*"):
+		_no_path_check
+
 	with pytest.raises(NameError, match=".*_syspathmodif.*"):
 		_syspathmodif
