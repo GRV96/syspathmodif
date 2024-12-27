@@ -20,7 +20,7 @@ print(f"Repository root: {_REPO_ROOT}")
 print(f"Package: {_PACKAGE_DIR}")
 
 
-# syspathmodif is imported here.
+# Imports from syspathmodif are performed here.
 sys.path.append(str(_REPO_ROOT))
 
 _print_sys_path(
@@ -32,10 +32,10 @@ from syspathmodif import\
 
 sys.path = list(_INIT_SYS_PATH)
 _print_sys_path("\nsys.path reset after the importation")
-# End of syspathmodif's importation
+# End of imports from syspathmodif
 
 
-# syspathmodif is used here.
+# SysPathBundle is used here.
 print(f"\nsys.path contains the repository's root: {sp_contains(_REPO_ROOT)}")
 print(f"sys.path contains the package's directory: {sp_contains(_PACKAGE_DIR)}")
 
@@ -44,7 +44,7 @@ _print_sys_path(
 	"\nPaths appended to sys.path to import from demo_package")
 
 from demo_package import Ajxo
-from _point import Point
+from point import Point
 
 print(f"\nsys.path contains the repository's root: {sp_contains(_REPO_ROOT)}")
 print(f"sys.path contains the package's directory: {sp_contains(_PACKAGE_DIR)}")
@@ -56,7 +56,7 @@ _print_sys_path(
 
 print(f"\nsys.path contains the repository's root: {sp_contains(_REPO_ROOT)}")
 print(f"sys.path contains the package's directory: {sp_contains(_PACKAGE_DIR)}")
-# End of syspathmodif's use
+# End of SysPathBundle's use
 
 
 ajxo = Ajxo("a string", [7, 11, 13])
