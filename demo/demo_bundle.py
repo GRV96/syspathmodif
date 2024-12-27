@@ -14,19 +14,21 @@ _print_sys_path("Initial sys.path content")
 
 _LOCAL_DIR = Path(__file__).resolve().parent
 _REPO_ROOT = _LOCAL_DIR.parent
+_PACKAGE_DIR = _REPO_ROOT/"demo_package"
 print(f"\nLocal directory: {_LOCAL_DIR}")
 print(f"Repository root: {_REPO_ROOT}")
+print(f"Package: {_PACKAGE_DIR}")
 
 
 # syspathmodif is imported here.
 sys.path.append(str(_REPO_ROOT))
+
 _print_sys_path(
 	"\nRepository root appended to sys.path to import package syspathmodif")
 
 from syspathmodif import\
-	sp_append,\
-	sp_contains,\
-	sp_remove
+	SysPathBundle,\
+	sp_contains
 
 sys.path = list(_INIT_SYS_PATH)
 _print_sys_path("\nsys.path reset after the importation")
@@ -35,22 +37,25 @@ _print_sys_path("\nsys.path reset after the importation")
 
 # syspathmodif is used here.
 print(f"\nsys.path contains the repository's root: {sp_contains(_REPO_ROOT)}")
+print(f"sys.path contains the package's directory: {sp_contains(_PACKAGE_DIR)}")
 
-if sp_append(_REPO_ROOT):
-	_print_sys_path(
-		"\nRepository root appended to sys.path to import from demo_package")
+bundle = SysPathBundle((_REPO_ROOT, _PACKAGE_DIR))
+_print_sys_path(
+	"\nPaths appended to sys.path to import from demo_package")
 
-from demo_package import\
-	Ajxo,\
-	Point
-
-print(f"\nsys.path contains the repository's root: {sp_contains(_REPO_ROOT)}")
-
-if sp_remove(_REPO_ROOT):
-	_print_sys_path(
-		"\nRepository root removed from sys.path after the import")
+from demo_package import Ajxo
+from _point import Point
 
 print(f"\nsys.path contains the repository's root: {sp_contains(_REPO_ROOT)}")
+print(f"sys.path contains the package's directory: {sp_contains(_PACKAGE_DIR)}")
+
+# Paths removed by __del__ when the garbage collector destroys the bundle.
+del bundle
+_print_sys_path(
+	"\nPaths removed from sys.path after the imports")
+
+print(f"\nsys.path contains the repository's root: {sp_contains(_REPO_ROOT)}")
+print(f"sys.path contains the package's directory: {sp_contains(_PACKAGE_DIR)}")
 # End of syspathmodif's use
 
 
