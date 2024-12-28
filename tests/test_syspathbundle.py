@@ -32,12 +32,17 @@ def assert_path_is_present(some_path, bundle, is_in_sys_path, is_in_bundle):
 	assert bundle.contains(some_path) == is_in_bundle
 
 
+def generate_paths():
+	yield _LOCAL_DIR
+	yield _REPO_ROOT
+	yield _LIB_DIR
+
+
 def test_init_generator():
 	try:
 		from inspect import isgenerator
 
-		content = (_LOCAL_DIR, _REPO_ROOT, _LIB_DIR)
-		content_gen = (path for path in content)
+		content_gen = generate_paths()
 		assert isgenerator(content_gen)
 		bundle = SysPathBundle(content_gen)
 
