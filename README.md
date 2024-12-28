@@ -17,6 +17,11 @@ Elles convertissent les arguments de type `pathlib.Path` en `str` puisque
 * `sp_contains` indique si `sys.path` contient le chemin donné.
 * `sp_remove` enlève le chemin donné de `sys.path`.
 
+Dès son instanciation, la classe `SysPathBundle` contient plusieurs chemins et
+les ajoute à `sys.path`. Quand on vide (*clear*) une instance, elle efface son
+contenu et l'enlève de `sys.path`. Ainsi, cette classe facilite l'ajout et le
+retrait d'un groupe de chemins.
+
 Pour plus d'informations, consultez la documentation des fonctions et les démos
 dans le dépôt de code source.
 
@@ -67,6 +72,10 @@ supposed to contain only character strings.
 * `sp_append` appends the given path to the end of `sys.path`.
 * `sp_contains` indicates whether `sys.path` contains the given path.
 * `sp_remove` removes the given path from `sys.path`.
+
+Upon instantiation, class `SysPathBundle` stores several paths and adds them to
+`sys.path`. When a bundle is cleared, it erases its content and removes it from
+`sys.path`. Thus, this class facilitates adding and removing a group of paths.
 
 For more information, consult the functions' documentation and the demos in the
 source code repository.
