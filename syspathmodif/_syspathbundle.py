@@ -12,8 +12,8 @@ class SysPathBundle:
 	from sys.path. Thus, this class facilitates adding and removing a group of
 	paths.
 
-	This class is a context manager. It can be used in a with block as in the
-	following example.
+	This class is a context manager. If a bundle is used in a with statement as
+	in the following example, it is cleared at the block's end.
 
 	with SysPathBundle(("path/to/package1", "path/to/package2")):
 	"""
