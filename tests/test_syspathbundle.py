@@ -29,15 +29,20 @@ def assert_path_in_sys_path(some_path, is_in_sys_path):
 def assert_path_is_present(some_path, bundle, is_in_sys_path, is_in_bundle):
 	some_path = ensure_path_is_str(some_path, True)
 	assert (some_path in sys.path) == is_in_sys_path
-	assert (some_path in bundle._content) == is_in_bundle
+	assert bundle.contains(some_path) == is_in_bundle
+
+
+def generate_paths():
+	yield _LOCAL_DIR
+	yield _REPO_ROOT
+	yield _LIB_DIR
 
 
 def test_init_generator():
 	try:
 		from inspect import isgenerator
 
-		content = (_LOCAL_DIR, _REPO_ROOT, _LIB_DIR)
-		content_gen = (path for path in content)
+		content_gen = generate_paths()
 		assert isgenerator(content_gen)
 		bundle = SysPathBundle(content_gen)
 
@@ -106,10 +111,12 @@ def test_clear():
 		_reset_sys_path()
 
 
-def test_del():
+def test_context_management():
 	try:
-		bundle = SysPathBundle((_LOCAL_DIR, _REPO_ROOT, _LIB_DIR))
-		del bundle
+		with SysPathBundle((_LOCAL_DIR, _REPO_ROOT, _LIB_DIR)) as bundle:
+			assert_path_is_present(_LOCAL_DIR, bundle, True, False)
+			assert_path_is_present(_REPO_ROOT, bundle, True, True)
+			assert_path_is_present(_LIB_DIR, bundle, True, True)
 
 		assert_path_in_sys_path(_LOCAL_DIR, True)
 		assert_path_in_sys_path(_REPO_ROOT, False)

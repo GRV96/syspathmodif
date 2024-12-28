@@ -12,7 +12,10 @@ class SysPathBundle:
 	from sys.path. Thus, this class facilitates adding and removing a group of
 	paths.
 
-	The destructor __del__ clears the bundles.
+	This class is a context manager. If a bundle is used in a with statement as
+	in the following example, it is cleared at the block's end.
+
+	with SysPathBundle(("path/to/package1", "path/to/package2")):
 	"""
 
 	def __init__(self, content):
@@ -32,10 +35,10 @@ class SysPathBundle:
 		self._content = list()
 		self._fill_content(content)
 
-	def __del__(self):
-		"""
-		Clears the bundle by calling method clear.
-		"""
+	def __enter__(self):
+		return self
+
+	def __exit__(self, exc_type, exc_value, traceback):
 		self.clear()
 
 	def clear(self):
@@ -45,6 +48,24 @@ class SysPathBundle:
 		while len(self._content) > 0:
 			path = self._content.pop()
 			sp_remove_no_path_check(path)
+
+	def contains(self, some_path):
+		"""
+		Indicates whether this bundle cotains the given path.
+
+		Args:
+			some_path (str or pathlib.Path): the path whose presence is
+				verified.
+
+		Returns:
+			bool: True if this bundle cotains the given path, False otherwise.
+
+		Raises:
+			TypeError: if a path is not None and not of type str or
+				pathlib.Path.
+		"""
+		some_path = ensure_path_is_str(some_path, True)
+		return some_path in self._content
 
 	def _fill_content(self, content):
 		for path in content:
