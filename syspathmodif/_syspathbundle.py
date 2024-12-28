@@ -42,13 +42,9 @@ class SysPathBundle:
 		"""
 		Erases this bundle's content and removes it from sys.path.
 		"""
-		while True:
-			try:
-				path = self._content.pop() # Can raise IndexError.
-				sp_remove_no_path_check(path)
-			except IndexError:
-				# All paths have been removed.
-				break
+		while len(self._content) > 0:
+			path = self._content.pop()
+			sp_remove_no_path_check(path)
 
 	def _fill_content(self, content):
 		for path in content:
