@@ -49,6 +49,24 @@ class SysPathBundle:
 			path = self._content.pop()
 			sp_remove_no_path_check(path)
 
+	def contains(self, some_path):
+		"""
+		Indicates whether this bundle cotains the given path.
+
+		Args:
+			some_path (str or pathlib.Path): the path whose presence is
+				verified.
+
+		Returns:
+			bool: True if this bundle cotains the given path, False otherwise.
+
+		Raises:
+			TypeError: if a path is not None and not of type str or
+				pathlib.Path.
+		"""
+		some_path = ensure_path_is_str(some_path, True)
+		return some_path in self._content
+
 	def _fill_content(self, content):
 		for path in content:
 			path = ensure_path_is_str(path, True)

@@ -29,7 +29,7 @@ def assert_path_in_sys_path(some_path, is_in_sys_path):
 def assert_path_is_present(some_path, bundle, is_in_sys_path, is_in_bundle):
 	some_path = ensure_path_is_str(some_path, True)
 	assert (some_path in sys.path) == is_in_sys_path
-	assert (some_path in bundle._content) == is_in_bundle
+	assert bundle.contains(some_path) == is_in_bundle
 
 
 def test_init_generator():
