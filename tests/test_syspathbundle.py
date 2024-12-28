@@ -34,9 +34,56 @@ def assert_path_is_present(some_path, bundle, is_in_sys_path, is_in_bundle):
 	assert (some_path in bundle._content) == is_in_bundle
 
 
-def test_init():
+def test_init_generator():
 	try:
-		bundle = SysPathBundle((_LOCAL_DIR, _REPO_ROOT, _LIB_DIR))
+		from inspect import isgenerator
+
+		content = (_LOCAL_DIR, _REPO_ROOT, _LIB_DIR)
+		content_gen = (path for path in content)
+		assert isgenerator(content_gen)
+		bundle = SysPathBundle(content_gen)
+
+		assert_path_is_present(_LOCAL_DIR, bundle, True, False)
+		assert_path_is_present(_REPO_ROOT, bundle, True, True)
+		assert_path_is_present(_LIB_DIR, bundle, True, True)
+
+	finally:
+		_reset_sys_path()
+
+
+def test_init_list():
+	try:
+		content = [_LOCAL_DIR, _REPO_ROOT, _LIB_DIR]
+		assert isinstance(content, list)
+		bundle = SysPathBundle(content)
+
+		assert_path_is_present(_LOCAL_DIR, bundle, True, False)
+		assert_path_is_present(_REPO_ROOT, bundle, True, True)
+		assert_path_is_present(_LIB_DIR, bundle, True, True)
+
+	finally:
+		_reset_sys_path()
+
+
+def test_init_tuple():
+	try:
+		content = (_LOCAL_DIR, _REPO_ROOT, _LIB_DIR)
+		assert isinstance(content, tuple)
+		bundle = SysPathBundle(content)
+
+		assert_path_is_present(_LOCAL_DIR, bundle, True, False)
+		assert_path_is_present(_REPO_ROOT, bundle, True, True)
+		assert_path_is_present(_LIB_DIR, bundle, True, True)
+
+	finally:
+		_reset_sys_path()
+
+
+def test_init_set():
+	try:
+		content = {_LOCAL_DIR, _REPO_ROOT, _LIB_DIR}
+		assert isinstance(content, set)
+		bundle = SysPathBundle(content)
 
 		assert_path_is_present(_LOCAL_DIR, bundle, True, False)
 		assert_path_is_present(_REPO_ROOT, bundle, True, True)
