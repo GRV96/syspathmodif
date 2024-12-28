@@ -23,13 +23,15 @@ from syspathmodif import SysPathBundle
 _reset_sys_path()
 
 
-def assert_path_is_present(some_path, bundle, is_in_sys_path, is_in_bundle):
+def assert_path_in_sys_path(some_path, is_in_sys_path):
 	some_path = ensure_path_is_str(some_path, True)
-
 	assert (some_path in sys.path) == is_in_sys_path
 
-	if bundle is not None:
-		assert (some_path in bundle._content) == is_in_bundle
+
+def assert_path_is_present(some_path, bundle, is_in_sys_path, is_in_bundle):
+	some_path = ensure_path_is_str(some_path, True)
+	assert (some_path in sys.path) == is_in_sys_path
+	assert (some_path in bundle._content) == is_in_bundle
 
 
 def test_init():
@@ -64,9 +66,9 @@ def test_del():
 		bundle = SysPathBundle((_LOCAL_DIR, _REPO_ROOT, _LIB_DIR))
 		del bundle
 
-		assert_path_is_present(_LOCAL_DIR, None, True, False)
-		assert_path_is_present(_REPO_ROOT, None, False, False)
-		assert_path_is_present(_LIB_DIR, None, False, False)
+		assert_path_in_sys_path(_LOCAL_DIR, True)
+		assert_path_in_sys_path(_REPO_ROOT, False)
+		assert_path_in_sys_path(_LIB_DIR, False)
 
 		assert sys.path == _INIT_SYS_PATH
 
