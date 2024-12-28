@@ -1,26 +1,22 @@
-from pathlib import Path
 import sys
 
+from _demo_util import\
+	INIT_SYS_PATH,\
+	DEMO_DIR,\
+	REPO_ROOT,\
+	print_sys_path,\
+	reset_sys_path
 
-_NEW_LINE = "\n"
 
+print_sys_path("sys.path's initial content")
 
-def _print_sys_path(title):
-	print(title + _NEW_LINE + _NEW_LINE.join(sys.path))
-
-
-_INIT_SYS_PATH = list(sys.path)
-_print_sys_path("Initial sys.path content")
-
-_LOCAL_DIR = Path(__file__).resolve().parent
-_REPO_ROOT = _LOCAL_DIR.parent
-print(f"\nLocal directory: {_LOCAL_DIR}")
-print(f"Repository root: {_REPO_ROOT}")
+print(f"\nDemo directory: {DEMO_DIR}")
+print(f"Repository root: {REPO_ROOT}")
 
 
 # Imports from syspathmodif are performed here.
-sys.path.append(str(_REPO_ROOT))
-_print_sys_path(
+sys.path.append(str(REPO_ROOT))
+print_sys_path(
 	"\nRepository root appended to sys.path to import package syspathmodif")
 
 from syspathmodif import\
@@ -28,29 +24,29 @@ from syspathmodif import\
 	sp_contains,\
 	sp_remove
 
-sys.path = list(_INIT_SYS_PATH)
-_print_sys_path("\nsys.path reset after the importation")
+reset_sys_path()
+print_sys_path("\nsys.path reset after the importation")
 # End of imports from syspathmodif
 
 
 # syspathmodif is used here.
-print(f"\nsys.path contains the repository's root: {sp_contains(_REPO_ROOT)}")
+print(f"\nsys.path contains the repository's root: {sp_contains(REPO_ROOT)}")
 
-if sp_append(_REPO_ROOT):
-	_print_sys_path(
+if sp_append(REPO_ROOT):
+	print_sys_path(
 		"\nRepository root appended to sys.path to import from demo_package")
 
 from demo_package import\
 	Ajxo,\
 	Point
 
-print(f"\nsys.path contains the repository's root: {sp_contains(_REPO_ROOT)}")
+print(f"\nsys.path contains the repository's root: {sp_contains(REPO_ROOT)}")
 
-if sp_remove(_REPO_ROOT):
-	_print_sys_path(
+if sp_remove(REPO_ROOT):
+	print_sys_path(
 		"\nRepository root removed from sys.path after the import")
 
-print(f"\nsys.path contains the repository's root: {sp_contains(_REPO_ROOT)}")
+print(f"\nsys.path contains the repository's root: {sp_contains(REPO_ROOT)}")
 # End of syspathmodif's use
 
 
@@ -62,4 +58,4 @@ print(ajxo)
 print(point)
 
 print("\nsys.path is the same as before the demo: "\
-		+ str(sys.path == _INIT_SYS_PATH))
+		+ str(sys.path == INIT_SYS_PATH))
