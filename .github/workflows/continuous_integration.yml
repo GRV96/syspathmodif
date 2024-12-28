@@ -18,15 +18,17 @@ jobs:
         run: pip3 install --no-cache-dir -r requirements-dev.txt
       - name: Execute the unit tests
         run: pytest tests
-  test_demo_no_error:
+  test_demos_no_error:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
       - name: Intall the dependencies
         run: pip3 install --no-cache-dir -r requirements.txt
-      - name: Ensure the demo runs with no errors
-        run: python3 demo/demo.py
+      - name: Run the SysPathBundle demo
+        run: python3 demos/demo_bundle.py
+      - name: Run the functions' demo
+        run: python3 demos/demo_functions.py
   test_pypi_package_build:
     runs-on: ubuntu-latest
     steps:
