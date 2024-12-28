@@ -53,7 +53,7 @@ if __name__ == "__main__":
 
 	setuptools.setup(
 		name = "syspathmodif",
-		version = "1.1.2",
+		version = "1.2.0",
 		author = "Guyllaume Rousseau",
 		description = short_desc,
 		long_description = long_desc,
