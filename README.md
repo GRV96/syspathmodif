@@ -22,6 +22,9 @@ les ajoute à `sys.path`. Quand on vide (*clear*) une instance, elle efface son
 contenu et l'enlève de `sys.path`. Ainsi, cette classe facilite l'ajout et le
 retrait d'un groupe de chemins.
 
+Il est possible d'utiliser `SysPathBundle` comme un gestionnaire de contexte
+(*context manager*). Dans ce cas, l'instance est vidée à la fin du bloc `with`.
+
 Pour plus d'informations, consultez la documentation des fonctions et les démos
 dans le dépôt de code source.
 
@@ -42,13 +45,19 @@ pip install -r requirements-dev.txt
 
 Les scripts dans le dossier `demos` montrent comment `syspathmodif` permet
 d'importer un paquet qui est indisponible tant qu'on n'a pas ajouté son chemin
-à `sys.path`. Les deux démos dépendent du paquet `demo_package`.
+à `sys.path`. Toutes les démos dépendent du paquet `demo_package`.
 
 À l'aide de la classe `SysPathBundle`, `demo_bundle.py` ajoute la racine du
-dépôt et `demo_package` à `sys.path`. La suppression de l'instance de
-`SysPathBundle` annule cette modification.
+dépôt et `demo_package` à `sys.path`. Ensuite, la démo annule cette
+modification en vidant l'instance de `SysPathBundle`.
 ```
 python demos/demo_bundle.py
+```
+
+En utilisant `SysPathBundle` comme un gestionnaire de contexte,
+`demo_bundle_context.py` effectue la même tâche que `demo_bundle.py`.
+```
+python demos/demo_bundle_context.py
 ```
 
 À l'aide des fonctions `sp_append` et `sp_remove`, `demo_functions.py` ajoute
@@ -84,6 +93,9 @@ Upon instantiation, class `SysPathBundle` stores several paths and adds them to
 `sys.path`. When a bundle is cleared, it erases its content and removes it from
 `sys.path`. Thus, this class facilitates adding and removing a group of paths.
 
+`SysPathBundle` can be used as a context manager. In that case, the instance is
+cleared at the `with` block's end.
+
 For more information, consult the functions' documentation and the demos in the
 source code repository.
 
@@ -103,14 +115,20 @@ pip install -r requirements-dev.txt
 ### Demos
 
 The scripts in directory `demos` show how `syspathmodif` allows to import a
-package unavailable unless its path is added to `sys.path`. Both demos depend
+package unavailable unless its path is added to `sys.path`. All demos depend
 on `demo_package`.
 
 With class `SysPathBundle`, `demo_bundle.py` adds the repository's root and
-`demo_package` to `sys.path`. The deletion of the `SysPathBundle` instance
-undoes this modification.
+`demo_package` to `sys.path`. Afterward, the demo undoes this modification by
+clearing the `SysPathBundle` instance.
 ```
 python demos/demo_bundle.py
+```
+
+By using `SysPathBundle` as a context manager, `demo_bundle_context.py`
+performs the same task as `demo_bundle.py`.
+```
+python demos/demo_bundle_context.py
 ```
 
 With functions `sp_append` and `sp_remove`, `demo_functions.py` adds the
