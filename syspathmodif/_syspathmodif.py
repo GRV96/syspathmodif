@@ -2,6 +2,10 @@ import sys
 
 from strath import ensure_path_is_str
 
+from ._no_path_check import\
+	sp_append_no_path_check,\
+	sp_remove_no_path_check
+
 
 def sp_append(some_path):
 	"""
@@ -20,13 +24,7 @@ def sp_append(some_path):
 			of str or pathlib.Path.
 	"""
 	some_path = ensure_path_is_str(some_path, True)
-	was_path_appended = False
-
-	if some_path not in sys.path and some_path is not None:
-		sys.path.append(some_path)
-		was_path_appended = True
-
-	return was_path_appended
+	return sp_append_no_path_check(some_path)
 
 
 def sp_contains(some_path):
@@ -62,12 +60,4 @@ def sp_remove(some_path):
 			of str or pathlib.Path.
 	"""
 	some_path = ensure_path_is_str(some_path, True)
-	was_path_removed = False
-
-	try:
-		sys.path.remove(some_path) # ValueError if argument not in list
-		was_path_removed = True
-	except ValueError:
-		pass
-
-	return was_path_removed
+	return sp_remove_no_path_check(some_path)
