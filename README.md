@@ -47,21 +47,22 @@ Les scripts dans le dossier `demos` montrent comment `syspathmodif` permet
 d'importer un paquet qui est indisponible tant qu'on n'a pas ajouté son chemin
 à `sys.path`. Toutes les démos dépendent du paquet `demo_package`.
 
-À l'aide de la classe `SysPathBundle`, `demo_bundle.py` ajoute la racine du
-dépôt et `demo_package` à `sys.path`. Ensuite, la démo annule cette
-modification en vidant l'instance de `SysPathBundle`.
+`demo_bundle.py` ajoute la racine du dépôt et `demo_package` à `sys.path` à
+l'aide de la classe `SysPathBundle`. Après les importations, la démo annule
+cette modification en vidant l'instance de `SysPathBundle`.
 ```
 python demos/demo_bundle.py
 ```
 
-En utilisant `SysPathBundle` comme un gestionnaire de contexte,
-`demo_bundle_context.py` effectue la même tâche que `demo_bundle.py`.
+`demo_bundle_context.py` effectue la même tâche que `demo_bundle.py` en
+utilisant `SysPathBundle` comme un gestionnaire de contexte.
 ```
 python demos/demo_bundle_context.py
 ```
 
-À l'aide des fonctions `sp_append` et `sp_remove`, `demo_functions.py` ajoute
-la racine du dépôt à `sys.path` puis l'en enlève.
+`demo_functions.py` ajoute la racine du dépôt à `sys.path` à l'aide de la
+fonction `sp_append`. Après les importations, la démo annule cette modification
+à l'aide de la fonction `sp_remove`.
 ```
 python demos/demo_functions.py
 ```
@@ -118,21 +119,22 @@ The scripts in directory `demos` show how `syspathmodif` allows to import a
 package unavailable unless its path is added to `sys.path`. All demos depend
 on `demo_package`.
 
-With class `SysPathBundle`, `demo_bundle.py` adds the repository's root and
-`demo_package` to `sys.path`. Afterward, the demo undoes this modification by
-clearing the `SysPathBundle` instance.
+`demo_bundle.py` adds the repository's root and `demo_package` to `sys.path`
+with class `SysPathBundle`. After the imports, the demo undoes this
+modification by clearing the `SysPathBundle` instance.
 ```
 python demos/demo_bundle.py
 ```
 
-By using `SysPathBundle` as a context manager, `demo_bundle_context.py`
-performs the same task as `demo_bundle.py`.
+`demo_bundle_context.py` performs the same task as `demo_bundle.py` by using
+`SysPathBundle` as a context manager.
 ```
 python demos/demo_bundle_context.py
 ```
 
-With functions `sp_append` and `sp_remove`, `demo_functions.py` adds the
-repository's root to `sys.path` then removes it.
+`demo_functions.py` adds the repository's root to `sys.path` with function
+`sp_append`. After the imports, the demo undoes this modification with function
+`sp_remove`.
 ```
 python demos/demo_functions.py
 ```
