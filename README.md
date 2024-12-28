@@ -38,16 +38,23 @@ dépendances ordinaires.
 pip install -r requirements-dev.txt
 ```
 
-### Démo
+### Démos
 
-Le script dans le dossier `demo` montre comment `syspathmodif` permet
+Les scripts dans le dossier `demos` montrent comment `syspathmodif` permet
 d'importer un paquet qui est indisponible tant qu'on n'a pas ajouté son chemin
-à `sys.path`.
-Il dépend du paquet `demo_package`.
+à `sys.path`. Les deux démos dépendent du paquet `demo_package`.
 
-Lancez la démo avec la commande suivante.
+À l'aide de la classe `SysPathBundle`, `demo_bundle.py` ajoute la racine du
+dépôt et `demo_package` à `sys.path`. La suppression de l'instance de
+`SysPathBundle` annule cette modification.
 ```
-python demo/demo.py
+python demos/demo_bundle.py
+```
+
+À l'aide des fonctions `sp_append` et `sp_remove`, `demo_functions.py` ajoute
+la racine du dépôt à `sys.path` puis l'en enlève.
+```
+python demos/demo_functions.py
 ```
 
 ### Tests automatiques
@@ -93,20 +100,28 @@ dependencies.
 pip install -r requirements-dev.txt
 ```
 
-### Demo
+### Demos
 
-The script in directory `demo` shows how `syspathmodif` allows to import a
-package unavailable unless its path is added to `sys.path`.
-It depends on `demo_package`.
+The scripts in directory `demos` show how `syspathmodif` allows to import a
+package unavailable unless its path is added to `sys.path`. Both demos depend
+on `demo_package`.
 
-Run the demo with the following command.
+With class `SysPathBundle`, `demo_bundle.py` adds the repository's root and
+`demo_package` to `sys.path`. The deletion of the `SysPathBundle` instance
+undoes this modification.
 ```
-python demo/demo.py
+python demos/demo_bundle.py
+```
+
+With functions `sp_append` and `sp_remove`, `demo_functions.py` adds the
+repository's root to `sys.path` then removes it.
+```
+python demos/demo_functions.py
 ```
 
 ### Automated Tests
 
-Run the tests.
+This command executes the automated tests.
 ```
 pytest tests
 ```
