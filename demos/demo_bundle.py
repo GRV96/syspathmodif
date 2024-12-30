@@ -36,6 +36,7 @@ print_sys_path("\nsys.path reset after the importation")
 print(f"\nsys.path contains the repository's root: {sp_contains(REPO_ROOT)}")
 print(f"sys.path contains the package's directory: {sp_contains(_PACKAGE_DIR)}")
 
+# The bundle adds the paths to sys.path.
 bundle = SysPathBundle((REPO_ROOT, _PACKAGE_DIR))
 print_sys_path(
 	"\nPaths appended to sys.path to import from demo_package")
@@ -46,7 +47,8 @@ from point import Point
 print(f"\nsys.path contains the repository's root: {sp_contains(REPO_ROOT)}")
 print(f"sys.path contains the package's directory: {sp_contains(_PACKAGE_DIR)}")
 
-# Paths removed by __del__ when the garbage collector destroys the bundle.
+# Clearing the bundle removes the paths from sys.path.
+bundle.clear()
 del bundle
 print_sys_path(
 	"\nPaths removed from sys.path after the imports")
@@ -63,5 +65,6 @@ print("\nInstances of imported classes")
 print(ajxo)
 print(point)
 
-print("\nsys.path is the same as before the demo: "\
-		+ str(sys.path == INIT_SYS_PATH))
+is_sys_path_the_same = sys.path == INIT_SYS_PATH
+print(f"\nsys.path is the same as before the demo: {is_sys_path_the_same}")
+assert is_sys_path_the_same
