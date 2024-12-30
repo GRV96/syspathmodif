@@ -36,6 +36,7 @@ print_sys_path("\nsys.path reset after the importation")
 print(f"\nsys.path contains the repository's root: {sp_contains(REPO_ROOT)}")
 print(f"sys.path contains the package's directory: {sp_contains(_PACKAGE_DIR)}")
 
+# The bundle adds the paths to sys.path. It is cleared at the block's end.
 with SysPathBundle((REPO_ROOT, _PACKAGE_DIR)):
 	print_sys_path(
 		"\nPaths appended to sys.path to import from demo_package")
