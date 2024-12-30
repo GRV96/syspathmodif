@@ -62,5 +62,6 @@ print("\nInstances of imported classes")
 print(ajxo)
 print(point)
 
-print("\nsys.path is the same as before the demo: "\
-		+ str(sys.path == INIT_SYS_PATH))
+is_sys_path_the_same = sys.path == INIT_SYS_PATH
+print(f"\nsys.path is the same as before the demo: {is_sys_path_the_same}")
+assert is_sys_path_the_same
