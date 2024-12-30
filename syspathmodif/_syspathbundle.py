@@ -41,6 +41,9 @@ class SysPathBundle:
 	def __exit__(self, exc_type, exc_value, traceback):
 		self.clear()
 
+	def __repr__(self):
+		return self.__class__.__name__ + f"({self._content})"
+
 	def clear(self):
 		"""
 		Erases this bundle's content and removes it from sys.path.
