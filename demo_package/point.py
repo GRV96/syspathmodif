@@ -6,7 +6,7 @@ class Point:
 
 	def __repr__(self):
 		return self.__class__.__name__\
-			+ "(" + str(self._x) + ", " + str(self._y) + ")"
+			+ f"({self._x}, {self._y})"
 
 	@property
 	def x(self):
