@@ -1,3 +1,5 @@
+# __all__ declared at the module's end
+
 from strath import ensure_path_is_str
 
 from ._no_path_check import\
@@ -77,3 +79,6 @@ class SysPathBundle:
 			if sp_append_no_path_check(path):
 				# Any path in self._content is a string.
 				self._content.append(path)
+
+
+__all__ = [SysPathBundle.__name__]

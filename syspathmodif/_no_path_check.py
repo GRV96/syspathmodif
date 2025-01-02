@@ -1,3 +1,5 @@
+# __all__ declared at the module's end
+
 import sys
 
 
@@ -21,3 +23,9 @@ def sp_remove_no_path_check(some_path):
 		pass
 
 	return was_path_removed
+
+
+__all__ = [
+	sp_append_no_path_check.__name__,
+	sp_remove_no_path_check.__name__
+]

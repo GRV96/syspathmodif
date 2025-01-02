@@ -1,3 +1,5 @@
+# __all__ declared at the module's end
+
 import sys
 
 from strath import ensure_path_is_str
@@ -61,3 +63,10 @@ def sp_remove(some_path):
 	"""
 	some_path = ensure_path_is_str(some_path, True)
 	return sp_remove_no_path_check(some_path)
+
+
+__all__ = [
+	sp_append.__name__,
+	sp_contains.__name__,
+	sp_remove.__name__
+]
