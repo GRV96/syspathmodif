@@ -1,6 +1,6 @@
-from ._syspathbundle import SysPathBundle
+from .syspathbundle import SysPathBundle
 
-from ._syspathmodif import\
+from .syspathmodif import\
 	sp_append,\
 	sp_contains,\
 	sp_remove
