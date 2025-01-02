@@ -70,6 +70,6 @@ if __name__ == "__main__":
 		],
 		install_requires = _make_requirement_list(),
 		packages = setuptools.find_packages(
-			exclude=(".github", "demo", "demo_package", "tests")),
+			exclude=(".github", "demos", "demo_package", "tests")),
 		license = "MIT",
 		license_files = ("LICENSE",))
