@@ -4,9 +4,9 @@ import sys
 
 from strath import ensure_path_is_str
 
-from .no_path_check import\
-	sp_append_no_path_check,\
-	sp_remove_no_path_check
+from .individual_paths_no_type_check import\
+	sp_append_no_type_check,\
+	sp_remove_no_type_check
 
 
 def sp_append(some_path):
@@ -26,7 +26,7 @@ def sp_append(some_path):
 			of str or pathlib.Path.
 	"""
 	some_path = ensure_path_is_str(some_path, True)
-	return sp_append_no_path_check(some_path)
+	return sp_append_no_type_check(some_path)
 
 
 def sp_contains(some_path):
@@ -62,7 +62,7 @@ def sp_remove(some_path):
 			of str or pathlib.Path.
 	"""
 	some_path = ensure_path_is_str(some_path, True)
-	return sp_remove_no_path_check(some_path)
+	return sp_remove_no_type_check(some_path)
 
 
 __all__ = [

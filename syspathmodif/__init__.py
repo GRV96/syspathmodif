@@ -1,6 +1,6 @@
 from .syspathbundle import SysPathBundle
 
-from .syspathmodif import\
+from .individual_paths import\
 	sp_append,\
 	sp_contains,\
 	sp_remove
