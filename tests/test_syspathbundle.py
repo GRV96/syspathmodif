@@ -115,6 +115,22 @@ def test_clear():
 		_reset_sys_path()
 
 
+def test_cleared_on_del():
+	try:
+		bundle = SysPathBundle((_LOCAL_DIR, _REPO_ROOT, _LIB_DIR), True)
+		assert bundle.cleared_on_del
+		del bundle
+
+		assert_path_in_sys_path(_LOCAL_DIR, True)
+		assert_path_in_sys_path(_REPO_ROOT, False)
+		assert_path_in_sys_path(_LIB_DIR, False)
+
+		assert sys.path == _INIT_SYS_PATH
+
+	finally:
+		_reset_sys_path()
+
+
 def test_context_management():
 	try:
 		with SysPathBundle((_LOCAL_DIR, _REPO_ROOT, _LIB_DIR)) as bundle:
