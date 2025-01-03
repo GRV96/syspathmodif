@@ -2,9 +2,9 @@
 
 from strath import ensure_path_is_str
 
-from .no_path_check import\
-	sp_append_no_path_check,\
-	sp_remove_no_path_check
+from .no_type_check import\
+	sp_append_no_type_check,\
+	sp_remove_no_type_check
 
 
 class SysPathBundle:
@@ -80,7 +80,7 @@ class SysPathBundle:
 		"""
 		while len(self._content) > 0:
 			path = self._content.pop()
-			sp_remove_no_path_check(path)
+			sp_remove_no_type_check(path)
 
 	def contains(self, some_path):
 		"""
@@ -104,7 +104,7 @@ class SysPathBundle:
 		for path in content:
 			path = ensure_path_is_str(path, True)
 
-			if sp_append_no_path_check(path):
+			if sp_append_no_type_check(path):
 				# Any path in self._content is a string.
 				self._content.append(path)
 
