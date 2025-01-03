@@ -25,8 +25,8 @@ retrait d'un groupe de chemins.
 Il est possible d'utiliser `SysPathBundle` comme un gestionnaire de contexte
 (*context manager*). Dans ce cas, l'instance est vidée à la fin du bloc `with`.
 
-Pour plus d'informations, consultez la documentation des fonctions et les démos
-dans le dépôt de code source.
+Pour plus d'informations, consultez la documentation et les démos dans le dépôt
+de code source.
 
 ### Dépendances
 
@@ -97,8 +97,8 @@ Upon instantiation, class `SysPathBundle` stores several paths and adds them to
 `SysPathBundle` can be used as a context manager. In that case, the instance is
 cleared at the `with` block's end.
 
-For more information, consult the functions' documentation and the demos in the
-source code repository.
+For more information, consult the documentation and the demos in the source
+code repository.
 
 ### Dependencies
 
