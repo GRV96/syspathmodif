@@ -45,6 +45,7 @@ def test_init_generator():
 		content_gen = generate_paths()
 		assert isgenerator(content_gen)
 		bundle = SysPathBundle(content_gen)
+		assert not bundle.cleared_on_del
 
 		assert_path_is_present(_LOCAL_DIR, bundle, True, False)
 		assert_path_is_present(_REPO_ROOT, bundle, True, True)
@@ -59,6 +60,7 @@ def test_init_list():
 		content = [_LOCAL_DIR, _REPO_ROOT, _LIB_DIR]
 		assert isinstance(content, list)
 		bundle = SysPathBundle(content)
+		assert not bundle.cleared_on_del
 
 		assert_path_is_present(_LOCAL_DIR, bundle, True, False)
 		assert_path_is_present(_REPO_ROOT, bundle, True, True)
@@ -73,6 +75,7 @@ def test_init_tuple():
 		content = (_LOCAL_DIR, _REPO_ROOT, _LIB_DIR)
 		assert isinstance(content, tuple)
 		bundle = SysPathBundle(content)
+		assert not bundle.cleared_on_del
 
 		assert_path_is_present(_LOCAL_DIR, bundle, True, False)
 		assert_path_is_present(_REPO_ROOT, bundle, True, True)
@@ -87,6 +90,7 @@ def test_init_set():
 		content = {_LOCAL_DIR, _REPO_ROOT, _LIB_DIR}
 		assert isinstance(content, set)
 		bundle = SysPathBundle(content)
+		assert not bundle.cleared_on_del
 
 		assert_path_is_present(_LOCAL_DIR, bundle, True, False)
 		assert_path_is_present(_REPO_ROOT, bundle, True, True)
@@ -104,6 +108,22 @@ def test_clear():
 		assert_path_is_present(_LOCAL_DIR, bundle, True, False)
 		assert_path_is_present(_REPO_ROOT, bundle, False, False)
 		assert_path_is_present(_LIB_DIR, bundle, False, False)
+
+		assert sys.path == _INIT_SYS_PATH
+
+	finally:
+		_reset_sys_path()
+
+
+def test_cleared_on_del():
+	try:
+		bundle = SysPathBundle((_LOCAL_DIR, _REPO_ROOT, _LIB_DIR), True)
+		assert bundle.cleared_on_del
+		del bundle
+
+		assert_path_in_sys_path(_LOCAL_DIR, True)
+		assert_path_in_sys_path(_REPO_ROOT, False)
+		assert_path_in_sys_path(_LIB_DIR, False)
 
 		assert sys.path == _INIT_SYS_PATH
 
