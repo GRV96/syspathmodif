@@ -56,14 +56,14 @@ class SysPathBundle:
 
 	def contains(self, some_path):
 		"""
-		Indicates whether this bundle cotains the given path.
+		Indicates whether this bundle contains the given path.
 
 		Args:
 			some_path (str or pathlib.Path): the path whose presence is
 				verified.
 
 		Returns:
-			bool: True if this bundle cotains the given path, False otherwise.
+			bool: True if this bundle contains the given path, False otherwise.
 
 		Raises:
 			TypeError: if a path is not None and not of type str or
