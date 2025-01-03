@@ -4,7 +4,7 @@ import sys
 
 from strath import ensure_path_is_str
 
-from .no_type_check import\
+from .individual_paths_no_type_check import\
 	sp_append_no_type_check,\
 	sp_remove_no_type_check
 
