@@ -18,9 +18,13 @@ class SysPathBundle:
 	in the following example, it is cleared at the block's end.
 
 	with SysPathBundle(("path/to/module", "path/to/package")):
+	
+	The constructor can set a bundle to be cleared by the destructor. This
+	should not be done for a bundle used as a context manager as exiting the
+	with block clears the bundle anyway.
 	"""
 
-	def __init__(self, content):
+	def __init__(self, content, cleared_on_del=False):
 		"""
 		The constructor needs the paths (type str or pathlib.Path) to store in
 		this bundle and add to sys.path. If a path in argument content is
@@ -29,6 +33,9 @@ class SysPathBundle:
 		Args:
 			content (generator, list, set or tuple): the paths to store in this
 				bundle.
+			cleared_on_del (bool): If it is True, the destructor will clear
+				this bundle. Should be False if the bundle is used as a context
+				manger. Defaults to False.
 
 		Raises:
 			TypeError: if a path is not None and not of type str or
@@ -37,6 +44,15 @@ class SysPathBundle:
 		self._content = list()
 		self._fill_content(content)
 
+		self._cleared_on_del = cleared_on_del
+
+	def __del__(self):
+		"""
+		The destructor will clear this bundle if property cleared_on_del is True.
+		"""
+		if self._cleared_on_del:
+			self.clear()
+
 	def __enter__(self):
 		return self
 
@@ -44,7 +60,19 @@ class SysPathBundle:
 		self.clear()
 
 	def __repr__(self):
-		return self.__class__.__name__ + f"({self._content})"
+		return self.__class__.__name__\
+			+ f"({self._content}, {self._cleared_on_del})"
+
+	@property
+	def cleared_on_del(self):
+		"""
+		bool: If this property is True, the destructor will clear this bundle.
+		"""
+		return self._cleared_on_del
+
+	@cleared_on_del.setter
+	def cleared_on_del(self, value):
+		self._cleared_on_del = value
 
 	def clear(self):
 		"""
