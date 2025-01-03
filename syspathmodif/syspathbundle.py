@@ -17,7 +17,7 @@ class SysPathBundle:
 	This class is a context manager. If a bundle is used in a with statement as
 	in the following example, it is cleared at the block's end.
 
-	with SysPathBundle(("path/to/package1", "path/to/package2")):
+	with SysPathBundle(("path/to/module", "path/to/package")):
 	"""
 
 	def __init__(self, content):
