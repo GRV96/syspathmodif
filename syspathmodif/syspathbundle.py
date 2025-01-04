@@ -26,13 +26,13 @@ class SysPathBundle:
 
 	def __init__(self, content, cleared_on_del=False):
 		"""
-		The constructor needs the paths (type str or pathlib.Path) to store in
-		this bundle and add to sys.path. If a path in argument content is
-		None or is already in sys.path, the bundle will not store it.
+		The constructor needs the paths to store in this bundle and add to
+		sys.path. If a path in argument content is None or is already in
+		sys.path, the bundle will not store it.
 
 		Args:
-			content (generator, list, set or tuple): the paths to store in this
-				bundle.
+			content (generator, list, set or tuple): the paths
+				(type str or pathlib.Path) to store in this bundle.
 			cleared_on_del (bool): If it is True, the destructor will clear
 				this bundle. This argument should be False if the bundle is
 				used as a context manger. Defaults to False.
