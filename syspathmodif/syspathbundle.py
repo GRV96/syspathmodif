@@ -84,8 +84,8 @@ class SysPathBundle:
 			try:
 				sp_remove_no_type_check(path)
 			except AttributeError:
-				# If a bundle is cleared when the
-				# application ends, sys.path can be None.
+				# If a bundle is cleared by the destructor when
+				# the application ends, sys.path can be None.
 				break
 
 	def contains(self, some_path):
