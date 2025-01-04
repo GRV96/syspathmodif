@@ -1,9 +1,12 @@
 """
-If a bundle is cleared by the destructor when the application ends,
-sys.path can be None, which causes an AttributeError.
+This script is meant to run on GitHub's virtual machine ubuntu-latest in a CI
+workflow.
 
-This script's success ensures that the exception is properly handled.
+If a bundle is cleared by the destructor when the application ends, sys.path
+can be None, which causes an AttributeError. This script's success ensures that
+the exception is properly handled.
 """
+
 
 from pathlib import Path
 import sys
