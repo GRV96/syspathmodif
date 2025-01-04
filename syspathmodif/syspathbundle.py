@@ -80,7 +80,13 @@ class SysPathBundle:
 		"""
 		while len(self._content) > 0:
 			path = self._content.pop()
-			sp_remove_no_type_check(path)
+
+			try:
+				sp_remove_no_type_check(path)
+			except AttributeError:
+				# If a bundle is cleared when the
+				# application ends, sys.path can be None.
+				break
 
 	def contains(self, some_path):
 		"""
