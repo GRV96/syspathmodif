@@ -12,8 +12,8 @@ from pathlib import Path
 import sys
 
 
-_LOCAL_DIR = Path(__file__).resolve().parents[2]
-_REPO_ROOT = _LOCAL_DIR.parent
+_LOCAL_DIR = Path(__file__).resolve().parent
+_REPO_ROOT = _LOCAL_DIR.parents[1]
 _LIB_DIR = _REPO_ROOT/"syspathmodif"
 
 
