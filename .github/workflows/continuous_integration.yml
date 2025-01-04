@@ -29,6 +29,15 @@ jobs:
         run: python3 demos/demo_bundle.py
       - name: Run the functions' demo
         run: python3 demos/demo_functions.py
+  test_bundle_clearing_app_end:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+      - name: Intall the dependencies
+        run: pip3 install --no-cache-dir -r requirements.txt
+      - name: Test the build
+        run: python3 .github/workflows/test_bundle_clearing_app_end.py
   test_pypi_package_build:
     runs-on: ubuntu-latest
     steps:
