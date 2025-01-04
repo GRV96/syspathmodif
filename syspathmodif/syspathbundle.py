@@ -34,8 +34,8 @@ class SysPathBundle:
 			content (generator, list, set or tuple): the paths to store in this
 				bundle.
 			cleared_on_del (bool): If it is True, the destructor will clear
-				this bundle. Should be False if the bundle is used as a context
-				manger. Defaults to False.
+				this bundle. This argument should be False if the bundle is
+				used as a context manger. Defaults to False.
 
 		Raises:
 			TypeError: if a path is not None and not of type str or
