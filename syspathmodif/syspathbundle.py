@@ -86,6 +86,7 @@ class SysPathBundle:
 			except AttributeError:
 				# If a bundle is cleared by the destructor when
 				# the application ends, sys.path can be None.
+				self._content.clear()
 				break
 
 	def contains(self, some_path):
