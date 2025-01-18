@@ -27,8 +27,12 @@ jobs:
         run: pip3 install --no-cache-dir -r requirements.txt
       - name: Run the SysPathBundle demo
         run: python3 demos/demo_bundle.py
+      - name: Run the SysPathBundle context manager demo
+        run: python3 demos/demo_bundle_context.py
       - name: Run the functions' demo
         run: python3 demos/demo_functions.py
+      - name: Run the sm_contains demo
+        run: python3 demos/demo_sm_contains.py
   test_bundle_clearing_app_end:
     runs-on: ubuntu-latest
     steps:
