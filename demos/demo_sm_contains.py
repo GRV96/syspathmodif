@@ -8,11 +8,23 @@ sys.path.append(str(REPO_ROOT))
 from syspathmodif import\
 	SysPathBundle,\
 	sm_contains,\
+	sp_append,\
 	sp_remove
 sp_remove(REPO_ROOT)
 
 
+def _add_demo_package_to_sys_modules():
+	was_repo_root_added = sp_append(REPO_ROOT)
+	import demo_package
+
+	if was_repo_root_added:
+		sp_remove(REPO_ROOT)
+
+
 paths = list()
+
+# The first conditional block is not executed because of this function.
+_add_demo_package_to_sys_modules()
 
 # To import Ajxo
 if not sm_contains("demo_package"):
@@ -21,7 +33,7 @@ if not sm_contains("demo_package"):
 
 # To import Point
 if not sm_contains("point"):
-	print("demo_package added to sys.path")
+	print("Directory demo_package added to sys.path")
 	paths.append(REPO_ROOT/"demo_package")
 
 with SysPathBundle(paths):
