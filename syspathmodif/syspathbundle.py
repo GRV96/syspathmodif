@@ -9,7 +9,7 @@ from .individual_paths_no_type_check import\
 
 class SysPathBundle:
 	"""
-	Upon instantiation, a bundle stores several paths and adds them to
+	Upon instantiation, a bundle stores several paths and adds them to list
 	sys.path. When a bundle is cleared, it erases its content and removes it
 	from sys.path. Thus, this class facilitates adding and removing a group of
 	paths.
