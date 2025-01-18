@@ -2,15 +2,12 @@ from pathlib import Path
 import sys
 
 
-_LOCAL_DIR = Path(__file__).resolve().parent
-_REPO_ROOT = _LOCAL_DIR.parent
-
-
-sys.path.append(str(_REPO_ROOT))
+repo_root = str(Path(__file__).resolve().parents[1])
+sys.path.append(repo_root)
 from syspathmodif import\
 	sm_contains,\
 	sp_remove
-sp_remove(_REPO_ROOT)
+sp_remove(repo_root)
 
 
 def test_sm_contains_int():
