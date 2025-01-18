@@ -36,7 +36,7 @@ def sp_append(some_path):
 	Returns:
 		bool: True if some_path was appended to sys.path, False otherwise.
 
-	Throws:
+	Raises:
 		TypeError: if argument some_path is not None and it is not an instance
 			of str or pathlib.Path.
 	"""
@@ -54,7 +54,7 @@ def sp_contains(some_path):
 	Returns:
 		bool: True if sys.path contains argument some_path, False otherwise.
 
-	Throws:
+	Raises:
 		TypeError: if argument some_path is not None and it is not an instance
 			of str or pathlib.Path.
 	"""
@@ -72,7 +72,7 @@ def sp_remove(some_path):
 	Returns:
 		bool: True if some_path was removed from sys.path, False otherwise.
 
-	Throws:
+	Raises:
 		TypeError: if argument some_path is not None and it is not an instance
 			of str or pathlib.Path.
 	"""
