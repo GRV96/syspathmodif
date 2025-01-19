@@ -72,6 +72,13 @@ d'importer un paquet qui est indisponible tant qu'on n'a pas ajouté le chemin
 de son dossier à `sys.path`. Toutes les démos dépendent du paquet
 `demo_package`.
 
+`demo_functions.py` ajoute la racine du dépôt à `sys.path` à l'aide de la
+fonction `sp_append`. Après les importations, la démo annule cette modification
+à l'aide de la fonction `sp_remove`.
+```
+python demos/demo_functions.py
+```
+
 `demo_bundle.py` ajoute la racine du dépôt et `demo_package` à `sys.path` à
 l'aide de la classe `SysPathBundle`. Après les importations, la démo annule
 cette modification en vidant l'instance de `SysPathBundle`.
@@ -83,13 +90,6 @@ python demos/demo_bundle.py
 utilisant `SysPathBundle` comme un gestionnaire de contexte.
 ```
 python demos/demo_bundle_context.py
-```
-
-`demo_functions.py` ajoute la racine du dépôt à `sys.path` à l'aide de la
-fonction `sp_append`. Après les importations, la démo annule cette modification
-à l'aide de la fonction `sp_remove`.
-```
-python demos/demo_functions.py
 ```
 
 `demo_sm_contains.py` montre un cas où on peut importer un module ou un paquet
