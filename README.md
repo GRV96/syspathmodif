@@ -149,7 +149,7 @@ requested modules and packages in `sys.modules` first, it avoids loading them
 more than once. Moreover, the modules and packages in `sys.modules` can be
 imported everywhere with no modifications to `sys.path`.
 
-Knowing this, you can determine with function `sm_contains` if a module or
+Knowing this, you can use function `sm_contains` to determine if a module or
 package is already importable. If `sm_contains` returns `True`, modifiying
 `sys.path` is not required to import the module or package.
 
