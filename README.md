@@ -6,12 +6,18 @@ Cette bibliothèque offre des manières concises de modifier la liste `sys.path`
 L'utilisateur ne devrait pas avoir besoin d'interagir directement avec cette
 liste.
 
+### Importations et `sys.path`
+
+Il est possible d'importer un module ou un paquet si la liste `sys.path`
+contient le chemin de son dossier. Si un module ou un paquet n'est pas
+importable, il peut le devenir si on ajoute le chemin de son dossier à
+`sys.path`.
+
 ### Contenu
 
-Les fonctions de `syspathmodif` prennent un chemin de type `str` ou
-`pathlib.Path` comme argument.
-Elles convertissent les arguments de type `pathlib.Path` en `str` puisque
-`sys.path` n'est censée contenir que des chaînes de caractères.
+Les fonctions suivantes prennent un chemin de type `str` ou `pathlib.Path`
+comme argument. Elles convertissent les arguments de type `pathlib.Path` en
+`str` puisque `sys.path` n'est censée contenir que des chaînes de caractères.
 
 * `sp_append` ajoute le chemin donné à la fin de `sys.path`.
 * `sp_contains` indique si `sys.path` contient le chemin donné.
@@ -25,8 +31,26 @@ retrait d'un groupe de chemins.
 Il est possible d'utiliser `SysPathBundle` comme un gestionnaire de contexte
 (*context manager*). Dans ce cas, l'instance est vidée à la fin du bloc `with`.
 
+La fonction `sm_contains` prend comme argument un nom de module ou de paquet.
+Elle indique si le dictionnaire `sys.modules` contient ce module ou paquet.
+
 Pour plus d'informations, consultez la documentation et les démos dans le dépôt
 de code source.
+
+### Importations et `sys.modules`
+
+Le dictionnaire `sys.modules` associe des noms (`str`) de module ou de paquet
+au module ou paquet correspondant. Quand un module ou un paquet est importé
+pour la première fois, il est ajouté à `sys.modules`. Puisque le système
+d'importation cherche d'abord les modules et paquets demandés dans
+`sys.modules`, il évite de les charger plus d'une fois. De plus, les modules et
+paquets présents dans `sys.modules` peuvent être importés partout sans qu'on
+modifie `sys.path`.
+
+Sachant cela, on peut déterminer à l'aide de la fonction `sm_contains` si un
+module ou un paquet est déjà importable. Si `sm_contains` renvoie vrai
+(`True`), il n'est pas nécessaire de modifier `sys.path` pour importer le
+module ou le paquet.
 
 ### Dépendances
 
@@ -44,8 +68,9 @@ pip install -r requirements-dev.txt
 ### Démos
 
 Les scripts dans le dossier `demos` montrent comment `syspathmodif` permet
-d'importer un paquet qui est indisponible tant qu'on n'a pas ajouté son chemin
-à `sys.path`. Toutes les démos dépendent du paquet `demo_package`.
+d'importer un paquet qui est indisponible tant qu'on n'a pas ajouté le chemin
+de son dossier à `sys.path`. Toutes les démos dépendent du paquet
+`demo_package`.
 
 `demo_bundle.py` ajoute la racine du dépôt et `demo_package` à `sys.path` à
 l'aide de la classe `SysPathBundle`. Après les importations, la démo annule
@@ -67,6 +92,13 @@ fonction `sp_append`. Après les importations, la démo annule cette modificatio
 python demos/demo_functions.py
 ```
 
+`demo_sm_contains.py` montre un cas où on peut importer un module ou un paquet
+sans ajouter son chemin à `sys.path`. La démo vérifie la présence du module ou
+du paquet dans `sys.modules` à l'aide de la fonction `sm_contains`.
+```
+python demos/demo_sm_contains.py
+```
+
 ### Tests automatiques
 
 Cette commande exécute les tests automatiques.
@@ -79,12 +111,17 @@ pytest tests
 This library offers concise manners to modify list `sys.path`.
 The user should not need to directly interact with that list.
 
+### Imports and `sys.path`
+
+It is possible to import a module or package if list `sys.path` contains the
+path to its directory. A module or package will become importable if the path
+to its directory is added to `sys.path`.
+
 ### Content
 
-The functions in `syspathmodif` take a path of type `str` or `pathlib.Path`
-as an argument.
-They convert arguments of type `pathlib.Path` to `str` since `sys.path` is
-supposed to contain only character strings.
+The following functions take a path of type `str` or `pathlib.Path` as an
+argument. They convert arguments of type `pathlib.Path` to `str` since
+`sys.path` is supposed to contain only character strings.
 
 * `sp_append` appends the given path to the end of `sys.path`.
 * `sp_contains` indicates whether `sys.path` contains the given path.
@@ -97,8 +134,24 @@ Upon instantiation, class `SysPathBundle` stores several paths and adds them to
 `SysPathBundle` can be used as a context manager. In that case, the instance is
 cleared at the `with` block's end.
 
+Function `sm_contains` takes a module's or package's name as an argument. It
+indicates whether dictionary `sys.modules` contains the module or package.
+
 For more information, consult the documentation and the demos in the source
 code repository.
+
+### Imports and `sys.modules`
+
+Dictionary `sys.modules` maps module and package names (`str`) to the
+corresponding module or package. When a module or package is imported for the
+first time, it is added to `sys.modules`. Since the import system looks for the
+requested modules and packages in `sys.modules` first, it avoids loading them
+more than once. Moreover, the modules and packages in `sys.modules` can be
+imported everywhere with no modifications to `sys.path`.
+
+Knowing this, you can determine with function `sm_contains` if a module or
+package is already importable. If `sm_contains` returns `True`, modifiying
+`sys.path` is not required to import the module or package.
 
 ### Dependencies
 
@@ -116,8 +169,15 @@ pip install -r requirements-dev.txt
 ### Demos
 
 The scripts in directory `demos` show how `syspathmodif` allows to import a
-package unavailable unless its path is added to `sys.path`. All demos depend
-on `demo_package`.
+package unavailable unless its directory's path is added to `sys.path`. All
+demos depend on `demo_package`.
+
+`demo_functions.py` adds the repository's root to `sys.path` with function
+`sp_append`. After the imports, the demo undoes this modification with function
+`sp_remove`.
+```
+python demos/demo_functions.py
+```
 
 `demo_bundle.py` adds the repository's root and `demo_package` to `sys.path`
 with class `SysPathBundle`. After the imports, the demo undoes this
@@ -132,11 +192,11 @@ python demos/demo_bundle.py
 python demos/demo_bundle_context.py
 ```
 
-`demo_functions.py` adds the repository's root to `sys.path` with function
-`sp_append`. After the imports, the demo undoes this modification with function
-`sp_remove`.
+`demo_sm_contains.py` shows a case where a module or package can be imported
+without its directory being added to `sys.path`. The demo verifies the module's
+or package's presence in `sys.modules` with function `sm_contains`.
 ```
-python demos/demo_functions.py
+python demos/demo_sm_contains.py
 ```
 
 ### Automated Tests
