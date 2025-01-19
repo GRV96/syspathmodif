@@ -9,9 +9,8 @@ liste.
 ### Importations et `sys.path`
 
 Il est possible d'importer un module ou un paquet si la liste `sys.path`
-contient le chemin de son dossier. Si un module ou un paquet n'est pas
-importable, il peut le devenir si on ajoute le chemin de son dossier à
-`sys.path`.
+contient le chemin de son dossier. On peut donc rendre un module ou un paquet
+importable en ajoutant le chemin de son dossier à `sys.path`.
 
 ### Contenu
 
@@ -114,8 +113,8 @@ The user should not need to directly interact with that list.
 ### Imports and `sys.path`
 
 It is possible to import a module or package if list `sys.path` contains the
-path to its directory. A module or package will become importable if the path
-to its directory is added to `sys.path`.
+path to its directory. Therefore, you can make a module or package importable
+by adding the path to its directory to `sys.path`.
 
 ### Content
 
