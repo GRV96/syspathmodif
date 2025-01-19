@@ -6,12 +6,6 @@ Cette bibliothèque offre des manières concises de modifier la liste `sys.path`
 L'utilisateur ne devrait pas avoir besoin d'interagir directement avec cette
 liste.
 
-### Importations et `sys.path`
-
-Il est possible d'importer un module ou un paquet si la liste `sys.path`
-contient le chemin de son dossier. On peut donc rendre un module ou un paquet
-importable en ajoutant le chemin de son dossier à `sys.path`.
-
 ### Contenu
 
 Les fonctions suivantes prennent un chemin de type `str` ou `pathlib.Path`
@@ -35,6 +29,12 @@ Elle indique si le dictionnaire `sys.modules` contient ce module ou paquet.
 
 Pour plus d'informations, consultez la documentation et les démos dans le dépôt
 de code source.
+
+### Importations et `sys.path`
+
+Il est possible d'importer un module ou un paquet si la liste `sys.path`
+contient le chemin de son dossier. On peut donc rendre un module ou un paquet
+importable en ajoutant le chemin de son dossier à `sys.path`.
 
 ### Importations et `sys.modules`
 
@@ -110,12 +110,6 @@ pytest tests
 This library offers concise manners to modify list `sys.path`.
 The user should not need to directly interact with that list.
 
-### Imports and `sys.path`
-
-It is possible to import a module or package if list `sys.path` contains the
-path to its directory. Therefore, you can make a module or package importable
-by adding the path to its directory to `sys.path`.
-
 ### Content
 
 The following functions take a path of type `str` or `pathlib.Path` as an
@@ -138,6 +132,12 @@ indicates whether dictionary `sys.modules` contains the module or package.
 
 For more information, consult the documentation and the demos in the source
 code repository.
+
+### Imports and `sys.path`
+
+It is possible to import a module or package if list `sys.path` contains the
+path to its directory. Therefore, you can make a module or package importable
+by adding the path to its directory to `sys.path`.
 
 ### Imports and `sys.modules`
 
