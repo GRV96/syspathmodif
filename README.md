@@ -49,7 +49,7 @@ modifie `sys.path`.
 Sachant cela, on peut déterminer à l'aide de la fonction `sm_contains` si un
 module ou un paquet est déjà importable. Si `sm_contains` renvoie vrai
 (`True`), il n'est pas nécessaire de modifier `sys.path` pour importer le
-module ou le paquet.
+module ou le paquet donné.
 
 ### Dépendances
 
@@ -155,7 +155,7 @@ imported everywhere with no modifications to `sys.path`.
 
 Knowing this, you can use function `sm_contains` to determine if a module or
 package is already importable. If `sm_contains` returns `True`, modifiying
-`sys.path` is not required to import the module or package.
+`sys.path` is not required to import the given module or package.
 
 ### Dependencies
 
