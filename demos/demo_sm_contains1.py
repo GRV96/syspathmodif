@@ -25,7 +25,8 @@ def _add_demo_package_to_sys_modules():
 
 paths = list()
 
-# The first conditional block is not executed because of this function.
+# This function call prevents the first conditional block's execution.
+# Comment it out and see the result.
 _add_demo_package_to_sys_modules()
 
 # To import Ajxo
