@@ -33,8 +33,8 @@ de code source.
 ### Importations et `sys.path`
 
 Il est possible d'importer un module ou un paquet si la liste `sys.path`
-contient le chemin de son dossier. On peut donc rendre un module ou un paquet
-importable en ajoutant le chemin de son dossier à `sys.path`.
+contient le chemin de son dossier parent. On peut donc rendre un module ou un
+paquet importable en ajoutant son parent à `sys.path`.
 
 ### Importations et `sys.modules`
 
@@ -136,8 +136,8 @@ code repository.
 ### Imports and `sys.path`
 
 It is possible to import a module or package if list `sys.path` contains the
-path to its directory. Therefore, you can make a module or package importable
-by adding the path to its directory to `sys.path`.
+path to its parent directory. Therefore, you can make a module or package
+importable by adding its parent to `sys.path`.
 
 ### Imports and `sys.modules`
 
