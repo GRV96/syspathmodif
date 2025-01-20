@@ -24,8 +24,9 @@ retrait d'un groupe de chemins.
 Il est possible d'utiliser `SysPathBundle` comme un gestionnaire de contexte
 (*context manager*). Dans ce cas, l'instance est vidée à la fin du bloc `with`.
 
-La fonction `sm_contains` prend comme argument un nom de module ou de paquet.
-Elle indique si le dictionnaire `sys.modules` contient ce module ou paquet.
+La fonction `sm_contains` prend comme argument un nom (`str`) de module ou de
+paquet. Elle indique si le dictionnaire `sys.modules` contient ce module ou
+paquet.
 
 Pour plus d'informations, consultez la documentation et les démos dans le dépôt
 de code source.
@@ -132,8 +133,9 @@ Upon instantiation, class `SysPathBundle` stores several paths and adds them to
 `SysPathBundle` can be used as a context manager. In that case, the instance is
 cleared at the `with` block's end.
 
-Function `sm_contains` takes a module's or package's name as an argument. It
-indicates whether dictionary `sys.modules` contains the module or package.
+Function `sm_contains` takes a module's or package's name (`str`) as an
+argument. It indicates whether dictionary `sys.modules` contains the module or
+package.
 
 For more information, consult the documentation and the demos in the source
 code repository.
