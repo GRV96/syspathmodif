@@ -1,12 +1,13 @@
-from .syspathbundle import SysPathBundle
-
-from .sys_modules import\
-	sm_contains
-
 from .individual_paths import\
 	sp_append,\
 	sp_contains,\
 	sp_remove
+
+from .sys_modules import\
+	sm_contains
+
+from .syspathbundle import\
+	SysPathBundle
 
 
 __all__ = [
