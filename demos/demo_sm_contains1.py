@@ -15,6 +15,8 @@ sp_remove(REPO_ROOT)
 
 def _add_demo_package_to_sys_modules():
 	was_repo_root_added = sp_append(REPO_ROOT)
+
+	# The import includes the package in sys.modules.
 	import demo_package
 
 	if was_repo_root_added:

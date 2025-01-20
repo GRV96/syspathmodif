@@ -31,8 +31,10 @@ jobs:
         run: python3 demos/demo_bundle_context.py
       - name: Run the functions' demo
         run: python3 demos/demo_functions.py
-      - name: Run the sm_contains demo
-        run: python3 demos/demo_sm_contains.py
+      - name: Run the first sm_contains demo
+        run: python3 demos/demo_sm_contains1.py
+      - name: Run the second sm_contains demo
+        run: python3 demos/demo_sm_contains2.py
   test_bundle_clearing_app_end:
     runs-on: ubuntu-latest
     steps:

@@ -91,11 +91,16 @@ utilisant `SysPathBundle` comme un gestionnaire de contexte.
 python demos/demo_bundle_context.py
 ```
 
-`demo_sm_contains.py` montre un cas où on peut importer un module ou un paquet
+`demo_sm_contains1.py` montre un cas où on peut importer un module ou un paquet
 sans ajouter son chemin à `sys.path`. La démo vérifie la présence du module ou
 du paquet dans `sys.modules` à l'aide de la fonction `sm_contains`.
 ```
-python demos/demo_sm_contains.py
+python demos/demo_sm_contains1.py
+```
+
+`demo_sm_contains2.py` montre un autre usage de la fonction `sm_contains`.
+```
+python demos/demo_sm_contains2.py
 ```
 
 ### Tests automatiques
@@ -191,11 +196,16 @@ python demos/demo_bundle.py
 python demos/demo_bundle_context.py
 ```
 
-`demo_sm_contains.py` shows a case where a module or package can be imported
+`demo_sm_contains1.py` shows a case where a module or package can be imported
 without its directory being added to `sys.path`. The demo verifies the module's
 or package's presence in `sys.modules` with function `sm_contains`.
 ```
-python demos/demo_sm_contains.py
+python demos/demo_sm_contains1.py
+```
+
+`demo_sm_contains2.py` shows another use of function `sm_contains`.
+```
+python demos/demo_sm_contains2.py
 ```
 
 ### Automated Tests
