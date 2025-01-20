@@ -12,8 +12,8 @@ from .individual_paths_no_type_check import\
 def sp_append(some_path):
 	"""
 	Appends the given path to the end of list sys.path if it does not already
-	contain the path. If the path is of type pathlib.Path, it is converted to a
-	string. If the path is None, this function does not change sys.path.
+	contain the path. If the path is None, this function does not change
+	sys.path.
 
 	Args:
 		some_path (str or pathlib.Path): the path to append to sys.path.
