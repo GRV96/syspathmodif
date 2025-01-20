@@ -34,7 +34,7 @@ de code source.
 
 Il est possible d'importer un module ou un paquet si la liste `sys.path`
 contient le chemin de son dossier parent. On peut donc rendre un module ou un
-paquet importable en ajoutant son parent à `sys.path`.
+paquet importable en ajoutant son chemin parent à `sys.path`.
 
 ### Importations et `sys.modules`
 
@@ -67,8 +67,8 @@ pip install -r requirements-dev.txt
 ### Démos
 
 Les scripts dans le dossier `demos` montrent comment `syspathmodif` permet
-d'importer un paquet qui est indisponible tant qu'on n'a pas ajouté le chemin
-de son dossier à `sys.path`. Toutes les démos dépendent du paquet
+d'importer un module ou un paquet qui est indisponible tant qu'on n'a pas
+ajouté son chemin parent à `sys.path`. Toutes les démos dépendent du paquet
 `demo_package`.
 
 `demo_functions.py` ajoute la racine du dépôt à `sys.path` à l'aide de la
@@ -78,9 +78,9 @@ fonction `sp_append`. Après les importations, la démo annule cette modificatio
 python demos/demo_functions.py
 ```
 
-`demo_bundle.py` ajoute la racine du dépôt et `demo_package` à `sys.path` à
-l'aide de la classe `SysPathBundle`. Après les importations, la démo annule
-cette modification en vidant l'instance de `SysPathBundle`.
+`demo_bundle.py` ajoute la racine du dépôt et le dossier `demo_package` à
+`sys.path` à l'aide de la classe `SysPathBundle`. Après les importations, la
+démo annule ces modifications en vidant l'instance de `SysPathBundle`.
 ```
 python demos/demo_bundle.py
 ```
@@ -92,8 +92,8 @@ python demos/demo_bundle_context.py
 ```
 
 `demo_sm_contains1.py` montre un cas où on peut importer un module ou un paquet
-sans ajouter son chemin à `sys.path`. La démo vérifie la présence du module ou
-du paquet dans `sys.modules` à l'aide de la fonction `sm_contains`.
+sans ajouter son chemin parent à `sys.path`. La démo vérifie la présence du
+module ou du paquet dans `sys.modules` à l'aide de la fonction `sm_contains`.
 ```
 python demos/demo_sm_contains1.py
 ```
@@ -142,7 +142,7 @@ code repository.
 
 It is possible to import a module or package if list `sys.path` contains the
 path to its parent directory. Therefore, you can make a module or package
-importable by adding its parent to `sys.path`.
+importable by adding its parent path to `sys.path`.
 
 ### Imports and `sys.modules`
 
@@ -173,8 +173,8 @@ pip install -r requirements-dev.txt
 ### Demos
 
 The scripts in directory `demos` show how `syspathmodif` allows to import a
-package unavailable unless its directory's path is added to `sys.path`. All
-demos depend on `demo_package`.
+module or package unavailable unless its parent path is added to `sys.path`.
+All demos depend on `demo_package`.
 
 `demo_functions.py` adds the repository's root to `sys.path` with function
 `sp_append`. After the imports, the demo undoes this modification with function
@@ -184,8 +184,8 @@ python demos/demo_functions.py
 ```
 
 `demo_bundle.py` adds the repository's root and `demo_package` to `sys.path`
-with class `SysPathBundle`. After the imports, the demo undoes this
-modification by clearing the `SysPathBundle` instance.
+with class `SysPathBundle`. After the imports, the demo undoes these
+modifications by clearing the `SysPathBundle` instance.
 ```
 python demos/demo_bundle.py
 ```
@@ -197,8 +197,8 @@ python demos/demo_bundle_context.py
 ```
 
 `demo_sm_contains1.py` shows a case where a module or package can be imported
-without its directory being added to `sys.path`. The demo verifies the module's
-or package's presence in `sys.modules` with function `sm_contains`.
+without its parent path being added to `sys.path`. The demo verifies the
+module's or package's presence in `sys.modules` with function `sm_contains`.
 ```
 python demos/demo_sm_contains1.py
 ```
