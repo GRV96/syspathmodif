@@ -3,8 +3,7 @@
 import sys
 
 
-def sp_append_no_type_check(some_path):
-	# The argument must be a string.
+def sp_append_no_type_check(some_path: str) -> bool:
 	was_path_appended = False
 
 	if some_path not in sys.path and some_path is not None:
@@ -14,8 +13,7 @@ def sp_append_no_type_check(some_path):
 	return was_path_appended
 
 
-def sp_remove_no_type_check(some_path):
-	# The argument must be a string.
+def sp_remove_no_type_check(some_path: str) -> bool:
 	was_path_removed = False
 
 	try:
