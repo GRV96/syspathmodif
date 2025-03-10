@@ -78,16 +78,15 @@ class SysPathBundle:
 		"""
 		Erases this bundle's content and removes it from sys.path.
 		"""
-		while len(self._content) > 0:
-			path = self._content.pop()
-
-			try:
+		try:
+			while len(self._content) > 0:
+				path = self._content.pop()
 				sp_remove_no_type_check(path)
-			except AttributeError:
-				# If a bundle is cleared by the destructor when
-				# the application ends, sys.path can be None.
-				self._content.clear()
-				break
+
+		except AttributeError:
+			# If a bundle is cleared by the destructor when
+			# the application ends, sys.path can be None.
+			self._content.clear()
 
 	def contains(self, some_path):
 		"""
