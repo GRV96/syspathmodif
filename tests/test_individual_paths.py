@@ -30,7 +30,7 @@ _reset_sys_path()
 
 
 def _sp_index(some_path: str|Path) -> int:
-	some_path = ensure_path_is_str(some_path)
+	some_path = ensure_path_is_str(some_path, True)
 	return sys.path.index(some_path)
 
 

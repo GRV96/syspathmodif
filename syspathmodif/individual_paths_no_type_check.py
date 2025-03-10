@@ -4,7 +4,13 @@ import sys
 
 
 def sp_add_no_type_check(some_path: str) -> bool:
-	return False
+	was_path_added = False
+
+	if some_path not in sys.path and some_path is not None:
+		sys.path.insert(0, some_path)
+		was_path_added = True
+
+	return was_path_added
 
 
 def sp_append_no_type_check(some_path: str) -> bool:
