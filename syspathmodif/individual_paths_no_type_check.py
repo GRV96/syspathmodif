@@ -4,6 +4,7 @@ import sys
 
 
 def sp_append_no_type_check(some_path):
+	# The argument must be a string.
 	was_path_appended = False
 
 	if some_path not in sys.path and some_path is not None:
@@ -14,12 +15,14 @@ def sp_append_no_type_check(some_path):
 
 
 def sp_remove_no_type_check(some_path):
+	# The argument must be a string.
 	was_path_removed = False
 
 	try:
-		sys.path.remove(some_path) # ValueError if argument not in list
+		sys.path.remove(some_path)
 		was_path_removed = True
 	except ValueError:
+		# If some_path is not in sys.path.
 		pass
 
 	return was_path_removed
