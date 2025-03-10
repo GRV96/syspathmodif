@@ -3,6 +3,10 @@
 import sys
 
 
+def sp_add_no_type_check(some_path: str) -> bool:
+	return False
+
+
 def sp_append_no_type_check(some_path: str) -> bool:
 	was_path_appended = False
 
