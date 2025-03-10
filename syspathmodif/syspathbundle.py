@@ -111,7 +111,6 @@ class SysPathBundle:
 			path = ensure_path_is_str(path, True)
 
 			if sp_append_no_type_check(path):
-				# Any path in self._content is a string.
 				self._content.append(path)
 
 
