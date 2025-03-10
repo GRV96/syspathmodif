@@ -69,10 +69,10 @@ def test_sp_contains_exception():
 
 def test_sp_add_str():
 	try:
-		success = sp_add(str(_LIB_DIR))
+		lib_dir = str(_LIB_DIR)
+		success = sp_add(lib_dir)
 		assert success
-		assert sp_contains(str(_LIB_DIR))
-		assert _sp_index(str(_LIB_DIR)) == 0
+		assert _sp_index(lib_dir) == 0
 	finally:
 		_reset_sys_path()
 
@@ -81,7 +81,6 @@ def test_sp_add_pathlib():
 	try:
 		success = sp_add(_LIB_DIR)
 		assert success
-		assert sp_contains(_LIB_DIR)
 		assert _sp_index(_LIB_DIR) == 0
 	finally:
 		_reset_sys_path()
@@ -108,9 +107,10 @@ def test_sp_add_none():
 
 def test_sp_append_str():
 	try:
-		success = sp_append(str(_LIB_DIR))
+		lib_dir = str(_LIB_DIR)
+		success = sp_append(lib_dir)
 		assert success
-		assert sp_contains(str(_LIB_DIR))
+		assert _sp_index(lib_dir) == len(sys.path) - 1
 	finally:
 		_reset_sys_path()
 
@@ -119,7 +119,7 @@ def test_sp_append_pathlib():
 	try:
 		success = sp_append(_LIB_DIR)
 		assert success
-		assert sp_contains(_LIB_DIR)
+		assert _sp_index(_LIB_DIR) == len(sys.path) - 1
 	finally:
 		_reset_sys_path()
 
