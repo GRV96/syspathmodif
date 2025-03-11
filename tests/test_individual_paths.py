@@ -36,14 +36,12 @@ def _sp_index(some_path: str|Path) -> int:
 
 def test_sp_contains_true_str():
 	# This test does not change the content of sys.path.
-	dir0 = str(sys.path[0])
-	assert sp_contains(dir0)
+	assert sp_contains(str(_LOCAL_DIR))
 
 
 def test_sp_contains_true_pathlib():
 	# This test does not change the content of sys.path.
-	dir0 = Path(sys.path[0])
-	assert sp_contains(dir0)
+	assert sp_contains(_LOCAL_DIR)
 
 
 def test_sp_contains_false_str():
