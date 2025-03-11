@@ -17,7 +17,7 @@ _REPO_ROOT = _LOCAL_DIR.parents[1]
 _LIB_DIR = _REPO_ROOT/"syspathmodif"
 
 
-sys.path.append(str(_REPO_ROOT))
+sys.path.insert(0, str(_REPO_ROOT))
 from syspathmodif import\
 	SysPathBundle,\
 	sp_remove

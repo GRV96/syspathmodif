@@ -15,9 +15,9 @@ print(f"Repository root: {REPO_ROOT}")
 
 
 # Imports from syspathmodif are performed here.
-sys.path.append(str(REPO_ROOT))
+sys.path.insert(0, str(REPO_ROOT))
 print_sys_path(
-	"\nRepository root appended to sys.path to import package syspathmodif")
+	"\nRepository root prepended to sys.path to import package syspathmodif")
 
 from syspathmodif import\
 	sp_contains,\

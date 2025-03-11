@@ -4,7 +4,7 @@ from _demo_util import\
 	REPO_ROOT
 
 
-sys.path.append(str(REPO_ROOT))
+sys.path.insert(0, str(REPO_ROOT))
 from syspathmodif import\
 	SysPathBundle,\
 	sm_contains,\

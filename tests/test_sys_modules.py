@@ -3,7 +3,7 @@ import sys
 
 
 repo_root = str(Path(__file__).resolve().parents[1])
-sys.path.append(repo_root)
+sys.path.insert(0, repo_root)
 from syspathmodif import\
 	sm_contains,\
 	sp_remove
