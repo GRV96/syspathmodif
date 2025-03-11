@@ -19,7 +19,7 @@ sp_remove(REPO_ROOT)
 was_repo_root_added = False
 if not sm_contains("demo_package"):
 	was_repo_root_added = sp_append(REPO_ROOT)
-	print(f"Repository root added to sys.path: {was_repo_root_added}")
+	print(f"Repository root appended to sys.path: {was_repo_root_added}")
 
 from demo_package import\
 	Ajxo,\

@@ -3,6 +3,8 @@ import pytest
 from pathlib import Path
 import sys
 
+from strath import ensure_path_is_str
+
 
 _INIT_SYS_PATH = list(sys.path)
 
@@ -22,20 +24,24 @@ sys.path.append(str(_REPO_ROOT))
 from syspathmodif import\
 	sp_append,\
 	sp_contains,\
+	sp_prepend,\
 	sp_remove
 _reset_sys_path()
 
 
+def _sp_index(some_path: str|Path) -> int:
+	some_path = ensure_path_is_str(some_path, True)
+	return sys.path.index(some_path)
+
+
 def test_sp_contains_true_str():
 	# This test does not change the content of sys.path.
-	dir0 = str(sys.path[0])
-	assert sp_contains(dir0)
+	assert sp_contains(str(_LOCAL_DIR))
 
 
 def test_sp_contains_true_pathlib():
 	# This test does not change the content of sys.path.
-	dir0 = Path(sys.path[0])
-	assert sp_contains(dir0)
+	assert sp_contains(_LOCAL_DIR)
 
 
 def test_sp_contains_false_str():
@@ -59,11 +65,50 @@ def test_sp_contains_exception():
 		sp_contains(3.14159)
 
 
+def test_sp_prepend_str():
+	try:
+		lib_dir = str(_LIB_DIR)
+		success = sp_prepend(lib_dir)
+		assert success
+		assert _sp_index(lib_dir) == 0
+	finally:
+		_reset_sys_path()
+
+
+def test_sp_prepend_pathlib():
+	try:
+		success = sp_prepend(_LIB_DIR)
+		assert success
+		assert _sp_index(_LIB_DIR) == 0
+	finally:
+		_reset_sys_path()
+
+
+def test_sp_prepend_no_success():
+	try:
+		sys.path.append(str(_LIB_DIR))
+		success = sp_prepend(_LIB_DIR)
+		assert not success
+		assert sp_contains(_LIB_DIR)
+	finally:
+		_reset_sys_path()
+
+
+def test_sp_prepend_none():
+	try:
+		success = sp_prepend(None)
+		assert not success
+		assert sys.path == _INIT_SYS_PATH
+	finally:
+		_reset_sys_path()
+
+
 def test_sp_append_str():
 	try:
-		success = sp_append(str(_LIB_DIR))
+		lib_dir = str(_LIB_DIR)
+		success = sp_append(lib_dir)
 		assert success
-		assert sp_contains(str(_LIB_DIR))
+		assert _sp_index(lib_dir) == len(sys.path) - 1
 	finally:
 		_reset_sys_path()
 
@@ -72,7 +117,7 @@ def test_sp_append_pathlib():
 	try:
 		success = sp_append(_LIB_DIR)
 		assert success
-		assert sp_contains(_LIB_DIR)
+		assert _sp_index(_LIB_DIR) == len(sys.path) - 1
 	finally:
 		_reset_sys_path()
 

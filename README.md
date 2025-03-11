@@ -14,12 +14,13 @@ comme argument. Elles convertissent les arguments de type `pathlib.Path` en
 
 * `sp_append` ajoute le chemin donné à la fin de `sys.path`.
 * `sp_contains` indique si `sys.path` contient le chemin donné.
+* `sp_prepend` ajoute le chemin donné au début de `sys.path`.
 * `sp_remove` enlève le chemin donné de `sys.path`.
 
 Dès son instanciation, la classe `SysPathBundle` contient plusieurs chemins et
-les ajoute à `sys.path`. Quand on vide (*clear*) une instance, elle efface son
-contenu et l'enlève de `sys.path`. Ainsi, cette classe facilite l'ajout et le
-retrait d'un groupe de chemins.
+les ajoute au début de `sys.path`. Quand on vide (*clear*) une instance, elle
+efface son contenu et l'enlève de `sys.path`. Ainsi, cette classe facilite
+l'ajout et le retrait d'un groupe de chemins.
 
 Il est possible d'utiliser `SysPathBundle` comme un gestionnaire de contexte
 (*context manager*). Dans ce cas, l'instance est vidée à la fin du bloc `with`.
@@ -73,8 +74,8 @@ ajouté son chemin parent à `sys.path`. Toutes les démos dépendent du paquet
 `demo_package`.
 
 `demo_functions.py` ajoute la racine du dépôt à `sys.path` à l'aide de la
-fonction `sp_append`. Après les importations, la démo annule cette modification
-à l'aide de la fonction `sp_remove`.
+fonction `sp_prepend`. Après les importations, la démo annule cette
+modification à l'aide de la fonction `sp_remove`.
 ```
 python demos/demo_functions.py
 ```
@@ -122,13 +123,15 @@ The following functions take a path of type `str` or `pathlib.Path` as an
 argument. They convert arguments of type `pathlib.Path` to `str` since
 `sys.path` is supposed to contain only character strings.
 
-* `sp_append` appends the given path to the end of `sys.path`.
+* `sp_append` adds the given path to the end of `sys.path`.
 * `sp_contains` indicates whether `sys.path` contains the given path.
+* `sp_prepend` adds the given path to the beginning of `sys.path`.
 * `sp_remove` removes the given path from `sys.path`.
 
-Upon instantiation, class `SysPathBundle` stores several paths and adds them to
-`sys.path`. When a bundle is cleared, it erases its content and removes it from
-`sys.path`. Thus, this class facilitates adding and removing a group of paths.
+Upon instantiation, class `SysPathBundle` stores several paths and prepends
+them to `sys.path`. When a bundle is cleared, it erases its content and removes
+it from `sys.path`. Thus, this class facilitates adding and removing a group of
+paths.
 
 `SysPathBundle` can be used as a context manager. In that case, the instance is
 cleared at the `with` block's end.
@@ -179,8 +182,8 @@ module or package unavailable unless its parent path is added to `sys.path`.
 All demos depend on `demo_package`.
 
 `demo_functions.py` adds the repository's root to `sys.path` with function
-`sp_append`. After the imports, the demo undoes this modification with function
-`sp_remove`.
+`sp_prepend`. After the imports, the demo undoes this modification with
+function `sp_remove`.
 ```
 python demos/demo_functions.py
 ```
