@@ -41,6 +41,7 @@ def sp_remove_no_type_check(some_path: str) -> bool:
 
 
 __all__ = [
+	sp_add_no_type_check.__name__,
 	sp_append_no_type_check.__name__,
 	sp_remove_no_type_check.__name__
 ]
