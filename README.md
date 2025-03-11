@@ -41,12 +41,11 @@ paquet importable en ajoutant son chemin parent à `sys.path`.
 ### Importations et `sys.modules`
 
 Le dictionnaire `sys.modules` associe des noms (`str`) de module ou de paquet
-au module ou paquet correspondant. Quand un module ou un paquet est importé
-pour la première fois, il est ajouté à `sys.modules`. Puisque le système
-d'importation cherche d'abord les modules et paquets demandés dans
-`sys.modules`, il évite de les charger plus d'une fois. De plus, les modules et
-paquets présents dans `sys.modules` peuvent être importés partout sans qu'on
-modifie `sys.path`.
+au module ou paquet correspondant. Le système d'importation l'utilise comme
+cache; tout module ou paquet importé pour la première fois y est conservé.
+Puisque le système d'importation cherche d'abord les modules et paquets
+demandés dans `sys.modules`, les modules et paquets qu'il contient peuvent être
+importés partout sans qu'on modifie `sys.path`.
 
 Sachant cela, on peut déterminer à l'aide de la fonction `sm_contains` si un
 module ou un paquet est déjà importable. Si `sm_contains` renvoie vrai
@@ -152,11 +151,11 @@ importable by adding its parent path to `sys.path`.
 ### Imports and `sys.modules`
 
 Dictionary `sys.modules` maps module and package names (`str`) to the
-corresponding module or package. When a module or package is imported for the
-first time, it is added to `sys.modules`. Since the import system looks for the
-requested modules and packages in `sys.modules` first, it avoids loading them
-more than once. Moreover, the modules and packages in `sys.modules` can be
-imported everywhere with no modifications to `sys.path`.
+corresponding module or package. The import system uses it as a cache; any
+module or package imported for the first time is stored in it. Since the import
+system looks for the requested modules and packages in `sys.modules` first, the
+modules and packages in `sys.modules` can be imported everywhere with no
+modifications to `sys.path`.
 
 Knowing this, you can use function `sm_contains` to determine if a module or
 package is already importable. If `sm_contains` returns `True`, modifiying
