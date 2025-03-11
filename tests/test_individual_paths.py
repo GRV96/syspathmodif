@@ -22,9 +22,9 @@ def _reset_sys_path():
 
 sys.path.append(str(_REPO_ROOT))
 from syspathmodif import\
-	sp_add,\
 	sp_append,\
 	sp_contains,\
+	sp_prepend,\
 	sp_remove
 _reset_sys_path()
 
@@ -67,38 +67,38 @@ def test_sp_contains_exception():
 		sp_contains(3.14159)
 
 
-def test_sp_add_str():
+def test_sp_prepend_str():
 	try:
 		lib_dir = str(_LIB_DIR)
-		success = sp_add(lib_dir)
+		success = sp_prepend(lib_dir)
 		assert success
 		assert _sp_index(lib_dir) == 0
 	finally:
 		_reset_sys_path()
 
 
-def test_sp_add_pathlib():
+def test_sp_prepend_pathlib():
 	try:
-		success = sp_add(_LIB_DIR)
+		success = sp_prepend(_LIB_DIR)
 		assert success
 		assert _sp_index(_LIB_DIR) == 0
 	finally:
 		_reset_sys_path()
 
 
-def test_sp_add_no_success():
+def test_sp_prepend_no_success():
 	try:
 		sys.path.append(str(_LIB_DIR))
-		success = sp_add(_LIB_DIR)
+		success = sp_prepend(_LIB_DIR)
 		assert not success
 		assert sp_contains(_LIB_DIR)
 	finally:
 		_reset_sys_path()
 
 
-def test_sp_add_none():
+def test_sp_prepend_none():
 	try:
-		success = sp_add(None)
+		success = sp_prepend(None)
 		assert not success
 		assert sys.path == _INIT_SYS_PATH
 	finally:

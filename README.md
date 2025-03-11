@@ -122,7 +122,7 @@ The following functions take a path of type `str` or `pathlib.Path` as an
 argument. They convert arguments of type `pathlib.Path` to `str` since
 `sys.path` is supposed to contain only character strings.
 
-* `sp_append` appends the given path to the end of `sys.path`.
+* `sp_append` adds the given path to the end of `sys.path`.
 * `sp_contains` indicates whether `sys.path` contains the given path.
 * `sp_remove` removes the given path from `sys.path`.
 

@@ -7,16 +7,6 @@ def _is_path_acceptable(some_path: str) -> bool:
 	return some_path not in sys.path and some_path is not None
 
 
-def sp_add_no_type_check(some_path: str) -> bool:
-	was_path_added = False
-
-	if _is_path_acceptable(some_path):
-		sys.path.insert(0, some_path)
-		was_path_added = True
-
-	return was_path_added
-
-
 def sp_append_no_type_check(some_path: str) -> bool:
 	was_path_appended = False
 
@@ -25,6 +15,16 @@ def sp_append_no_type_check(some_path: str) -> bool:
 		was_path_appended = True
 
 	return was_path_appended
+
+
+def sp_prepend_no_type_check(some_path: str) -> bool:
+	was_path_prepended = False
+
+	if _is_path_acceptable(some_path):
+		sys.path.insert(0, some_path)
+		was_path_prepended = True
+
+	return was_path_prepended
 
 
 def sp_remove_no_type_check(some_path: str) -> bool:
@@ -41,7 +41,7 @@ def sp_remove_no_type_check(some_path: str) -> bool:
 
 
 __all__ = [
-	sp_add_no_type_check.__name__,
 	sp_append_no_type_check.__name__,
+	sp_prepend_no_type_check.__name__,
 	sp_remove_no_type_check.__name__
 ]

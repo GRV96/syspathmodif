@@ -5,34 +5,14 @@ import sys
 from strath import ensure_path_is_str
 
 from .individual_paths_no_type_check import\
-	sp_add_no_type_check,\
 	sp_append_no_type_check,\
+	sp_prepend_no_type_check,\
 	sp_remove_no_type_check
-
-
-def sp_add(some_path):
-	"""
-	Adds the given path to the beginning of list sys.path if it does not
-	already contain the path. If the path is None, this function does not
-	change sys.path.
-
-	Args:
-		some_path (str or pathlib.Path): the path to add to sys.path.
-
-	Returns:
-		bool: True if some_path was added to sys.path, False otherwise.
-
-	Raises:
-		TypeError: if argument some_path is not None and it is not an instance
-			of str or pathlib.Path.
-	"""
-	some_path = ensure_path_is_str(some_path, True)
-	return sp_add_no_type_check(some_path)
 
 
 def sp_append(some_path):
 	"""
-	Appends the given path to the end of list sys.path if it does not already
+	Adds the given path to the end of list sys.path if it does not already
 	contain the path. If the path is None, this function does not change
 	sys.path.
 
@@ -68,6 +48,26 @@ def sp_contains(some_path):
 	return some_path in sys.path
 
 
+def sp_prepend(some_path):
+	"""
+	Adds the given path to the beginning of list sys.path if it does not
+	already contain the path. If the path is None, this function does not
+	change sys.path.
+
+	Args:
+		some_path (str or pathlib.Path): the path to prepend to sys.path.
+
+	Returns:
+		bool: True if some_path was prepended to sys.path, False otherwise.
+
+	Raises:
+		TypeError: if argument some_path is not None and it is not an instance
+			of str or pathlib.Path.
+	"""
+	some_path = ensure_path_is_str(some_path, True)
+	return sp_prepend_no_type_check(some_path)
+
+
 def sp_remove(some_path):
 	"""
 	Removes the given path from list sys.path if it contains the path.
@@ -87,8 +87,8 @@ def sp_remove(some_path):
 
 
 __all__ = [
-	sp_add.__name__,
 	sp_append.__name__,
 	sp_contains.__name__,
+	sp_prepend.__name__,
 	sp_remove.__name__
 ]

@@ -1,7 +1,7 @@
 from .individual_paths import\
-	sp_add,\
 	sp_append,\
 	sp_contains,\
+	sp_prepend,\
 	sp_remove
 
 from .sys_modules import\
@@ -14,8 +14,8 @@ from .syspathbundle import\
 __all__ = [
 	SysPathBundle.__name__,
 	sm_contains.__name__,
-	sp_add.__name__,
 	sp_append.__name__,
 	sp_contains.__name__,
+	sp_prepend.__name__,
 	sp_remove.__name__
 ]
