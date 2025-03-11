@@ -17,10 +17,10 @@ comme argument. Elles convertissent les arguments de type `pathlib.Path` en
 * `sp_prepend` ajoute le chemin donné au début de `sys.path`.
 * `sp_remove` enlève le chemin donné de `sys.path`.
 
-Dès son instanciation, la classe `SysPathBundle` contient plusieurs chemins et
-les ajoute au début de `sys.path`. Quand on vide (*clear*) une instance, elle
-efface son contenu et l'enlève de `sys.path`. Ainsi, cette classe facilite
-l'ajout et le retrait d'un groupe de chemins.
+Au moment de sa création, une instance de `SysPathBundle` contient plusieurs
+chemins et les ajoute au début de `sys.path`. Quand on vide (*clear*) une
+instance, elle efface son contenu et l'enlève de `sys.path`. Ainsi, cette
+classe facilite l'ajout et le retrait d'un groupe de chemins.
 
 Il est possible d'utiliser `SysPathBundle` comme un gestionnaire de contexte
 (*context manager*). Dans ce cas, l'instance est vidée à la fin du bloc `with`.
@@ -127,7 +127,7 @@ argument. They convert arguments of type `pathlib.Path` to `str` since
 * `sp_prepend` adds the given path to the beginning of `sys.path`.
 * `sp_remove` removes the given path from `sys.path`.
 
-Upon instantiation, class `SysPathBundle` stores several paths and prepends
+Upon creation, a `SysPathBundle` instance stores several paths and prepends
 them to `sys.path`. When a bundle is cleared, it erases its content and removes
 it from `sys.path`. Thus, this class facilitates adding and removing a group of
 paths.
