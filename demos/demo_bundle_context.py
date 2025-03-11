@@ -21,7 +21,7 @@ print(f"Package: {_PACKAGE_DIR}")
 sys.path.append(str(REPO_ROOT))
 
 print_sys_path(
-	"\nRepository root appended to sys.path to import package syspathmodif")
+	"\nRepository root added to sys.path to import package syspathmodif")
 
 from syspathmodif import\
 	SysPathBundle,\
@@ -39,7 +39,7 @@ print(f"sys.path contains the package's directory: {sp_contains(_PACKAGE_DIR)}")
 # The bundle adds the paths to sys.path. The block's end clears the bundle.
 with SysPathBundle((REPO_ROOT, _PACKAGE_DIR)):
 	print_sys_path(
-		"\nPaths appended to sys.path to import from demo_package")
+		"\nPaths added to sys.path to import from demo_package")
 
 	from demo_package import Ajxo
 	from point import Point
