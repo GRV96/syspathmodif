@@ -154,7 +154,7 @@ Dictionary `sys.modules` maps module and package names (`str`) to the
 corresponding module or package. The import system uses it as a cache; any
 module or package imported for the first time is stored in it. Since the import
 system looks for the requested modules and packages in `sys.modules` first, the
-modules and packages in `sys.modules` can be imported everywhere with no
+modules and packages that it contains can be imported everywhere with no
 modifications to `sys.path`.
 
 Knowing this, you can use function `sm_contains` to determine if a module or
