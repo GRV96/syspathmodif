@@ -42,7 +42,7 @@ paquet importable en ajoutant son chemin parent à `sys.path`.
 
 Le dictionnaire `sys.modules` associe des noms (`str`) de module ou de paquet
 au module ou paquet correspondant. Le système d'importation l'utilise comme
-cache; tout module ou paquet importé pour la première fois y est conservé.
+cache; tout module ou paquet importé pour la première fois y est ajouté.
 Puisque le système d'importation cherche d'abord les modules et paquets
 demandés dans `sys.modules`, les modules et paquets qu'il contient peuvent être
 importés partout sans qu'on modifie `sys.path`.
