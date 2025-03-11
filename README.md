@@ -14,6 +14,7 @@ comme argument. Elles convertissent les arguments de type `pathlib.Path` en
 
 * `sp_append` ajoute le chemin donné à la fin de `sys.path`.
 * `sp_contains` indique si `sys.path` contient le chemin donné.
+* `sp_prepend` ajoute le chemin donné au début de `sys.path`.
 * `sp_remove` enlève le chemin donné de `sys.path`.
 
 Dès son instanciation, la classe `SysPathBundle` contient plusieurs chemins et
@@ -73,8 +74,8 @@ ajouté son chemin parent à `sys.path`. Toutes les démos dépendent du paquet
 `demo_package`.
 
 `demo_functions.py` ajoute la racine du dépôt à `sys.path` à l'aide de la
-fonction `sp_append`. Après les importations, la démo annule cette modification
-à l'aide de la fonction `sp_remove`.
+fonction `sp_prepend`. Après les importations, la démo annule cette
+modification à l'aide de la fonction `sp_remove`.
 ```
 python demos/demo_functions.py
 ```
@@ -124,6 +125,7 @@ argument. They convert arguments of type `pathlib.Path` to `str` since
 
 * `sp_append` adds the given path to the end of `sys.path`.
 * `sp_contains` indicates whether `sys.path` contains the given path.
+* `sp_prepend` adds the given path to the beginning of `sys.path`.
 * `sp_remove` removes the given path from `sys.path`.
 
 Upon instantiation, class `SysPathBundle` stores several paths and adds them to
@@ -179,8 +181,8 @@ module or package unavailable unless its parent path is added to `sys.path`.
 All demos depend on `demo_package`.
 
 `demo_functions.py` adds the repository's root to `sys.path` with function
-`sp_append`. After the imports, the demo undoes this modification with function
-`sp_remove`.
+`sp_prepend`. After the imports, the demo undoes this modification with
+function `sp_remove`.
 ```
 python demos/demo_functions.py
 ```
