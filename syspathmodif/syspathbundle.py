@@ -3,13 +3,13 @@
 from strath import ensure_path_is_str
 
 from .individual_paths_no_type_check import\
-	sp_append_no_type_check,\
+	sp_prepend_no_type_check,\
 	sp_remove_no_type_check
 
 
 class SysPathBundle:
 	"""
-	Upon instantiation, a bundle stores several paths and adds them to list
+	Upon instantiation, a bundle stores several paths and prepends them to list
 	sys.path. When a bundle is cleared, it erases its content and removes it
 	from sys.path. Thus, this class facilitates adding and removing a group of
 	paths.
@@ -110,7 +110,7 @@ class SysPathBundle:
 		for path in content:
 			path = ensure_path_is_str(path, True)
 
-			if sp_append_no_type_check(path):
+			if sp_prepend_no_type_check(path):
 				self._content.append(path)
 
 
