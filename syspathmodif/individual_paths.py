@@ -11,6 +11,21 @@ from .individual_paths_no_type_check import\
 
 
 def sp_add(some_path):
+	"""
+	Adds the given path to the beginning of list sys.path if it does not
+	already contain the path. If the path is None, this function does not
+	change sys.path.
+
+	Args:
+		some_path (str or pathlib.Path): the path to add to sys.path.
+
+	Returns:
+		bool: True if some_path was added to sys.path, False otherwise.
+
+	Raises:
+		TypeError: if argument some_path is not None and it is not an instance
+			of str or pathlib.Path.
+	"""
 	some_path = ensure_path_is_str(some_path, True)
 	return sp_add_no_type_check(some_path)
 
