@@ -42,7 +42,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Intall the dependencies
         run: pip install --no-cache-dir -r requirements.txt
-      - name: Test the build
+      - name: Clear a bundle when an application ends
         run: python .github/workflows/test_bundle_clearing_app_end.py
   test_pypi_package_build:
     runs-on: ubuntu-latest
