@@ -20,7 +20,7 @@ def _reset_sys_path():
 	sys.path = list(_INIT_SYS_PATH)
 
 
-sys.path.append(str(_REPO_ROOT))
+sys.path.insert(0, str(_REPO_ROOT))
 from syspathmodif import\
 	sp_append,\
 	sp_contains,\

@@ -84,7 +84,7 @@ class SysPathBundle:
 				sp_remove_no_type_check(path)
 
 		except AttributeError:
-			# If a bundle is cleared by the destructor when
+			# If the destructor clears a bundle when
 			# the application ends, sys.path can be None.
 			self._content.clear()
 
