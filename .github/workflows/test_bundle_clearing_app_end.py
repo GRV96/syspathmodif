@@ -1,5 +1,5 @@
 """
-This script is meant to run on GitHub's virtual machine ubuntu-latest in a CI
+This script is meant to run on GitHub's virtual machine windows-latest in a CI
 workflow.
 
 If a bundle is cleared by the destructor when the application ends, sys.path
