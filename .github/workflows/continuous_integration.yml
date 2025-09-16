@@ -40,6 +40,10 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
+      - name: Set up minimum Python version
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
       - name: Intall the dependencies
         run: pip install --no-cache-dir -r requirements.txt
       - name: Clear a bundle when an application ends
