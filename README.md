@@ -135,31 +135,29 @@ paths.
 `SysPathBundle` can be used as a context manager. In that case, the instance is
 cleared at the `with` block's end.
 
-Function `sm_contains` takes a module's or package's name (`str`) as an
-argument. It indicates whether dictionary `sys.modules` contains the module or
-package.
+Function `sm_contains` takes a module's name (`str`) as an argument. It
+indicates whether dictionary `sys.modules` contains the module.
 
 For more information, consult the documentation and the demos in the source
 code repository.
 
 ### Imports and `sys.path`
 
-It is possible to import a module or package if list `sys.path` contains the
-path to its parent directory. Therefore, you can make a module or package
-importable by adding its parent path to `sys.path`.
+It is possible to import a module if list `sys.path` contains the path to its
+parent directory. Therefore, you can make a module importable by adding its
+parent path to `sys.path`.
 
 ### Imports and `sys.modules`
 
-Dictionary `sys.modules` maps module and package names (`str`) to the
-corresponding module or package. The import system uses it as a cache; any
-module or package imported for the first time is stored in it. Since the import
-system looks for the requested modules and packages in `sys.modules` first, the
-modules and packages that it contains can be imported everywhere with no
-modifications to `sys.path`.
+Dictionary `sys.modules` maps module names (`str`) to the corresponding module.
+The import system uses it as a cache; any module imported for the first time is
+stored in it. Since the import system looks for the requested modules in
+`sys.modules` first, the modules that it contains can be imported everywhere
+with no modifications to `sys.path`.
 
-Knowing this, you can use function `sm_contains` to determine if a module or
-package is already importable. If `sm_contains` returns `True`, modifiying
-`sys.path` is not required to import the given module or package.
+Knowing this, you can use function `sm_contains` to determine if a module is
+already importable. If `sm_contains` returns `True`, modifiying `sys.path` is
+not required to import the given module.
 
 ### Dependencies
 
@@ -177,8 +175,8 @@ pip install -r requirements-dev.txt
 ### Demos
 
 The scripts in directory `demos` show how `syspathmodif` allows to import a
-module or package unavailable unless its parent path is added to `sys.path`.
-All demos depend on `demo_package`.
+module unavailable unless its parent path is added to `sys.path`. All demos
+depend on `demo_package`.
 
 `demo_functions.py` adds the repository's root to `sys.path` with function
 `sp_prepend`. After the imports, the demo undoes this modification with
@@ -200,9 +198,9 @@ python demos/demo_bundle.py
 python demos/demo_bundle_context.py
 ```
 
-`demo_sm_contains1.py` shows a case where a module or package can be imported
-without its parent path being added to `sys.path`. The demo verifies the
-module's or package's presence in `sys.modules` with function `sm_contains`.
+`demo_sm_contains1.py` shows a case where a module can be imported without its
+parent path being added to `sys.path`. The demo verifies the module's presence
+in `sys.modules` with function `sm_contains`.
 ```
 python demos/demo_sm_contains1.py
 ```
