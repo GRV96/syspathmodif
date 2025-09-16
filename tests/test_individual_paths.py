@@ -15,7 +15,7 @@ _LIB_DIR = _REPO_ROOT/"syspathmodif"
 _PATH_TYPE_ERROR_MSG = "The path must be None or of type str or pathlib.Path."
 
 
-def _reset_sys_path():
+def _reset_sys_path() -> None:
 	# Copying the list is necessary to preserve the initial state.
 	sys.path = list(_INIT_SYS_PATH)
 
@@ -34,38 +34,38 @@ def _sp_index(some_path: str|Path) -> int:
 	return sys.path.index(some_path)
 
 
-def test_sp_contains_true_str():
+def test_sp_contains_true_str() -> None:
 	# This test does not change the content of sys.path.
 	assert sp_contains(str(_LOCAL_DIR))
 
 
-def test_sp_contains_true_pathlib():
+def test_sp_contains_true_pathlib() -> None:
 	# This test does not change the content of sys.path.
 	assert sp_contains(_LOCAL_DIR)
 
 
-def test_sp_contains_false_str():
+def test_sp_contains_false_str() -> None:
 	# This test does not change the content of sys.path.
 	assert not sp_contains(str(_LIB_DIR))
 
 
-def test_sp_contains_false_pathlib():
+def test_sp_contains_false_pathlib() -> None:
 	# This test does not change the content of sys.path.
 	assert not sp_contains(_LIB_DIR)
 
 
-def test_sp_contains_none():
+def test_sp_contains_none() -> None:
 	# This test does not change the content of sys.path.
 	assert not sp_contains(None)
 
 
-def test_sp_contains_exception():
+def test_sp_contains_exception() -> None:
 	# This test does not change the content of sys.path.
 	with pytest.raises(TypeError, match=_PATH_TYPE_ERROR_MSG):
 		sp_contains(3.14159)
 
 
-def test_sp_prepend_str():
+def test_sp_prepend_str() -> None:
 	try:
 		lib_dir = str(_LIB_DIR)
 		success = sp_prepend(lib_dir)
@@ -75,7 +75,7 @@ def test_sp_prepend_str():
 		_reset_sys_path()
 
 
-def test_sp_prepend_pathlib():
+def test_sp_prepend_pathlib() -> None:
 	try:
 		success = sp_prepend(_LIB_DIR)
 		assert success
@@ -84,7 +84,7 @@ def test_sp_prepend_pathlib():
 		_reset_sys_path()
 
 
-def test_sp_prepend_no_success():
+def test_sp_prepend_no_success() -> None:
 	try:
 		sys.path.append(str(_LIB_DIR))
 		success = sp_prepend(_LIB_DIR)
@@ -94,7 +94,7 @@ def test_sp_prepend_no_success():
 		_reset_sys_path()
 
 
-def test_sp_prepend_none():
+def test_sp_prepend_none() -> None:
 	try:
 		success = sp_prepend(None)
 		assert not success
@@ -103,7 +103,7 @@ def test_sp_prepend_none():
 		_reset_sys_path()
 
 
-def test_sp_append_str():
+def test_sp_append_str() -> None:
 	try:
 		lib_dir = str(_LIB_DIR)
 		success = sp_append(lib_dir)
@@ -113,7 +113,7 @@ def test_sp_append_str():
 		_reset_sys_path()
 
 
-def test_sp_append_pathlib():
+def test_sp_append_pathlib() -> None:
 	try:
 		success = sp_append(_LIB_DIR)
 		assert success
@@ -122,7 +122,7 @@ def test_sp_append_pathlib():
 		_reset_sys_path()
 
 
-def test_sp_append_no_success():
+def test_sp_append_no_success() -> None:
 	try:
 		sys.path.append(str(_LIB_DIR))
 		success = sp_append(_LIB_DIR)
@@ -132,7 +132,7 @@ def test_sp_append_no_success():
 		_reset_sys_path()
 
 
-def test_sp_append_none():
+def test_sp_append_none() -> None:
 	try:
 		success = sp_append(None)
 		assert not success
@@ -141,7 +141,7 @@ def test_sp_append_none():
 		_reset_sys_path()
 
 
-def test_sp_remove_str():
+def test_sp_remove_str() -> None:
 	try:
 		sys.path.append(str(_LIB_DIR))
 		success = sp_remove(str(_LIB_DIR))
@@ -151,7 +151,7 @@ def test_sp_remove_str():
 		_reset_sys_path()
 
 
-def test_sp_remove_pathlib():
+def test_sp_remove_pathlib() -> None:
 	try:
 		sys.path.append(str(_LIB_DIR))
 		success = sp_remove(_LIB_DIR)
@@ -161,7 +161,7 @@ def test_sp_remove_pathlib():
 		_reset_sys_path()
 
 
-def test_sp_remove_no_success():
+def test_sp_remove_no_success() -> None:
 	try:
 		# sys.path does not contain _LIB_DIR.
 		success = sp_remove(_LIB_DIR)
@@ -171,7 +171,7 @@ def test_sp_remove_no_success():
 		_reset_sys_path()
 
 
-def test_sp_remove_none_no_success():
+def test_sp_remove_none_no_success() -> None:
 	try:
 		success = sp_remove(None)
 		assert not success
@@ -180,7 +180,7 @@ def test_sp_remove_none_no_success():
 		_reset_sys_path()
 
 
-def test_sp_remove_none_success():
+def test_sp_remove_none_success() -> None:
 	try:
 		sys.path.append(None)
 		success = sp_remove(None)
