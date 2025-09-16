@@ -72,7 +72,7 @@ class SysPathBundle:
 	@property
 	def cleared_on_del(self) -> bool:
 		"""
-		bool: If this property is True, the destructor will clear this bundle.
+		If this property is True, the destructor will clear this bundle.
 		"""
 		return self._cleared_on_del
 
