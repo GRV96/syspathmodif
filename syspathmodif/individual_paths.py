@@ -1,5 +1,6 @@
 # __all__ declared at the module's end
 
+from pathlib import Path
 import sys
 
 from strath import ensure_path_is_str
@@ -10,14 +11,14 @@ from .individual_paths_no_type_check import\
 	sp_remove_no_type_check
 
 
-def sp_append(some_path):
+def sp_append(some_path: str|Path) -> bool:
 	"""
 	Adds the given path to the end of list sys.path if it does not already
 	contain the path. If the path is None, this function does not change
 	sys.path.
 
 	Args:
-		some_path (str or pathlib.Path): the path to append to sys.path.
+		some_path: the path to append to sys.path.
 
 	Returns:
 		bool: True if some_path was appended to sys.path, False otherwise.
@@ -30,12 +31,12 @@ def sp_append(some_path):
 	return sp_append_no_type_check(some_path)
 
 
-def sp_contains(some_path):
+def sp_contains(some_path: str|Path) -> bool:
 	"""
 	Indicates whether list sys.path contains the given path.
 
 	Args:
-		some_path (str or pathlib.Path): the path whose presence is verified.
+		some_path: the path whose presence is verified.
 
 	Returns:
 		bool: True if sys.path contains argument some_path, False otherwise.
@@ -48,14 +49,14 @@ def sp_contains(some_path):
 	return some_path in sys.path
 
 
-def sp_prepend(some_path):
+def sp_prepend(some_path: str|Path) -> bool:
 	"""
 	Adds the given path to the beginning of list sys.path if it does not
 	already contain the path. If the path is None, this function does not
 	change sys.path.
 
 	Args:
-		some_path (str or pathlib.Path): the path to prepend to sys.path.
+		some_path: the path to prepend to sys.path.
 
 	Returns:
 		bool: True if some_path was prepended to sys.path, False otherwise.
@@ -68,12 +69,12 @@ def sp_prepend(some_path):
 	return sp_prepend_no_type_check(some_path)
 
 
-def sp_remove(some_path):
+def sp_remove(some_path: str|Path) -> bool:
 	"""
 	Removes the given path from list sys.path if it contains the path.
 
 	Args:
-		some_path (str or pathlib.Path): the path to remove from sys.path.
+		some_path: the path to remove from sys.path.
 
 	Returns:
 		bool: True if some_path was removed from sys.path, False otherwise.
