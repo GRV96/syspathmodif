@@ -100,7 +100,7 @@ class SysPathBundle:
 			bool: True if this bundle contains the given path, False otherwise.
 
 		Raises:
-			TypeError: if a path is not None and not of type str or
+			TypeError: if some_path is not None and not of type str or
 				pathlib.Path.
 		"""
 		some_path = ensure_path_is_str(some_path, True)
