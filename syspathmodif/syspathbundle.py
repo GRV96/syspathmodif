@@ -65,7 +65,7 @@ class SysPathBundle:
 	def __exit__(self, exc_type, exc_value, traceback) -> None:
 		self.clear()
 
-	def __repr__(self):
+	def __repr__(self) -> str:
 		return self.__class__.__name__\
 			+ f"({self._content}, {self._cleared_on_del})"
 
