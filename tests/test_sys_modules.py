@@ -10,26 +10,26 @@ from syspathmodif import\
 sp_remove(repo_root)
 
 
-def test_sm_contains_int():
+def test_sm_contains_int() -> None:
 	assert not sm_contains(17)
 
 
-def test_sm_contains_none():
+def test_sm_contains_none() -> None:
 	assert not sm_contains(None)
 
 
-def test_sm_contains_pathlib():
+def test_sm_contains_pathlib() -> None:
 	assert sm_contains("pathlib")
 
 
-def test_sm_contains_sys():
+def test_sm_contains_sys() -> None:
 	assert sm_contains("sys")
 
 
-def test_sm_contains_syspathmodif():
+def test_sm_contains_syspathmodif() -> None:
 	assert sm_contains("syspathmodif")
 
 
-def test_sm_contains_strath():
+def test_sm_contains_strath() -> None:
 	# strath is a dependency of syspathmodif.
 	assert sm_contains("strath")

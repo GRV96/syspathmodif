@@ -9,11 +9,7 @@ from os import system
 from pathlib import Path
 
 
-_REPO_ROOT = Path(__file__).resolve().parents[2]
-
-
-system(f"python3 {_REPO_ROOT}/setup.py sdist")
-
-src_dist = next((_REPO_ROOT/"dist").glob("syspathmodif-*.tar.gz"))
-
+repo_root = Path(__file__).resolve().parents[2]
+system(f"python3 {repo_root}/setup.py sdist")
+src_dist = next((repo_root/"dist").glob("syspathmodif-*.tar.gz"))
 system(f"pip3 install --no-cache-dir {src_dist}")

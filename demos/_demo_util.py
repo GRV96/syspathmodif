@@ -6,31 +6,31 @@ _NEW_LINE = "\n"
 
 INIT_SYS_PATH = list(sys.path)
 """
-list[str]: the initial content of sys.path.
+The initial content of sys.path.
 """
 
 DEMO_DIR = Path(__file__).resolve().parent
 """
-pathlib.Path: the demos' directory
+The demos' directory
 """
 
 REPO_ROOT = DEMO_DIR.parent
 """
-pathlib.Path: this repository's root directory
+This repository's root directory
 """
 
 
-def print_sys_path(message):
+def print_sys_path(message: str) -> None:
 	"""
 	Prints a message then the items in sys.path on separate lines.
 
 	Args:
-		message (str): a message to display above sys.path's items.
+		message: a message to display above sys.path's items.
 	"""
 	print(message + _NEW_LINE + _NEW_LINE.join(sys.path))
 
 
-def reset_sys_path():
+def reset_sys_path() -> None:
 	"""
 	Assigns a copy of INIT_SYS_PATH to sys.path.
 	"""

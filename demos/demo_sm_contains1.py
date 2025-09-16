@@ -13,7 +13,7 @@ from syspathmodif import\
 sp_remove(REPO_ROOT)
 
 
-def _add_demo_package_to_sys_modules():
+def _add_demo_package_to_sys_modules() -> None:
 	was_repo_root_added = sp_prepend(REPO_ROOT)
 
 	# The import includes the package in sys.modules.
