@@ -31,13 +31,13 @@ _add_demo_package_to_sys_modules()
 
 # To import Ajxo
 if not sm_contains("demo_package"):
-	print("The repository's root will be added to sys.path")
 	paths.append(REPO_ROOT)
+	print("Repository's root added to sys.path.")
 
 # To import Point
 if not sm_contains("point"):
-	print("Directory demo_package will be added to sys.path")
 	paths.append(REPO_ROOT/"demo_package")
+	print("Directory demo_package added to sys.path.")
 
 with SysPathBundle(paths):
 	from demo_package import Ajxo
