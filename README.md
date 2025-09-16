@@ -25,32 +25,29 @@ classe facilite l'ajout et le retrait d'un groupe de chemins.
 Il est possible d'utiliser `SysPathBundle` comme un gestionnaire de contexte
 (*context manager*). Dans ce cas, l'instance est vidée à la fin du bloc `with`.
 
-La fonction `sm_contains` prend comme argument un nom (`str`) de module ou de
-paquet. Elle indique si le dictionnaire `sys.modules` contient ce module ou
-paquet.
+La fonction `sm_contains` prend comme argument un nom (`str`) de module. Elle
+indique si le dictionnaire `sys.modules` contient ce module.
 
 Pour plus d'informations, consultez la documentation et les démos dans le dépôt
 de code source.
 
 ### Importations et `sys.path`
 
-Il est possible d'importer un module ou un paquet si la liste `sys.path`
-contient le chemin de son dossier parent. On peut donc rendre un module ou un
-paquet importable en ajoutant son chemin parent à `sys.path`.
+Il est possible d'importer un module si la liste `sys.path` contient le chemin
+de son dossier parent. On peut donc rendre un module importable en ajoutant son
+chemin parent à `sys.path`.
 
 ### Importations et `sys.modules`
 
-Le dictionnaire `sys.modules` associe des noms (`str`) de module ou de paquet
-au module ou paquet correspondant. Le système d'importation l'utilise comme
-cache; tout module ou paquet importé pour la première fois y est ajouté.
-Puisque le système d'importation cherche d'abord les modules et paquets
-demandés dans `sys.modules`, les modules et paquets qu'il contient peuvent être
-importés partout sans qu'on modifie `sys.path`.
+Le dictionnaire `sys.modules` associe des noms (`str`) de module au module
+correspondant. Le système d'importation l'utilise comme cache; tout module
+importé pour la première fois y est conservé. Puisque le système d'importation
+cherche d'abord les modules demandés dans `sys.modules`, les modules qu'il
+contient peuvent être importés partout sans qu'on modifie `sys.path`.
 
 Sachant cela, on peut déterminer à l'aide de la fonction `sm_contains` si un
-module ou un paquet est déjà importable. Si `sm_contains` renvoie vrai
-(`True`), il n'est pas nécessaire de modifier `sys.path` pour importer le
-module ou le paquet donné.
+module est déjà importable. Si `sm_contains` renvoie vrai (`True`), il n'est
+pas nécessaire de modifier `sys.path` pour importer le module donné.
 
 ### Dépendances
 
@@ -68,9 +65,8 @@ pip install -r requirements-dev.txt
 ### Démos
 
 Les scripts dans le dossier `demos` montrent comment `syspathmodif` permet
-d'importer un module ou un paquet qui est indisponible tant qu'on n'a pas
-ajouté son chemin parent à `sys.path`. Toutes les démos dépendent du paquet
-`demo_package`.
+d'importer un module qui est indisponible tant qu'on n'a pas ajouté son chemin
+parent à `sys.path`. Toutes les démos dépendent du paquet `demo_package`.
 
 `demo_functions.py` ajoute la racine du dépôt à `sys.path` à l'aide de la
 fonction `sp_prepend`. Après les importations, la démo annule cette
@@ -92,9 +88,9 @@ utilisant `SysPathBundle` comme un gestionnaire de contexte.
 python demos/demo_bundle_context.py
 ```
 
-`demo_sm_contains1.py` montre un cas où on peut importer un module ou un paquet
-sans ajouter son chemin parent à `sys.path`. La démo vérifie la présence du
-module ou du paquet dans `sys.modules` à l'aide de la fonction `sm_contains`.
+`demo_sm_contains1.py` montre un cas où on peut importer un module sans ajouter
+son chemin parent à `sys.path`. La démo vérifie la présence du module dans
+`sys.modules` à l'aide de la fonction `sm_contains`.
 ```
 python demos/demo_sm_contains1.py
 ```
