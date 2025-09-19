@@ -1,7 +1,7 @@
 # __all__ declared at the module's end
 
 from pathlib import Path
-from typing import Iterable, Self
+from typing import Iterable
 
 from strath import ensure_path_is_str
 
@@ -59,7 +59,7 @@ class SysPathBundle:
 		if self._cleared_on_del:
 			self.clear()
 
-	def __enter__(self) -> Self:
+	def __enter__(self):
 		return self
 
 	def __exit__(self, exc_type, exc_value, traceback) -> None:

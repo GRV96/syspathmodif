@@ -64,7 +64,7 @@ if __name__ == "__main__":
 			"Intended Audience :: Developers",
 			"License :: OSI Approved :: MIT License",
 			"Operating System :: OS Independent",
-			"Programming Language :: Python :: 3.11",
+			"Programming Language :: Python :: 3.6",
 			"Topic :: Utilities"
 		],
 		install_requires = _make_requirement_list(),
