@@ -12,7 +12,6 @@ from _test_utils import\
 	LIB_DIR,\
 	reset_sys_path
 
-
 sys.path.insert(0, str(REPO_ROOT))
 from syspathmodif import SysPathBundle
 reset_sys_path()
