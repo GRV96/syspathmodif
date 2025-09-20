@@ -2,8 +2,7 @@ import sys
 
 from _test_utils import REPO_ROOT
 
-
-sys.path.insert(0, REPO_ROOT)
+sys.path.insert(0, str(REPO_ROOT))
 from syspathmodif import\
 	sm_contains,\
 	sp_remove
