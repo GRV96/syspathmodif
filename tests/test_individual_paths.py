@@ -11,15 +11,6 @@ from _test_utils import\
 	LIB_DIR,\
 	reset_sys_path
 
-
-_PATH_TYPE_ERROR_MSG = "The path must be None or of type str or pathlib.Path."
-
-
-def reset_sys_path() -> None:
-	# Copying the list is necessary to preserve the initial state.
-	sys.path = list(INIT_SYS_PATH)
-
-
 sys.path.insert(0, str(REPO_ROOT))
 from syspathmodif import\
 	sp_append,\
@@ -29,7 +20,10 @@ from syspathmodif import\
 reset_sys_path()
 
 
-def _sp_index(some_path: str|Path) -> int:
+_PATH_TYPE_ERROR_MSG = "The path must be None or of type str or pathlib.Path."
+
+
+def _sp_index(some_path: str | Path) -> int:
 	some_path = ensure_path_is_str(some_path, True)
 	return sys.path.index(some_path)
 

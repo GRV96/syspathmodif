@@ -29,6 +29,7 @@ def reset_sys_path() -> None:
 	"""
 	Assigns a copy of INIT_SYS_PATH to sys.path.
 	"""
+	# Copying the list is necessary to preserve the initial state.
 	sys.path = list(INIT_SYS_PATH)
 
 
