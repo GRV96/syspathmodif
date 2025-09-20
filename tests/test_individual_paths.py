@@ -3,7 +3,9 @@ import pytest
 from pathlib import Path
 import sys
 
+# strath is a dependency of syspathmodif.
 from strath import ensure_path_is_str
+
 from _test_utils import\
 	INIT_SYS_PATH,\
 	TEST_DIR,\
