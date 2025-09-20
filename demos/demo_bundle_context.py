@@ -1,6 +1,6 @@
 import sys
 
-from _demo_util import\
+from _demo_utils import\
 	INIT_SYS_PATH,\
 	DEMO_DIR,\
 	REPO_ROOT,\

@@ -1,3 +1,5 @@
+# __all__ declared at the module's end
+
 from pathlib import Path
 import sys
 
@@ -11,12 +13,12 @@ The initial content of sys.path.
 
 DEMO_DIR = Path(__file__).resolve().parent
 """
-The demos' directory
+The demos' directory.
 """
 
 REPO_ROOT = DEMO_DIR.parent
 """
-This repository's root directory
+This repository's root directory.
 """
 
 
@@ -35,3 +37,12 @@ def reset_sys_path() -> None:
 	Assigns a copy of INIT_SYS_PATH to sys.path.
 	"""
 	sys.path = list(INIT_SYS_PATH)
+
+
+__all__ = [
+	"INIT_SYS_PATH",
+	"DEMO_DIR",
+	"REPO_ROOT",
+	print_sys_path.__name__,
+	reset_sys_path.__name__
+]
