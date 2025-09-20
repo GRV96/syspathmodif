@@ -1,6 +1,6 @@
 import sys
 
-from _demo_util import\
+from _demo_utils import\
 	REPO_ROOT
 
 

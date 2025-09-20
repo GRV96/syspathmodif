@@ -13,12 +13,12 @@ The initial content of sys.path.
 
 DEMO_DIR = Path(__file__).resolve().parent
 """
-The demos' directory
+The demos' directory.
 """
 
 REPO_ROOT = DEMO_DIR.parent
 """
-This repository's root directory
+This repository's root directory.
 """
 
 
