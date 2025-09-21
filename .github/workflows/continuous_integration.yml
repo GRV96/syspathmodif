@@ -25,16 +25,16 @@ jobs:
         uses: actions/checkout@v2
       - name: Intall the dependencies
         run: pip3 install --no-cache-dir -r requirements.txt
-      - name: Run the SysPathBundle demo
-        run: python3 demos/demo_bundle.py
-      - name: Run the SysPathBundle context manager demo
-        run: python3 demos/demo_bundle_context.py
       - name: Run the functions' demo
-        run: python3 demos/demo_functions.py
+        run: python3 demos/demo1_functions.py
+      - name: Run the SysPathBundle demo
+        run: python3 demos/demo2_bundle.py
+      - name: Run the SysPathBundle context manager demo
+        run: python3 demos/demo3_bundle_context.py
       - name: Run the first sm_contains demo
-        run: python3 demos/demo_sm_contains1.py
+        run: python3 demos/demo4_sm_containsA.py
       - name: Run the second sm_contains demo
-        run: python3 demos/demo_sm_contains2.py
+        run: python3 demos/demo5_sm_containsB.py
   test_bundle_clearing_app_end:
     runs-on: windows-latest
     steps:
