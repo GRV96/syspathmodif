@@ -22,18 +22,18 @@ class SysPathBundle:
 
 	with SysPathBundle(("path/to/module", "path/to/package")):
 	
-	The constructor can set a bundle to be cleared by the destructor. This
+	The initializer can set a bundle to be cleared by the destructor. This
 	should not be done for a bundle used as a context manager as exiting the
 	with block clears the bundle anyway.
 	"""
 
 	def __init__(
 			self,
-			content: Iterable[str|Path],
+			content: Iterable[str | Path],
 			cleared_on_del: bool = False
 		) -> None:
 		"""
-		The constructor needs the paths to store in this bundle and prepend to
+		The initializer needs the paths to store in this bundle and prepend to
 		sys.path. If a path in argument content is None or is already in
 		sys.path, the bundle will not store it.
 
@@ -47,10 +47,10 @@ class SysPathBundle:
 			TypeError: if a path is not None and not of type str or
 				pathlib.Path.
 		"""
+		self._cleared_on_del = cleared_on_del
+
 		self._content = list()
 		self._fill_content(content) # Can raise TypeError.
-
-		self._cleared_on_del = cleared_on_del
 
 	def __del__(self) -> None:
 		"""
@@ -94,7 +94,7 @@ class SysPathBundle:
 			# the application ends, sys.path can be None.
 			self._content.clear()
 
-	def contains(self, some_path: str|Path) -> bool:
+	def contains(self, some_path: str | Path) -> bool:
 		"""
 		Indicates whether this bundle contains the given path.
 
@@ -111,7 +111,7 @@ class SysPathBundle:
 		some_path = ensure_path_is_str(some_path, True)
 		return some_path in self._content
 
-	def _fill_content(self, content: Iterable[str|Path]) -> None:
+	def _fill_content(self, content: Iterable[str | Path]) -> None:
 		for path in content:
 			path = ensure_path_is_str(path, True)
 
