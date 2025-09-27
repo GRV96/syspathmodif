@@ -34,9 +34,9 @@ print_sys_path("\nsys.path reset after the importation")
 print(f"\nsys.path contains the repository's root: {sp_contains(REPO_ROOT)}")
 
 repo_root = sp_prepend_parent(1)
-assert repo_root == REPO_ROOT
-print_sys_path(
-	"\nRepository root prepended to sys.path to import from demo_package")
+if repo_root == REPO_ROOT:
+	print_sys_path(
+		"\nRepository root prepended to sys.path to import from demo_package")
 
 from demo_package import\
 	Ajxo,\
