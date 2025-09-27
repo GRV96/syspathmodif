@@ -11,6 +11,26 @@ def _get_calling_file() -> Path:
 
 
 def sp_prepend_parent(parent_index: int) -> Path | None:
+	"""
+	Given the index of a parent directory of the file that calls this function,
+	the function prepends the parent path to sys.path. The prepending succeeds
+	if sys.path does not already contain the parent path. Otherwise, sys.path
+	is not changed.
+
+	Let be a pathlib.Path instance p representing the path to the calling file.
+	The parent directory identified by an index i passed to this function
+	matches the path returned by p.parents[i].
+
+	Args:
+		parent_index: the index of the parent path.
+
+	Returns:
+		Path: the path to the parent directory if the prepending succeeds, None
+			if it fails.
+
+	Raises:
+		IndexError: if argument parent_index is out of bounds.
+	"""
 	calling_file = _get_calling_file()
 	parent_dir = calling_file.parents[parent_index]
 	success = sp_prepend_no_type_check(str(parent_dir))
