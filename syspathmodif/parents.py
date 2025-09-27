@@ -37,7 +37,7 @@ def sp_prepend_parent(parent_index: int) -> Path | None:
 	return parent_dir if success else None
 
 
-def sp_prepend_parents_bundle(
+def sp_prepend_parent_bundle(
 		parent_indices: Iterable[int],
 		cleared_on_del: bool = False
 	) -> SysPathBundle:
@@ -48,5 +48,5 @@ def sp_prepend_parents_bundle(
 
 __all__ = [
 	sp_prepend_parent.__name__,
-	sp_prepend_parents_bundle.__name__
+	sp_prepend_parent_bundle.__name__
 ]
