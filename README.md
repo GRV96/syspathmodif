@@ -68,11 +68,11 @@ Les scripts dans le dossier `demos` montrent comment `syspathmodif` permet
 d'importer un module qui est indisponible tant qu'on n'a pas ajouté son chemin
 parent à `sys.path`. Toutes les démos dépendent du paquet `demo_package`.
 
-`demo1_functions.py` ajoute la racine du dépôt à `sys.path` à l'aide de la
-fonction `sp_prepend`. Après les importations, la démo annule cette
+`demo1_individual_paths.py` ajoute la racine du dépôt à `sys.path` à l'aide de
+la fonction `sp_prepend`. Après les importations, la démo annule cette
 modification à l'aide de la fonction `sp_remove`.
 ```
-python demos/demo1_functions.py
+python demos/demo1_individual_paths.py
 ```
 
 `demo2_bundle.py` ajoute la racine du dépôt et le dossier `demo_package` à
@@ -174,11 +174,11 @@ The scripts in directory `demos` show how `syspathmodif` allows to import a
 module unavailable unless its parent path is added to `sys.path`. All demos
 depend on `demo_package`.
 
-`demo1_functions.py` adds the repository's root to `sys.path` with function
-`sp_prepend`. After the imports, the demo undoes this modification with
-function `sp_remove`.
+`demo1_individual_paths.py` adds the repository's root to `sys.path` with
+function `sp_prepend`. After the imports, the demo undoes this modification
+with function `sp_remove`.
 ```
-python demos/demo1_functions.py
+python demos/demo1_individual_paths.py
 ```
 
 `demo2_bundle.py` adds the repository's root and `demo_package` to `sys.path`
