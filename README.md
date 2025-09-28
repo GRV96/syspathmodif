@@ -100,6 +100,20 @@ python demos/demo4_sm_containsA.py
 python demos/demo5_sm_containsB.py
 ```
 
+`demo6_parent.py` ajoute la racine du dépôt à `sys.path` à l'aide de la
+fonction `sp_prepend_parent`. Après les importations, la démo annule cette
+modification à l'aide de la fonction `sp_remove`.
+```
+python demos/demo6_parent.py
+```
+
+`demo7_parent_bundle.py` met le chemin de la racine du dépôt dans une instance
+de `SysPathBundle` à l'aide de la fonction `sp_prepend_parent_bundle`.
+L'instance sert de gestionnaire de contexte.
+```
+python demos/demo7_parent_bundle.py
+```
+
 ### Tests automatiques
 
 Cette commande exécute les tests automatiques.
@@ -204,6 +218,20 @@ python demos/demo4_sm_containsA.py
 `demo5_sm_containsB.py` shows another use of function `sm_contains`.
 ```
 python demos/demo5_sm_containsB.py
+```
+
+`demo6_parent.py` adds the repository's root to `sys.path` with function
+`sp_prepend_parent`. After the imports, the demo undoes this modification with
+function `sp_remove`.
+```
+python demos/demo6_parent.py
+```
+
+`demo7_parent_bundle.py` puts the path to the repository's root in a
+`SysPathBundle` instance with function `sp_prepend_parent_bundle`. The bundle
+is used as a context manager.
+```
+python demos/demo7_parent_bundle.py
 ```
 
 ### Automated Tests
