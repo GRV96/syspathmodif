@@ -28,6 +28,16 @@ Il est possible d'utiliser `SysPathBundle` comme un gestionnaire de contexte
 La fonction `sm_contains` prend comme argument un nom (`str`) de module. Elle
 indique si le dictionnaire `sys.modules` contient ce module.
 
+Les fonctions suivantes permettent d'ajouter au début de `sys.path` le chemin
+de dossiers parents du fichier qui les appelle. Des indices passés en argument
+identifient les parents. Soit une instance `p` de `pathlib.Path` représentant
+le chemin du fichier appelant. Le dossier parent identifié par l'indice `i`
+passé à ces fonctions correspond au chemin renvoyé par `p.parents[i]`.
+
+* `sp_prepend_parent` ajoute un chemin parent à `sys.path`.
+* `sp_prepend_parent_bundle` passe un ou plusieurs chemins parents à une
+instance de `SysPathBundle` puis renvoie cette dernière.
+
 Pour plus d'informations, consultez la documentation et les démos dans le dépôt
 de code source.
 
@@ -147,6 +157,16 @@ cleared at the `with` block's end.
 
 Function `sm_contains` takes a module's name (`str`) as an argument. It
 indicates whether dictionary `sys.modules` contains the module.
+
+The following functions allow to prepend to `sys.path` the path to parent
+directories of the file that calls them. Indices passed as arguments identify
+the parents. Let be a `pathlib.Path` instance `p` representing the path to the
+calling file. The parent directory identified by index `i` passed to these
+functions matches the path returned by `p.parents[i]`.
+
+* `sp_prepend_parent` prepends one parent path to `sys.path`.
+* `sp_prepend_parent_bundle` passes one or many parent paths to a
+`SysPathBundle` then returns the bundle.
 
 For more information, consult the documentation and the demos in the source
 code repository.

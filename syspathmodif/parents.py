@@ -43,12 +43,12 @@ def sp_prepend_parent_bundle(
 	) -> SysPathBundle:
 	"""
 	Given the indices of parent directories of the file that calls this
-	function, the function passes the parents' paths to a SysPathBundle then
+	function, the function passes the parent paths to a SysPathBundle then
 	returns the bundle.
 
 	Let be a pathlib.Path instance p representing the path to the calling file.
-	The parent directory identified by an index i passed to this function
-	matches the path returned by p.parents[i].
+	The parent directory identified by index i passed to this function matches
+	the path returned by p.parents[i].
 
 	The SysPathBundle can be set to be cleared by its destructor. This should
 	not be done for a bundle used as a context manager as exiting the with
