@@ -41,6 +41,30 @@ def sp_prepend_parent_bundle(
 		parent_indices: Iterable[int],
 		cleared_on_del: bool = False
 	) -> SysPathBundle:
+	"""
+	Given the indices of parent directories of the file that calls this
+	function, the function passes the parents' paths to a SysPathBundle then
+	returns the bundle.
+
+	Let be a pathlib.Path instance p representing the path to the calling file.
+	The parent directory identified by an index i passed to this function
+	matches the path returned by p.parents[i].
+
+	The SysPathBundle can be set to be cleared by its destructor. This should
+	not be done for a bundle used as a context manager as exiting the with
+	block clears the bundle anyway.
+
+	Args:
+		parent_indices: the indices of the parent paths.
+		cleared_on_del: whether the bundle's destructor clears it. Defaults to
+			False.
+
+	Returns:
+		SysPathBundle: the object that prepends the parent paths to sys.path.
+
+	Raises:
+		IndexError: if any parent index is out of bounds.
+	"""
 	calling_file = _get_calling_file()
 	gen_parent_dirs = (calling_file.parents[i] for i in parent_indices)
 	return SysPathBundle(gen_parent_dirs, cleared_on_del)
