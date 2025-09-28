@@ -7,6 +7,7 @@ from _test_utils import\
 	TEST_DIR,\
 	REPO_ROOT,\
 	LIB_DIR,\
+	assert_path_in_sys_path,\
 	index_in_sys_path,\
 	reset_sys_path
 
@@ -77,7 +78,7 @@ def test_sp_prepend_no_success() -> None:
 		sys.path.append(str(LIB_DIR))
 		success = sp_prepend(LIB_DIR)
 		assert not success
-		assert sp_contains(LIB_DIR)
+		assert_path_in_sys_path(LIB_DIR, True)
 	finally:
 		reset_sys_path()
 
@@ -115,7 +116,7 @@ def test_sp_append_no_success() -> None:
 		sys.path.append(str(LIB_DIR))
 		success = sp_append(LIB_DIR)
 		assert not success
-		assert sp_contains(LIB_DIR)
+		assert_path_in_sys_path(LIB_DIR, True)
 	finally:
 		reset_sys_path()
 
@@ -134,7 +135,7 @@ def test_sp_remove_str() -> None:
 		sys.path.append(str(LIB_DIR))
 		success = sp_remove(str(LIB_DIR))
 		assert success
-		assert not sp_contains(str(LIB_DIR))
+		assert_path_in_sys_path(LIB_DIR, False)
 	finally:
 		reset_sys_path()
 
@@ -144,7 +145,7 @@ def test_sp_remove_pathlib() -> None:
 		sys.path.append(str(LIB_DIR))
 		success = sp_remove(LIB_DIR)
 		assert success
-		assert not sp_contains(LIB_DIR)
+		assert_path_in_sys_path(LIB_DIR, False)
 	finally:
 		reset_sys_path()
 
@@ -154,7 +155,7 @@ def test_sp_remove_no_success() -> None:
 		# sys.path does not contain LIB_DIR.
 		success = sp_remove(LIB_DIR)
 		assert not success
-		assert not sp_contains(LIB_DIR)
+		assert_path_in_sys_path(LIB_DIR, False)
 	finally:
 		reset_sys_path()
 
