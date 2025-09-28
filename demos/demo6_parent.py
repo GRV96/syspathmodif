@@ -1,4 +1,3 @@
-from pathlib import Path
 import sys
 
 from _demo_utils import\
