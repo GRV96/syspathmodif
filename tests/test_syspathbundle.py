@@ -2,38 +2,18 @@ from pathlib import Path
 import sys
 from typing import Generator
 
-# strath is a dependency of syspathmodif.
-from strath import ensure_path_is_str
-
 from _test_utils import\
 	INIT_SYS_PATH,\
 	TEST_DIR,\
 	REPO_ROOT,\
 	LIB_DIR,\
+	assert_path_in_sys_path,\
+	assert_path_is_present,\
 	reset_sys_path
 
 sys.path.insert(0, str(REPO_ROOT))
 from syspathmodif import SysPathBundle
 reset_sys_path()
-
-
-def _assert_path_in_sys_path(
-		some_path: str | Path,
-		is_in_sys_path: bool
-	) -> None:
-	some_path = ensure_path_is_str(some_path, True)
-	assert (some_path in sys.path) == is_in_sys_path
-
-
-def _assert_path_is_present(
-		some_path: str | Path,
-		bundle: SysPathBundle,
-		is_in_sys_path: bool,
-		is_in_bundle: bool
-	) -> None:
-	some_path = ensure_path_is_str(some_path, True)
-	assert (some_path in sys.path) == is_in_sys_path
-	assert bundle.contains(some_path) == is_in_bundle
 
 
 def _generate_paths() -> Generator[Path, None, None]:
@@ -51,9 +31,9 @@ def test_init_generator() -> None:
 		bundle = SysPathBundle(content_gen)
 		assert not bundle.cleared_on_del
 
-		_assert_path_is_present(TEST_DIR, bundle, True, False)
-		_assert_path_is_present(REPO_ROOT, bundle, True, True)
-		_assert_path_is_present(LIB_DIR, bundle, True, True)
+		assert_path_is_present(TEST_DIR, bundle, True, False)
+		assert_path_is_present(REPO_ROOT, bundle, True, True)
+		assert_path_is_present(LIB_DIR, bundle, True, True)
 
 	finally:
 		reset_sys_path()
@@ -66,9 +46,9 @@ def test_init_list() -> None:
 		bundle = SysPathBundle(content)
 		assert not bundle.cleared_on_del
 
-		_assert_path_is_present(TEST_DIR, bundle, True, False)
-		_assert_path_is_present(REPO_ROOT, bundle, True, True)
-		_assert_path_is_present(LIB_DIR, bundle, True, True)
+		assert_path_is_present(TEST_DIR, bundle, True, False)
+		assert_path_is_present(REPO_ROOT, bundle, True, True)
+		assert_path_is_present(LIB_DIR, bundle, True, True)
 
 	finally:
 		reset_sys_path()
@@ -81,9 +61,9 @@ def test_init_tuple() -> None:
 		bundle = SysPathBundle(content)
 		assert not bundle.cleared_on_del
 
-		_assert_path_is_present(TEST_DIR, bundle, True, False)
-		_assert_path_is_present(REPO_ROOT, bundle, True, True)
-		_assert_path_is_present(LIB_DIR, bundle, True, True)
+		assert_path_is_present(TEST_DIR, bundle, True, False)
+		assert_path_is_present(REPO_ROOT, bundle, True, True)
+		assert_path_is_present(LIB_DIR, bundle, True, True)
 
 	finally:
 		reset_sys_path()
@@ -96,9 +76,9 @@ def test_init_set() -> None:
 		bundle = SysPathBundle(content)
 		assert not bundle.cleared_on_del
 
-		_assert_path_is_present(TEST_DIR, bundle, True, False)
-		_assert_path_is_present(REPO_ROOT, bundle, True, True)
-		_assert_path_is_present(LIB_DIR, bundle, True, True)
+		assert_path_is_present(TEST_DIR, bundle, True, False)
+		assert_path_is_present(REPO_ROOT, bundle, True, True)
+		assert_path_is_present(LIB_DIR, bundle, True, True)
 
 	finally:
 		reset_sys_path()
@@ -109,9 +89,9 @@ def test_clear() -> None:
 		bundle = SysPathBundle((TEST_DIR, REPO_ROOT, LIB_DIR))
 		bundle.clear()
 
-		_assert_path_is_present(TEST_DIR, bundle, True, False)
-		_assert_path_is_present(REPO_ROOT, bundle, False, False)
-		_assert_path_is_present(LIB_DIR, bundle, False, False)
+		assert_path_is_present(TEST_DIR, bundle, True, False)
+		assert_path_is_present(REPO_ROOT, bundle, False, False)
+		assert_path_is_present(LIB_DIR, bundle, False, False)
 
 		assert sys.path == INIT_SYS_PATH
 
@@ -125,9 +105,9 @@ def test_cleared_on_del() -> None:
 		assert bundle.cleared_on_del
 		del bundle
 
-		_assert_path_in_sys_path(TEST_DIR, True)
-		_assert_path_in_sys_path(REPO_ROOT, False)
-		_assert_path_in_sys_path(LIB_DIR, False)
+		assert_path_in_sys_path(TEST_DIR, True)
+		assert_path_in_sys_path(REPO_ROOT, False)
+		assert_path_in_sys_path(LIB_DIR, False)
 
 		assert sys.path == INIT_SYS_PATH
 
@@ -138,13 +118,13 @@ def test_cleared_on_del() -> None:
 def test_context_management() -> None:
 	try:
 		with SysPathBundle((TEST_DIR, REPO_ROOT, LIB_DIR)) as bundle:
-			_assert_path_is_present(TEST_DIR, bundle, True, False)
-			_assert_path_is_present(REPO_ROOT, bundle, True, True)
-			_assert_path_is_present(LIB_DIR, bundle, True, True)
+			assert_path_is_present(TEST_DIR, bundle, True, False)
+			assert_path_is_present(REPO_ROOT, bundle, True, True)
+			assert_path_is_present(LIB_DIR, bundle, True, True)
 
-		_assert_path_in_sys_path(TEST_DIR, True)
-		_assert_path_in_sys_path(REPO_ROOT, False)
-		_assert_path_in_sys_path(LIB_DIR, False)
+		assert_path_in_sys_path(TEST_DIR, True)
+		assert_path_in_sys_path(REPO_ROOT, False)
+		assert_path_in_sys_path(LIB_DIR, False)
 
 		assert sys.path == INIT_SYS_PATH
 
