@@ -20,19 +20,23 @@ _THIS_FILE = Path(__file__).resolve()
 
 def test_parent_bundle():
 	try:
-		bundle = sp_prepend_parent_bundle((0, 1, 2))
+		bundle = sp_prepend_parent_bundle((0, 1, 2, -1))
 
 		parent0 = _THIS_FILE.parents[0]
 		assert_path_is_present(parent0, bundle, True, False)
-		assert index_in_sys_path(parent0) == 2
+		assert index_in_sys_path(parent0) == 3
 
 		parent1 = _THIS_FILE.parents[1]
 		assert_path_is_present(parent1, bundle, True, True)
-		assert index_in_sys_path(parent1) == 1
+		assert index_in_sys_path(parent1) == 2
 
 		parent2 = _THIS_FILE.parents[2]
 		assert_path_is_present(parent2, bundle, True, True)
-		assert index_in_sys_path(parent2) == 0
+		assert index_in_sys_path(parent2) == 1
+
+		parent_minus1 = _THIS_FILE.parents[-1]
+		assert_path_is_present(parent_minus1, bundle, True, True)
+		assert index_in_sys_path(parent_minus1) == 0
 
 	finally:
 		reset_sys_path()
@@ -42,15 +46,5 @@ def test_index_out_of_bounds():
 	try:
 		with pytest.raises(IndexError):
 			sp_prepend_parent_bundle((0, 1, 2, 2025))
-	finally:
-		reset_sys_path()
-
-
-def test_prepend_parent_minus1():
-	try:
-		parent_minus1 = _THIS_FILE.parents[-1]
-		bundle = sp_prepend_parent_bundle((-1,))
-		assert_path_is_present(parent_minus1, bundle, True, True)
-		assert index_in_sys_path(parent_minus1) == 0
 	finally:
 		reset_sys_path()
