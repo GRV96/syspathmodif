@@ -1,16 +1,14 @@
 import pytest
 
-from pathlib import Path
 import sys
-
-# strath is a dependency of syspathmodif.
-from strath import ensure_path_is_str
 
 from _test_utils import\
 	INIT_SYS_PATH,\
 	TEST_DIR,\
 	REPO_ROOT,\
 	LIB_DIR,\
+	assert_path_in_sys_path,\
+	index_in_sys_path,\
 	reset_sys_path
 
 sys.path.insert(0, str(REPO_ROOT))
@@ -23,11 +21,6 @@ reset_sys_path()
 
 
 _PATH_TYPE_ERROR_MSG = "The path must be None or of type str or pathlib.Path."
-
-
-def _sp_index(some_path: str | Path) -> int:
-	some_path = ensure_path_is_str(some_path, True)
-	return sys.path.index(some_path)
 
 
 def test_sp_contains_true_str() -> None:
@@ -66,7 +59,7 @@ def test_sp_prepend_str() -> None:
 		lib_dir = str(LIB_DIR)
 		success = sp_prepend(lib_dir)
 		assert success
-		assert _sp_index(lib_dir) == 0
+		assert index_in_sys_path(lib_dir) == 0
 	finally:
 		reset_sys_path()
 
@@ -75,7 +68,7 @@ def test_sp_prepend_pathlib() -> None:
 	try:
 		success = sp_prepend(LIB_DIR)
 		assert success
-		assert _sp_index(LIB_DIR) == 0
+		assert index_in_sys_path(LIB_DIR) == 0
 	finally:
 		reset_sys_path()
 
@@ -85,7 +78,7 @@ def test_sp_prepend_no_success() -> None:
 		sys.path.append(str(LIB_DIR))
 		success = sp_prepend(LIB_DIR)
 		assert not success
-		assert sp_contains(LIB_DIR)
+		assert_path_in_sys_path(LIB_DIR, True)
 	finally:
 		reset_sys_path()
 
@@ -104,7 +97,7 @@ def test_sp_append_str() -> None:
 		lib_dir = str(LIB_DIR)
 		success = sp_append(lib_dir)
 		assert success
-		assert _sp_index(lib_dir) == len(sys.path) - 1
+		assert index_in_sys_path(lib_dir) == len(sys.path) - 1
 	finally:
 		reset_sys_path()
 
@@ -113,7 +106,7 @@ def test_sp_append_pathlib() -> None:
 	try:
 		success = sp_append(LIB_DIR)
 		assert success
-		assert _sp_index(LIB_DIR) == len(sys.path) - 1
+		assert index_in_sys_path(LIB_DIR) == len(sys.path) - 1
 	finally:
 		reset_sys_path()
 
@@ -123,7 +116,7 @@ def test_sp_append_no_success() -> None:
 		sys.path.append(str(LIB_DIR))
 		success = sp_append(LIB_DIR)
 		assert not success
-		assert sp_contains(LIB_DIR)
+		assert_path_in_sys_path(LIB_DIR, True)
 	finally:
 		reset_sys_path()
 
@@ -142,7 +135,7 @@ def test_sp_remove_str() -> None:
 		sys.path.append(str(LIB_DIR))
 		success = sp_remove(str(LIB_DIR))
 		assert success
-		assert not sp_contains(str(LIB_DIR))
+		assert_path_in_sys_path(LIB_DIR, False)
 	finally:
 		reset_sys_path()
 
@@ -152,7 +145,7 @@ def test_sp_remove_pathlib() -> None:
 		sys.path.append(str(LIB_DIR))
 		success = sp_remove(LIB_DIR)
 		assert success
-		assert not sp_contains(LIB_DIR)
+		assert_path_in_sys_path(LIB_DIR, False)
 	finally:
 		reset_sys_path()
 
@@ -162,7 +155,7 @@ def test_sp_remove_no_success() -> None:
 		# sys.path does not contain LIB_DIR.
 		success = sp_remove(LIB_DIR)
 		assert not success
-		assert not sp_contains(LIB_DIR)
+		assert_path_in_sys_path(LIB_DIR, False)
 	finally:
 		reset_sys_path()
 

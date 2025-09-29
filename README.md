@@ -28,6 +28,16 @@ Il est possible d'utiliser `SysPathBundle` comme un gestionnaire de contexte
 La fonction `sm_contains` prend comme argument un nom (`str`) de module. Elle
 indique si le dictionnaire `sys.modules` contient ce module.
 
+Les fonctions suivantes permettent d'ajouter au début de `sys.path` le chemin
+de dossiers parents du fichier qui les appelle. Des indices passés en argument
+identifient les parents. Soit une instance `p` de `pathlib.Path` représentant
+le chemin du fichier appelant. Le dossier parent identifié par l'indice `i`
+passé à ces fonctions correspond au chemin renvoyé par `p.parents[i]`.
+
+* `sp_prepend_parent` ajoute un chemin parent à `sys.path`.
+* `sp_prepend_parent_bundle` passe un ou plusieurs chemins parents à une
+instance de `SysPathBundle` puis renvoie cette dernière.
+
 Pour plus d'informations, consultez la documentation et les démos dans le dépôt
 de code source.
 
@@ -68,11 +78,11 @@ Les scripts dans le dossier `demos` montrent comment `syspathmodif` permet
 d'importer un module qui est indisponible tant qu'on n'a pas ajouté son chemin
 parent à `sys.path`. Toutes les démos dépendent du paquet `demo_package`.
 
-`demo1_functions.py` ajoute la racine du dépôt à `sys.path` à l'aide de la
-fonction `sp_prepend`. Après les importations, la démo annule cette
+`demo1_individual_paths.py` ajoute la racine du dépôt à `sys.path` à l'aide de
+la fonction `sp_prepend`. Après les importations, la démo annule cette
 modification à l'aide de la fonction `sp_remove`.
 ```
-python demos/demo1_functions.py
+python demos/demo1_individual_paths.py
 ```
 
 `demo2_bundle.py` ajoute la racine du dépôt et le dossier `demo_package` à
@@ -82,8 +92,8 @@ démo annule ces modifications en vidant l'instance de `SysPathBundle`.
 python demos/demo2_bundle.py
 ```
 
-`demo3_bundle_context.py` effectue la même tâche que `demo_bundle.py` en
-utilisant `SysPathBundle` comme un gestionnaire de contexte.
+`demo3_bundle_context.py` effectue la même tâche que `demo2_bundle.py` en
+utilisant `SysPathBundle` comme gestionnaire de contexte.
 ```
 python demos/demo3_bundle_context.py
 ```
@@ -98,6 +108,20 @@ python demos/demo4_sm_containsA.py
 `demo5_sm_containsB.py` montre un autre usage de la fonction `sm_contains`.
 ```
 python demos/demo5_sm_containsB.py
+```
+
+`demo6_parent.py` ajoute la racine du dépôt à `sys.path` à l'aide de la
+fonction `sp_prepend_parent`. Après les importations, la démo annule cette
+modification à l'aide de la fonction `sp_remove`.
+```
+python demos/demo6_parent.py
+```
+
+`demo7_parent_bundle.py` met le chemin de la racine du dépôt dans une instance
+de `SysPathBundle` à l'aide de la fonction `sp_prepend_parent_bundle`.
+L'instance sert de gestionnaire de contexte.
+```
+python demos/demo7_parent_bundle.py
 ```
 
 ### Tests automatiques
@@ -133,6 +157,16 @@ cleared at the `with` block's end.
 
 Function `sm_contains` takes a module's name (`str`) as an argument. It
 indicates whether dictionary `sys.modules` contains the module.
+
+The following functions allow to prepend to `sys.path` the paths to parent
+directories of the file that calls them. Indices passed as arguments identify
+the parents. Let be a `pathlib.Path` instance `p` representing the path to the
+calling file. The parent directory identified by index `i` passed to these
+functions matches the path returned by `p.parents[i]`.
+
+* `sp_prepend_parent` prepends one parent path to `sys.path`.
+* `sp_prepend_parent_bundle` passes one or many parent paths to a
+`SysPathBundle` then returns the bundle.
 
 For more information, consult the documentation and the demos in the source
 code repository.
@@ -174,11 +208,11 @@ The scripts in directory `demos` show how `syspathmodif` allows to import a
 module unavailable unless its parent path is added to `sys.path`. All demos
 depend on `demo_package`.
 
-`demo1_functions.py` adds the repository's root to `sys.path` with function
-`sp_prepend`. After the imports, the demo undoes this modification with
-function `sp_remove`.
+`demo1_individual_paths.py` adds the repository's root to `sys.path` with
+function `sp_prepend`. After the imports, the demo undoes this modification
+with function `sp_remove`.
 ```
-python demos/demo1_functions.py
+python demos/demo1_individual_paths.py
 ```
 
 `demo2_bundle.py` adds the repository's root and `demo_package` to `sys.path`
@@ -188,7 +222,7 @@ modifications by clearing the `SysPathBundle` instance.
 python demos/demo2_bundle.py
 ```
 
-`demo3_bundle_context.py` performs the same task as `demo_bundle.py` by using
+`demo3_bundle_context.py` performs the same task as `demo2_bundle.py` by using
 `SysPathBundle` as a context manager.
 ```
 python demos/demo3_bundle_context.py
@@ -204,6 +238,20 @@ python demos/demo4_sm_containsA.py
 `demo5_sm_containsB.py` shows another use of function `sm_contains`.
 ```
 python demos/demo5_sm_containsB.py
+```
+
+`demo6_parent.py` adds the repository's root to `sys.path` with function
+`sp_prepend_parent`. After the imports, the demo undoes this modification with
+function `sp_remove`.
+```
+python demos/demo6_parent.py
+```
+
+`demo7_parent_bundle.py` puts the path to the repository's root in a
+`SysPathBundle` instance with function `sp_prepend_parent_bundle`. The bundle
+is used as a context manager.
+```
+python demos/demo7_parent_bundle.py
 ```
 
 ### Automated Tests
