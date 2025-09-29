@@ -92,8 +92,8 @@ démo annule ces modifications en vidant l'instance de `SysPathBundle`.
 python demos/demo2_bundle.py
 ```
 
-`demo3_bundle_context.py` effectue la même tâche que `demo_bundle.py` en
-utilisant `SysPathBundle` comme un gestionnaire de contexte.
+`demo3_bundle_context.py` effectue la même tâche que `demo2_bundle.py` en
+utilisant `SysPathBundle` comme gestionnaire de contexte.
 ```
 python demos/demo3_bundle_context.py
 ```
@@ -158,7 +158,7 @@ cleared at the `with` block's end.
 Function `sm_contains` takes a module's name (`str`) as an argument. It
 indicates whether dictionary `sys.modules` contains the module.
 
-The following functions allow to prepend to `sys.path` the path to parent
+The following functions allow to prepend to `sys.path` the paths to parent
 directories of the file that calls them. Indices passed as arguments identify
 the parents. Let be a `pathlib.Path` instance `p` representing the path to the
 calling file. The parent directory identified by index `i` passed to these
@@ -222,7 +222,7 @@ modifications by clearing the `SysPathBundle` instance.
 python demos/demo2_bundle.py
 ```
 
-`demo3_bundle_context.py` performs the same task as `demo_bundle.py` by using
+`demo3_bundle_context.py` performs the same task as `demo2_bundle.py` by using
 `SysPathBundle` as a context manager.
 ```
 python demos/demo3_bundle_context.py
