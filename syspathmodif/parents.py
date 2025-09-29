@@ -18,8 +18,8 @@ def sp_prepend_parent(parent_index: int) -> Path | None:
 	is not changed.
 
 	Let be a pathlib.Path instance p representing the path to the calling file.
-	The parent directory identified by an index i passed to this function
-	matches the path returned by p.parents[i].
+	The parent directory identified by index i passed to this function matches
+	the path returned by p.parents[i].
 
 	Args:
 		parent_index: the index of the parent path.
