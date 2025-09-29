@@ -42,7 +42,7 @@ def test_parent_bundle():
 		reset_sys_path()
 
 
-def test_index_out_of_bounds():
+def test_prepend_bundle_index_error():
 	try:
 		with pytest.raises(IndexError):
 			sp_prepend_parent_bundle((0, 1, 2, 2025))

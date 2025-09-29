@@ -45,18 +45,18 @@ def test_prepend_parent2():
 		reset_sys_path()
 
 
-def test_index_out_of_bounds():
-	try:
-		with pytest.raises(IndexError):
-			sp_prepend_parent(2025)
-	finally:
-		reset_sys_path()
-
-
 def test_prepend_parent_minus1():
 	try:
 		parent_minus1 = sp_prepend_parent(-1)
 		assert parent_minus1 == _THIS_FILE.parents[-1]
 		assert index_in_sys_path(parent_minus1) == 0
+	finally:
+		reset_sys_path()
+
+
+def test_prepend_parent_index_error():
+	try:
+		with pytest.raises(IndexError):
+			sp_prepend_parent(2025)
 	finally:
 		reset_sys_path()
