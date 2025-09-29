@@ -44,7 +44,8 @@ def sp_prepend_parent_bundle(
 	"""
 	Given the indices of parent directories of the file that calls this
 	function, the function passes the parent paths to a SysPathBundle then
-	returns the bundle.
+	returns the bundle. The parent paths are prepended to list sys.path in the
+	same order as parent_indices provides their indices.
 
 	Let be a pathlib.Path instance p representing the path to the calling file.
 	The parent directory identified by index i passed to this function matches
