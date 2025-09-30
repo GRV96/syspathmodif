@@ -14,6 +14,10 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
+      - name: Set up minimal Python version
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
       - name: Intall the development dependencies
         run: pip3 install --no-cache-dir -r requirements-dev.txt
       - name: Execute the unit tests
@@ -23,6 +27,10 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
+      - name: Set up minimal Python version
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
       - name: Intall the dependencies
         run: pip3 install --no-cache-dir -r requirements.txt
       - name: Demo 1 - Individual paths
@@ -44,7 +52,7 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
-      - name: Set up minimum Python version
+      - name: Set up minimal Python version
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
@@ -57,5 +65,9 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
+      - name: Set up minimal Python version
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
       - name: Test the build
         run: python3 .github/workflows/test_pypi_package_build.py
