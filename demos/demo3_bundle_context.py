@@ -34,7 +34,7 @@ print_sys_path("\nsys.path reset after the importation")
 
 # SysPathBundle is used here.
 print(f"\nsys.path contains the repository's root: {sp_contains(REPO_ROOT)}")
-print(f"sys.path contains the package's directory: {sp_contains(_PACKAGE_DIR)}")
+print(f"sys.path contains the package: {sp_contains(_PACKAGE_DIR)}")
 
 # The bundle prepends the paths to sys.path. The block's end clears the bundle.
 with SysPathBundle((REPO_ROOT, _PACKAGE_DIR)):
@@ -45,13 +45,13 @@ with SysPathBundle((REPO_ROOT, _PACKAGE_DIR)):
 	from point import Point
 
 	print(f"\nsys.path contains the repository's root: {sp_contains(REPO_ROOT)}")
-	print(f"sys.path contains the package's directory: {sp_contains(_PACKAGE_DIR)}")
+	print(f"sys.path contains the package: {sp_contains(_PACKAGE_DIR)}")
 
 print_sys_path(
 	"\nPaths removed from sys.path after the imports")
 
 print(f"\nsys.path contains the repository's root: {sp_contains(REPO_ROOT)}")
-print(f"sys.path contains the package's directory: {sp_contains(_PACKAGE_DIR)}")
+print(f"sys.path contains the package: {sp_contains(_PACKAGE_DIR)}")
 # End of SysPathBundle's use
 
 
