@@ -98,16 +98,16 @@ utilisant `SysPathBundle` comme gestionnaire de contexte.
 python demos/demo3_bundle_context.py
 ```
 
-`demo4_sm_containsA.py` montre un cas où on peut importer un module sans ajouter
+`demo4_sm_contains_A.py` montre un cas où on peut importer un module sans ajouter
 son chemin parent à `sys.path`. La démo vérifie la présence du module dans
 `sys.modules` à l'aide de la fonction `sm_contains`.
 ```
-python demos/demo4_sm_containsA.py
+python demos/demo4_sm_contains_A.py
 ```
 
-`demo5_sm_containsB.py` montre un autre usage de la fonction `sm_contains`.
+`demo5_sm_contains_B.py` montre un autre usage de la fonction `sm_contains`.
 ```
-python demos/demo5_sm_containsB.py
+python demos/demo5_sm_contains_B.py
 ```
 
 `demo6_parent.py` ajoute la racine du dépôt à `sys.path` à l'aide de la
@@ -228,16 +228,16 @@ python demos/demo2_bundle.py
 python demos/demo3_bundle_context.py
 ```
 
-`demo4_sm_containsA.py` shows a case where a module can be imported without its
+`demo4_sm_contains_A.py` shows a case where a module can be imported without its
 parent path being added to `sys.path`. The demo verifies the module's presence
 in `sys.modules` with function `sm_contains`.
 ```
-python demos/demo4_sm_containsA.py
+python demos/demo4_sm_contains_A.py
 ```
 
-`demo5_sm_containsB.py` shows another use of function `sm_contains`.
+`demo5_sm_contains_B.py` shows another use of function `sm_contains`.
 ```
-python demos/demo5_sm_containsB.py
+python demos/demo5_sm_contains_B.py
 ```
 
 `demo6_parent.py` adds the repository's root to `sys.path` with function
