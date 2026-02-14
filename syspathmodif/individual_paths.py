@@ -11,7 +11,7 @@ from .individual_paths_no_type_check import\
 	sp_remove_no_type_check
 
 
-def sp_append(some_path: str | Path) -> bool:
+def sp_append(some_path: str | Path | None) -> bool:
 	"""
 	Adds the given path to the end of list sys.path if it does not already
 	contain the path. If the path is None, this function does not change
@@ -31,7 +31,7 @@ def sp_append(some_path: str | Path) -> bool:
 	return sp_append_no_type_check(some_path)
 
 
-def sp_contains(some_path: str | Path) -> bool:
+def sp_contains(some_path: str | Path | None) -> bool:
 	"""
 	Indicates whether list sys.path contains the given path.
 
@@ -49,7 +49,7 @@ def sp_contains(some_path: str | Path) -> bool:
 	return some_path in sys.path
 
 
-def sp_prepend(some_path: str | Path) -> bool:
+def sp_prepend(some_path: str | Path | None) -> bool:
 	"""
 	Adds the given path to the beginning of list sys.path if it does not
 	already contain the path. If the path is None, this function does not
@@ -69,7 +69,7 @@ def sp_prepend(some_path: str | Path) -> bool:
 	return sp_prepend_no_type_check(some_path)
 
 
-def sp_remove(some_path: str | Path) -> bool:
+def sp_remove(some_path: str | Path | None) -> bool:
 	"""
 	Removes the given path from list sys.path if it contains the path.
 
