@@ -42,7 +42,7 @@ reset_sys_path()
 
 
 def assert_path_in_sys_path(
-		some_path: str | Path,
+		some_path: str | Path | None,
 		is_in_sys_path: bool
 	) -> None:
 	"""
@@ -65,7 +65,7 @@ def assert_path_in_sys_path(
 
 
 def assert_path_is_present(
-		some_path: str | Path,
+		some_path: str | Path | None,
 		bundle: SysPathBundle,
 		is_in_sys_path: bool,
 		is_in_bundle: bool
@@ -94,7 +94,7 @@ def assert_path_is_present(
 	assert bundle.contains(some_path) == is_in_bundle
 
 
-def index_in_sys_path(some_path: str | Path) -> int:
+def index_in_sys_path(some_path: str | Path | None) -> int:
 	"""
 	Indicates the index of the given path in list sys.path.
 
