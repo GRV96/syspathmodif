@@ -10,6 +10,7 @@ from _demo_utils import\
 
 _PACKAGE_PATH = REPO_ROOT/"demo_package"
 
+
 print_sys_path("sys.path's initial content")
 
 print(f"\nDemo directory: {DEMO_DIR}")
