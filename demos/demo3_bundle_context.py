@@ -8,13 +8,13 @@ from _demo_utils import\
 	reset_sys_path
 
 
-_PACKAGE_DIR = REPO_ROOT/"demo_package"
+_PACKAGE_PATH = REPO_ROOT/"demo_package"
 
 print_sys_path("sys.path's initial content")
 
 print(f"\nDemo directory: {DEMO_DIR}")
 print(f"Repository root: {REPO_ROOT}")
-print(f"Package: {_PACKAGE_DIR}")
+print(f"Package: {_PACKAGE_PATH}")
 
 
 # Imports from syspathmodif are performed here.
@@ -34,10 +34,10 @@ print_sys_path("\nsys.path reset after the importation")
 
 # SysPathBundle is used here.
 print(f"\nsys.path contains the repository's root: {sp_contains(REPO_ROOT)}")
-print(f"sys.path contains the package: {sp_contains(_PACKAGE_DIR)}")
+print(f"sys.path contains the package: {sp_contains(_PACKAGE_PATH)}")
 
 # The bundle prepends the paths to sys.path. The block's end clears the bundle.
-with SysPathBundle((REPO_ROOT, _PACKAGE_DIR)):
+with SysPathBundle((REPO_ROOT, _PACKAGE_PATH)):
 	print_sys_path(
 		"\nPaths prepended to sys.path to allow imports")
 
@@ -45,13 +45,13 @@ with SysPathBundle((REPO_ROOT, _PACKAGE_DIR)):
 	from point import Point
 
 	print(f"\nsys.path contains the repository's root: {sp_contains(REPO_ROOT)}")
-	print(f"sys.path contains the package: {sp_contains(_PACKAGE_DIR)}")
+	print(f"sys.path contains the package: {sp_contains(_PACKAGE_PATH)}")
 
 print_sys_path(
 	"\nPaths removed from sys.path after the imports")
 
 print(f"\nsys.path contains the repository's root: {sp_contains(REPO_ROOT)}")
-print(f"sys.path contains the package: {sp_contains(_PACKAGE_DIR)}")
+print(f"sys.path contains the package: {sp_contains(_PACKAGE_PATH)}")
 # End of SysPathBundle's use
 
 
