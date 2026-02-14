@@ -3,11 +3,11 @@
 import sys
 
 
-def _is_path_acceptable(some_path: str) -> bool:
+def _is_path_acceptable(some_path: str | None) -> bool:
 	return some_path not in sys.path and some_path is not None
 
 
-def sp_append_no_type_check(some_path: str) -> bool:
+def sp_append_no_type_check(some_path: str | None) -> bool:
 	was_path_appended = False
 
 	if _is_path_acceptable(some_path):
@@ -17,7 +17,7 @@ def sp_append_no_type_check(some_path: str) -> bool:
 	return was_path_appended
 
 
-def sp_prepend_no_type_check(some_path: str) -> bool:
+def sp_prepend_no_type_check(some_path: str | None) -> bool:
 	was_path_prepended = False
 
 	if _is_path_acceptable(some_path):
@@ -27,7 +27,7 @@ def sp_prepend_no_type_check(some_path: str) -> bool:
 	return was_path_prepended
 
 
-def sp_remove_no_type_check(some_path: str) -> bool:
+def sp_remove_no_type_check(some_path: str | None) -> bool:
 	was_path_removed = False
 
 	try:

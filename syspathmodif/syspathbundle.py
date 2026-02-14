@@ -28,10 +28,10 @@ class SysPathBundle:
 	"""
 
 	def __init__(
-			self,
-			content: Iterable[str | Path],
-			cleared_on_del: bool = False
-		) -> None:
+		self,
+		content: Iterable[str | Path | None],
+		cleared_on_del: bool = False
+	) -> None:
 		"""
 		The initializer needs the paths to store in this bundle and prepend to
 		sys.path. If a path in argument content is None or is already in
@@ -94,7 +94,7 @@ class SysPathBundle:
 			# the application ends, sys.path can be None.
 			self._content.clear()
 
-	def contains(self, some_path: str | Path) -> bool:
+	def contains(self, some_path: str | Path | None) -> bool:
 		"""
 		Indicates whether this bundle contains the given path.
 
@@ -111,7 +111,7 @@ class SysPathBundle:
 		some_path = ensure_path_is_str(some_path, True)
 		return some_path in self._content
 
-	def _fill_content(self, content: Iterable[str | Path]) -> None:
+	def _fill_content(self, content: Iterable[str | Path | None]) -> None:
 		for path in content:
 			path = ensure_path_is_str(path, True)
 

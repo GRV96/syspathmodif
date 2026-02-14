@@ -38,9 +38,9 @@ def sp_prepend_parent(parent_index: int) -> Path | None:
 
 
 def sp_prepend_parent_bundle(
-		parent_indices: Iterable[int],
-		cleared_on_del: bool = False
-	) -> SysPathBundle:
+	parent_indices: Iterable[int],
+	cleared_on_del: bool = False
+) -> SysPathBundle:
 	"""
 	Given the indices of parent directories of the file that calls this
 	function, the function passes the parent paths to a SysPathBundle then
