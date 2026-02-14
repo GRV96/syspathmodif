@@ -42,9 +42,9 @@ reset_sys_path()
 
 
 def assert_path_in_sys_path(
-		some_path: str | Path | None,
-		is_in_sys_path: bool
-	) -> None:
+	some_path: str | Path | None,
+	is_in_sys_path: bool
+) -> None:
 	"""
 	Verifies whether the presence or absence of the given path in list sys.path
 	matches what is expected.
@@ -65,11 +65,11 @@ def assert_path_in_sys_path(
 
 
 def assert_path_is_present(
-		some_path: str | Path | None,
-		bundle: SysPathBundle,
-		is_in_sys_path: bool,
-		is_in_bundle: bool
-	) -> None:
+	some_path: str | Path | None,
+	bundle: SysPathBundle,
+	is_in_sys_path: bool,
+	is_in_bundle: bool
+) -> None:
 	"""
 	Verifies whether the presence or absence of the given path in list sys.path
 	and the given SysPathBundle instance matches what is expected.

@@ -28,10 +28,10 @@ class SysPathBundle:
 	"""
 
 	def __init__(
-			self,
-			content: Iterable[str | Path | None],
-			cleared_on_del: bool = False
-		) -> None:
+		self,
+		content: Iterable[str | Path | None],
+		cleared_on_del: bool = False
+	) -> None:
 		"""
 		The initializer needs the paths to store in this bundle and prepend to
 		sys.path. If a path in argument content is None or is already in
