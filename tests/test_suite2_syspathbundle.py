@@ -84,6 +84,44 @@ def test_init_set() -> None:
 		reset_sys_path()
 
 
+def test_init_empyt() -> None:
+	try:
+		content = ()
+		assert isinstance(content, tuple)
+		assert len(content) == 0
+		bundle = SysPathBundle(content)
+		assert sys.path == INIT_SYS_PATH
+
+	finally:
+		reset_sys_path()
+
+
+def test_init_none() -> None:
+	try:
+		content = None
+		bundle = SysPathBundle(content)
+		assert sys.path == INIT_SYS_PATH
+
+	finally:
+		reset_sys_path()
+
+
+def test_init_contains_none() -> None:
+	try:
+		content = (TEST_DIR, REPO_ROOT, LIB_DIR, None)
+		assert isinstance(content, tuple)
+		bundle = SysPathBundle(content)
+		assert not bundle.cleared_on_del
+
+		assert_path_is_present(TEST_DIR, bundle, True, False)
+		assert_path_is_present(REPO_ROOT, bundle, True, True)
+		assert_path_is_present(LIB_DIR, bundle, True, True)
+		assert_path_is_present(None, bundle, False, False)
+
+	finally:
+		reset_sys_path()
+
+
 def test_clear() -> None:
 	try:
 		bundle = SysPathBundle((TEST_DIR, REPO_ROOT, LIB_DIR))
