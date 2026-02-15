@@ -29,7 +29,7 @@ class SysPathBundle:
 
 	def __init__(
 		self,
-		content: Iterable[str | Path | None],
+		content: Iterable[str | Path | None] | None,
 		cleared_on_del: bool = False
 	) -> None:
 		"""
@@ -130,7 +130,14 @@ class SysPathBundle:
 		"""
 		return some_path in self # Calls method __contains__.
 
-	def _fill_content(self, content: Iterable[str | Path | None]) -> None:
+	def _fill_content(
+		self,
+		content: Iterable[str | Path | None] | None
+	) -> None:
+		if not content:
+			# content is None or empty.
+			return
+
 		for path in content:
 			path = ensure_path_is_str(path, True)
 
