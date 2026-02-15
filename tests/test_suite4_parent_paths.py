@@ -88,6 +88,18 @@ def test_parent_bundle() -> None:
 		reset_sys_path()
 
 
+def test_parent_bundle_empty() -> None:
+	try:
+		parent_indices = ()
+		assert isinstance(parent_indices, tuple)
+		assert len(parent_indices) == 0
+		bundle = sp_prepend_parent_bundle(parent_indices)
+		assert sys.path == INIT_SYS_PATH
+
+	finally:
+		reset_sys_path()
+
+
 def test_prepend_bundle_index_error() -> None:
 	try:
 		with pytest.raises(IndexError):
