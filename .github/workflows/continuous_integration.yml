@@ -39,14 +39,14 @@ jobs:
         run: python3 demos/demo2_bundle.py
       - name: Demo 3 - SysPathBundle as a context manager
         run: python3 demos/demo3_bundle_context.py
-      - name: Demo 4 - sm_contains A
-        run: python3 demos/demo4_sm_contains_A.py
-      - name: Demo 5 - sm_contains B
-        run: python3 demos/demo5_sm_contains_B.py
-      - name: Demo 6 - Prepending a parent path
-        run: python3 demos/demo6_parent.py
-      - name: Demo 7 - Prepending a parent bundle
-        run: python3 demos/demo7_parent_bundle.py
+      - name: Demo 5 - sm_contains A
+        run: python3 demos/demo5_sm_contains_A.py
+      - name: Demo 6 - sm_contains B
+        run: python3 demos/demo6_sm_contains_B.py
+      - name: Demo 7 - Prepending a parent path
+        run: python3 demos/demo7_parent.py
+      - name: Demo 8 - Prepending a parent bundle
+        run: python3 demos/demo8_parent_bundle.py
   test_bundle_clearing_app_end:
     runs-on: windows-latest
     steps:
