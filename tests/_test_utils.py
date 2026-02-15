@@ -91,7 +91,7 @@ def assert_path_is_present(
 	"""
 	some_path = ensure_path_is_str(some_path, True)
 	assert (some_path in sys.path) == is_in_sys_path
-	assert bundle.contains(some_path) == is_in_bundle
+	assert (some_path in bundle) == is_in_bundle
 
 
 def index_in_sys_path(some_path: str | Path | None) -> int:

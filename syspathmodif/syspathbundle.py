@@ -52,9 +52,27 @@ class SysPathBundle:
 		self._content = list()
 		self._fill_content(content) # Can raise TypeError.
 
+	def __contains__(self, some_path: str | Path | None) -> bool:
+		"""
+		Indicates whether this bundle contains the given path.
+
+		Args:
+			some_path: the path whose presence is verified.
+
+		Returns:
+			bool: True if this bundle contains the given path, False otherwise.
+
+		Raises:
+			TypeError: if some_path is not None and not of type str or
+				pathlib.Path.
+		"""
+		some_path = ensure_path_is_str(some_path, True)
+		return some_path in self._content
+
 	def __del__(self) -> None:
 		"""
-		The destructor will clear this bundle if property cleared_on_del is True.
+		The destructor will clear this bundle if property cleared_on_del is
+		True.
 		"""
 		if self._cleared_on_del:
 			self.clear()
@@ -96,6 +114,8 @@ class SysPathBundle:
 
 	def contains(self, some_path: str | Path | None) -> bool:
 		"""
+		DEPRECATED! Please use operator in instead.
+
 		Indicates whether this bundle contains the given path.
 
 		Args:
@@ -108,8 +128,7 @@ class SysPathBundle:
 			TypeError: if some_path is not None and not of type str or
 				pathlib.Path.
 		"""
-		some_path = ensure_path_is_str(some_path, True)
-		return some_path in self._content
+		return some_path in self # Calls method __contains__.
 
 	def _fill_content(self, content: Iterable[str | Path | None]) -> None:
 		for path in content:

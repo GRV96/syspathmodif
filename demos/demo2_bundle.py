@@ -48,6 +48,9 @@ from point import Point
 print(f"\nsys.path contains the repository's root: {sp_contains(REPO_ROOT)}")
 print(f"sys.path contains the package: {sp_contains(_PACKAGE_PATH)}")
 
+print(f"\nThe bundle contains the repository's root: {REPO_ROOT in bundle}")
+print(f"The bundle contains the package: {_PACKAGE_PATH in bundle}")
+
 # The destructor clears the bundle, removing the paths from sys.path.
 del bundle
 print_sys_path(
