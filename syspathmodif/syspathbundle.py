@@ -33,10 +33,10 @@ class SysPathBundle:
 		cleared_on_del: bool = False
 	) -> None:
 		"""
-		The initializer needs the paths to store in this bundle and prepend to
-		sys.path. If a path in argument content is None or is already in
-		sys.path, it is ignored. If argument content is None or empty, sys.path
-		is not modified, and the bundle stays empty.
+		The initializer stores paths in this bundle and prepends them to
+		sys.path in the same order as argument content provides them. If a path
+		in content is None or is already in sys.path, it is ignored. If content
+		is None or empty, sys.path is not modified, and the bundle stays empty.
 
 		Args:
 			content: the paths to store in this bundle.
