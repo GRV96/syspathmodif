@@ -19,7 +19,7 @@ reset_sys_path()
 
 arg_parser = ArgumentParser()
 arg_parser.add_argument(
-	"--paths", nargs="+", required=False,
+	"--paths", nargs="*", required=False,
 	help="Paths to prepend to sys.path with SysPathBundle. Default: None."
 )
 args = arg_parser.parse_args()
@@ -33,7 +33,7 @@ print_sys_path("sys.path's initial content:")
 
 bundle = SysPathBundle(paths, True)
 print("\nBundle instantiated with these paths:")
-print(paths if paths is None else "\n".join(paths))
+print("\n".join(paths) if paths else paths)
 print_sys_path("\nPaths prepended to sys.path to import from demo_package.")
 
 were_imports_successful: bool = False
