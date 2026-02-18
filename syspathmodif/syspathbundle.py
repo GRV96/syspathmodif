@@ -55,11 +55,11 @@ class SysPathBundle:
 
 	def __bool__(self) -> bool:
 		"""
-		The bundle's Boolean value is True if it contains at least one path,
+		This bundle's Boolean value is True if it contains at least one path,
 		False otherwise.
 
 		Returns:
-			bool: whether the bundle contains at least one path.
+			bool: whether this bundle contains at least one path.
 		"""
 		return len(self._content) > 0
 
