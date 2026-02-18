@@ -53,6 +53,16 @@ class SysPathBundle:
 		self._content = list()
 		self._fill_content(content) # Can raise TypeError.
 
+	def __bool__(self) -> bool:
+		"""
+		The bundle's Boolean value is True if it contains at least one path,
+		False otherwise.
+
+		Returns:
+			bool: whether the bundle contains at least one path.
+		"""
+		return len(self._content) > 0
+
 	def __contains__(self, some_path: str | Path | None) -> bool:
 		"""
 		Indicates whether this bundle contains the given path.
