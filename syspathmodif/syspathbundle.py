@@ -50,7 +50,7 @@ class SysPathBundle:
 		"""
 		self._cleared_on_del = cleared_on_del
 
-		self._content = list()
+		self._content: list[str] = list()
 		self._fill_content(content) # Can raise TypeError.
 
 	def __bool__(self) -> bool:
