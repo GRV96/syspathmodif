@@ -38,14 +38,16 @@ def sp_prepend_parent(parent_index: int) -> Path | None:
 
 
 def sp_prepend_parent_bundle(
-	parent_indices: Iterable[int],
+	parent_indices: Iterable[int] | None,
 	cleared_on_del: bool = False
 ) -> SysPathBundle:
 	"""
 	Given the indices of parent directories of the file that calls this
 	function, the function passes the parent paths to a SysPathBundle then
 	returns the bundle. The parent paths are prepended to list sys.path in the
-	same order as parent_indices provides their indices.
+	same order as parent_indices provides their indices. If argument
+	parent_indices is None or empty, this function leaves sys.path unchanged
+	and retuns an empty bundle.
 
 	Let be a pathlib.Path instance p representing the path to the calling file.
 	The parent directory identified by index i passed to this function matches
@@ -66,8 +68,15 @@ def sp_prepend_parent_bundle(
 	Raises:
 		IndexError: if any parent index is out of bounds.
 	"""
-	calling_file = _get_calling_file()
-	gen_parent_dirs = (calling_file.parents[i] for i in parent_indices)
+	gen_parent_dirs = None
+
+	if parent_indices:
+		calling_file = _get_calling_file()
+		gen_parent_dirs = (
+			calling_file.parents[i]
+			for i in parent_indices
+		)
+
 	return SysPathBundle(gen_parent_dirs, cleared_on_del)
 
 
