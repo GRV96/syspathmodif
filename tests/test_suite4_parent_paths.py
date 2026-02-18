@@ -20,7 +20,7 @@ reset_sys_path()
 _THIS_FILE = Path(__file__).resolve()
 
 
-def test_prepend_parent0():
+def test_prepend_parent0() -> None:
 	try:
 		parent0 = sp_prepend_parent(0)
 		assert sys.path == INIT_SYS_PATH
@@ -29,7 +29,7 @@ def test_prepend_parent0():
 		reset_sys_path()
 
 
-def test_prepend_parent1():
+def test_prepend_parent1() -> None:
 	try:
 		parent1 = sp_prepend_parent(1)
 		assert parent1 == _THIS_FILE.parents[1]
@@ -38,7 +38,7 @@ def test_prepend_parent1():
 		reset_sys_path()
 
 
-def test_prepend_parent2():
+def test_prepend_parent2() -> None:
 	try:
 		parent2 = sp_prepend_parent(2)
 		assert parent2 == _THIS_FILE.parents[2]
@@ -47,7 +47,7 @@ def test_prepend_parent2():
 		reset_sys_path()
 
 
-def test_prepend_parent_minus1():
+def test_prepend_parent_minus1() -> None:
 	try:
 		parent_minus1 = sp_prepend_parent(-1)
 		assert parent_minus1 == _THIS_FILE.parents[-1]
@@ -56,7 +56,7 @@ def test_prepend_parent_minus1():
 		reset_sys_path()
 
 
-def test_prepend_parent_index_error():
+def test_prepend_parent_index_error() -> None:
 	try:
 		with pytest.raises(IndexError):
 			sp_prepend_parent(2025)
@@ -64,9 +64,11 @@ def test_prepend_parent_index_error():
 		reset_sys_path()
 
 
-def test_parent_bundle():
+def test_parent_bundle() -> None:
 	try:
-		bundle = sp_prepend_parent_bundle((0, 1, 2, -1))
+		parent_indices = (0, 1, 2, -1)
+		bundle = sp_prepend_parent_bundle(parent_indices)
+		assert bundle
 
 		parent0 = _THIS_FILE.parents[0]
 		assert_path_is_present(parent0, bundle, True, False)
@@ -88,9 +90,34 @@ def test_parent_bundle():
 		reset_sys_path()
 
 
-def test_prepend_bundle_index_error():
+def test_parent_bundle_empty() -> None:
 	try:
+		parent_indices = ()
+		assert isinstance(parent_indices, tuple)
+		assert len(parent_indices) == 0
+		bundle = sp_prepend_parent_bundle(parent_indices)
+		assert not bundle
+		assert sys.path == INIT_SYS_PATH
+
+	finally:
+		reset_sys_path()
+
+
+def test_parent_bundle_none() -> None:
+	try:
+		parent_indices = None
+		bundle = sp_prepend_parent_bundle(parent_indices)
+		assert not bundle
+		assert sys.path == INIT_SYS_PATH
+
+	finally:
+		reset_sys_path()
+
+
+def test_prepend_bundle_index_error() -> None:
+	try:
+		parent_indices = (0, 1, 2, 2025)
 		with pytest.raises(IndexError):
-			sp_prepend_parent_bundle((0, 1, 2, 2025))
+			sp_prepend_parent_bundle(parent_indices)
 	finally:
 		reset_sys_path()

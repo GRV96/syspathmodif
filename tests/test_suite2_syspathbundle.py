@@ -29,6 +29,7 @@ def test_init_generator() -> None:
 		content_gen = _generate_paths()
 		assert isgenerator(content_gen)
 		bundle = SysPathBundle(content_gen)
+		assert bundle
 		assert not bundle.cleared_on_del
 
 		assert_path_is_present(TEST_DIR, bundle, True, False)
@@ -44,6 +45,7 @@ def test_init_list() -> None:
 		content = [TEST_DIR, REPO_ROOT, LIB_DIR]
 		assert isinstance(content, list)
 		bundle = SysPathBundle(content)
+		assert bundle
 		assert not bundle.cleared_on_del
 
 		assert_path_is_present(TEST_DIR, bundle, True, False)
@@ -59,6 +61,7 @@ def test_init_tuple() -> None:
 		content = (TEST_DIR, REPO_ROOT, LIB_DIR)
 		assert isinstance(content, tuple)
 		bundle = SysPathBundle(content)
+		assert bundle
 		assert not bundle.cleared_on_del
 
 		assert_path_is_present(TEST_DIR, bundle, True, False)
@@ -74,6 +77,7 @@ def test_init_set() -> None:
 		content = {TEST_DIR, REPO_ROOT, LIB_DIR}
 		assert isinstance(content, set)
 		bundle = SysPathBundle(content)
+		assert bundle
 		assert not bundle.cleared_on_del
 
 		assert_path_is_present(TEST_DIR, bundle, True, False)
@@ -84,10 +88,52 @@ def test_init_set() -> None:
 		reset_sys_path()
 
 
+def test_init_empyt() -> None:
+	try:
+		content = ()
+		assert isinstance(content, tuple)
+		assert len(content) == 0
+		bundle = SysPathBundle(content)
+		assert not bundle
+		assert sys.path == INIT_SYS_PATH
+
+	finally:
+		reset_sys_path()
+
+
+def test_init_none() -> None:
+	try:
+		content = None
+		bundle = SysPathBundle(content)
+		assert not bundle
+		assert sys.path == INIT_SYS_PATH
+
+	finally:
+		reset_sys_path()
+
+
+def test_init_contains_none() -> None:
+	try:
+		content = (TEST_DIR, REPO_ROOT, LIB_DIR, None)
+		assert isinstance(content, tuple)
+		bundle = SysPathBundle(content)
+		assert bundle
+		assert not bundle.cleared_on_del
+
+		assert_path_is_present(TEST_DIR, bundle, True, False)
+		assert_path_is_present(REPO_ROOT, bundle, True, True)
+		assert_path_is_present(LIB_DIR, bundle, True, True)
+		assert_path_is_present(None, bundle, False, False)
+
+	finally:
+		reset_sys_path()
+
+
 def test_clear() -> None:
 	try:
 		bundle = SysPathBundle((TEST_DIR, REPO_ROOT, LIB_DIR))
 		bundle.clear()
+		assert not bundle
 
 		assert_path_is_present(TEST_DIR, bundle, True, False)
 		assert_path_is_present(REPO_ROOT, bundle, False, False)
@@ -122,6 +168,7 @@ def test_context_management() -> None:
 			assert_path_is_present(REPO_ROOT, bundle, True, True)
 			assert_path_is_present(LIB_DIR, bundle, True, True)
 
+		assert not bundle
 		assert_path_in_sys_path(TEST_DIR, True)
 		assert_path_in_sys_path(REPO_ROOT, False)
 		assert_path_in_sys_path(LIB_DIR, False)

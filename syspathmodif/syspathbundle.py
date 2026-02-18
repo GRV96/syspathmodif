@@ -29,13 +29,14 @@ class SysPathBundle:
 
 	def __init__(
 		self,
-		content: Iterable[str | Path | None],
+		content: Iterable[str | Path | None] | None,
 		cleared_on_del: bool = False
 	) -> None:
 		"""
-		The initializer needs the paths to store in this bundle and prepend to
-		sys.path. If a path in argument content is None or is already in
-		sys.path, the bundle will not store it.
+		The initializer stores paths in this bundle and prepends them to
+		sys.path in the same order as argument content provides them. If a path
+		in content is None or is already in sys.path, it is ignored. If content
+		is None or empty, sys.path is not modified, and the bundle stays empty.
 
 		Args:
 			content: the paths to store in this bundle.
@@ -49,8 +50,18 @@ class SysPathBundle:
 		"""
 		self._cleared_on_del = cleared_on_del
 
-		self._content = list()
+		self._content: list[str] = list()
 		self._fill_content(content) # Can raise TypeError.
+
+	def __bool__(self) -> bool:
+		"""
+		This bundle's Boolean value is True if it contains at least one path,
+		False otherwise.
+
+		Returns:
+			bool: whether this bundle contains at least one path.
+		"""
+		return len(self._content) > 0
 
 	def __contains__(self, some_path: str | Path | None) -> bool:
 		"""
@@ -130,7 +141,14 @@ class SysPathBundle:
 		"""
 		return some_path in self # Calls method __contains__.
 
-	def _fill_content(self, content: Iterable[str | Path | None]) -> None:
+	def _fill_content(
+		self,
+		content: Iterable[str | Path | None] | None
+	) -> None:
+		if not content:
+			# content is None or empty.
+			return
+
 		for path in content:
 			path = ensure_path_is_str(path, True)
 

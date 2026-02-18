@@ -98,30 +98,44 @@ utilisant `SysPathBundle` comme gestionnaire de contexte.
 python demos/demo3_bundle_context.py
 ```
 
-`demo4_sm_contains_A.py` montre un cas où on peut importer un module sans ajouter
-son chemin parent à `sys.path`. La démo vérifie la présence du module dans
-`sys.modules` à l'aide de la fonction `sm_contains`.
+`demo4_bundle_none_empty.py` imite une situation où ajouter des chemins de
+dossier à `sys.path` est optionnel. L'utilisateur peut instancier
+`SysPathBundle` avec le contenu de son choix.
+
+Aide:
 ```
-python demos/demo4_sm_contains_A.py
+python demos\demo4_bundle_none_empty.py -h
 ```
 
-`demo5_sm_contains_B.py` montre un autre usage de la fonction `sm_contains`.
+Exemple d'exécution:
 ```
-python demos/demo5_sm_contains_B.py
+python demos\demo4_bundle_none_empty.py --paths . demo_package
 ```
 
-`demo6_parent.py` ajoute la racine du dépôt à `sys.path` à l'aide de la
+`demo5_sm_contains_A.py` montre un cas où on peut importer un module sans
+ajouter son chemin parent à `sys.path`. La démo vérifie la présence du module
+dans `sys.modules` à l'aide de la fonction `sm_contains`.
+```
+python demos/demo5_sm_contains_A.py
+```
+
+`demo6_sm_contains_B.py` montre un autre usage de la fonction `sm_contains`.
+```
+python demos/demo6_sm_contains_B.py
+```
+
+`demo7_parent.py` ajoute la racine du dépôt à `sys.path` à l'aide de la
 fonction `sp_prepend_parent`. Après les importations, la démo annule cette
 modification à l'aide de la fonction `sp_remove`.
 ```
-python demos/demo6_parent.py
+python demos/demo7_parent.py
 ```
 
-`demo7_parent_bundle.py` met le chemin de la racine du dépôt dans une instance
+`demo8_parent_bundle.py` met le chemin de la racine du dépôt dans une instance
 de `SysPathBundle` à l'aide de la fonction `sp_prepend_parent_bundle`.
 L'instance sert de gestionnaire de contexte.
 ```
-python demos/demo7_parent_bundle.py
+python demos/demo8_parent_bundle.py
 ```
 
 ### Tests automatiques
@@ -228,30 +242,44 @@ python demos/demo2_bundle.py
 python demos/demo3_bundle_context.py
 ```
 
-`demo4_sm_contains_A.py` shows a case where a module can be imported without its
+`demo4_bundle_none_empty.py` imitates a situation where prepending directory
+paths to sys.path is optional. The user can instantiate a SysPathBundle with
+the content of their choice.
+
+Help:
+```
+python demos\demo4_bundle_none_empty.py -h
+```
+
+Execution example:
+```
+python demos\demo4_bundle_none_empty.py --paths . demo_package
+```
+
+`demo5_sm_contains_A.py` shows a case where a module can be imported without its
 parent path being added to `sys.path`. The demo verifies the module's presence
 in `sys.modules` with function `sm_contains`.
 ```
-python demos/demo4_sm_contains_A.py
+python demos/demo5_sm_contains_A.py
 ```
 
-`demo5_sm_contains_B.py` shows another use of function `sm_contains`.
+`demo6_sm_contains_B.py` shows another use of function `sm_contains`.
 ```
-python demos/demo5_sm_contains_B.py
+python demos/demo6_sm_contains_B.py
 ```
 
-`demo6_parent.py` adds the repository's root to `sys.path` with function
+`demo7_parent.py` adds the repository's root to `sys.path` with function
 `sp_prepend_parent`. After the imports, the demo undoes this modification with
 function `sp_remove`.
 ```
-python demos/demo6_parent.py
+python demos/demo7_parent.py
 ```
 
-`demo7_parent_bundle.py` puts the path to the repository's root in a
+`demo8_parent_bundle.py` puts the path to the repository's root in a
 `SysPathBundle` instance with function `sp_prepend_parent_bundle`. The bundle
 is used as a context manager.
 ```
-python demos/demo7_parent_bundle.py
+python demos/demo8_parent_bundle.py
 ```
 
 ### Automated Tests
