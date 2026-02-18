@@ -1,4 +1,14 @@
-# TODO: write a description in README.md and a docstring.
+"""
+This demo imitates a situation where prepending directory paths to sys.path is
+optional. Argument --paths allows the user to instantiate a SysPathBundle with
+the content of their choice.
+
+--paths is omitted: the content is None.
+
+--paths has no values: the content is an empty tuple.
+
+--paths has one or more values: the content is a tuple of paths.
+"""
 
 
 from argparse import ArgumentParser

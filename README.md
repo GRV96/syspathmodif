@@ -98,9 +98,23 @@ utilisant `SysPathBundle` comme gestionnaire de contexte.
 python demos/demo3_bundle_context.py
 ```
 
-`demo5_sm_contains_A.py` montre un cas où on peut importer un module sans ajouter
-son chemin parent à `sys.path`. La démo vérifie la présence du module dans
-`sys.modules` à l'aide de la fonction `sm_contains`.
+`demo4_bundle_none_empty.py` imite une situation où ajouter des chemins de
+dossier à `sys.path` est optionnel. L'utilisateur peut instancier
+`SysPathBundle` avec le contenu de son choix.
+
+Aide:
+```
+python demos\demo4_bundle_none_empty.py -h
+```
+
+Exemple d'exécution:
+```
+python demos\demo4_bundle_none_empty.py --paths . demo_package
+```
+
+`demo5_sm_contains_A.py` montre un cas où on peut importer un module sans
+ajouter son chemin parent à `sys.path`. La démo vérifie la présence du module
+dans `sys.modules` à l'aide de la fonction `sm_contains`.
 ```
 python demos/demo5_sm_contains_A.py
 ```
@@ -226,6 +240,20 @@ python demos/demo2_bundle.py
 `SysPathBundle` as a context manager.
 ```
 python demos/demo3_bundle_context.py
+```
+
+`demo4_bundle_none_empty.py` imitates a situation where prepending directory
+paths to sys.path is optional. The user can instantiate a SysPathBundle with
+the content of their choice.
+
+Help:
+```
+python demos\demo4_bundle_none_empty.py -h
+```
+
+Execution example:
+```
+python demos\demo4_bundle_none_empty.py --paths . demo_package
 ```
 
 `demo5_sm_contains_A.py` shows a case where a module can be imported without its
