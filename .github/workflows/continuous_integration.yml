@@ -40,7 +40,7 @@ jobs:
       - name: Demo 3 - SysPathBundle as a context manager
         run: python3 demos/demo3_bundle_context.py
       - name: Demo 4 - SysPathBundle's content is None
-        run: python3 demos/demo4_bundle_none.py --paths . demo_package
+        run: python3 demos/demo4_bundle_none_empty.py --paths . demo_package
       - name: Demo 5 - sm_contains A
         run: python3 demos/demo5_sm_contains_A.py
       - name: Demo 6 - sm_contains B
