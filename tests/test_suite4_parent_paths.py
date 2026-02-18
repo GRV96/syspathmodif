@@ -67,6 +67,7 @@ def test_prepend_parent_index_error() -> None:
 def test_parent_bundle() -> None:
 	try:
 		bundle = sp_prepend_parent_bundle((0, 1, 2, -1))
+		assert bundle
 
 		parent0 = _THIS_FILE.parents[0]
 		assert_path_is_present(parent0, bundle, True, False)
@@ -94,6 +95,7 @@ def test_parent_bundle_empty() -> None:
 		assert isinstance(parent_indices, tuple)
 		assert len(parent_indices) == 0
 		bundle = sp_prepend_parent_bundle(parent_indices)
+		assert not bundle
 		assert sys.path == INIT_SYS_PATH
 
 	finally:
@@ -104,6 +106,7 @@ def test_parent_bundle_none() -> None:
 	try:
 		parent_indices = None
 		bundle = sp_prepend_parent_bundle(parent_indices)
+		assert not bundle
 		assert sys.path == INIT_SYS_PATH
 
 	finally:
