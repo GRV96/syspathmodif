@@ -243,7 +243,7 @@ python demos/demo3_bundle_context.py
 ```
 
 `demo4_bundle_none_empty.py` imitates a situation where prepending directory
-paths to sys.path is optional. The user can instantiate a SysPathBundle with
+paths to sys.path is optional. The user can instantiate a `SysPathBundle` with
 the content of their choice.
 
 Help:

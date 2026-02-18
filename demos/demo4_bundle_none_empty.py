@@ -11,7 +11,8 @@ the content of their choice.
 """
 
 
-from argparse import ArgumentParser
+from argparse import\
+	ArgumentParser, RawDescriptionHelpFormatter
 import os
 import sys
 
@@ -27,7 +28,10 @@ from syspathmodif import SysPathBundle
 reset_sys_path()
 
 
-arg_parser = ArgumentParser()
+arg_parser = ArgumentParser(
+	description=__doc__,
+	formatter_class=RawDescriptionHelpFormatter
+)
 arg_parser.add_argument(
 	"--paths", nargs="*", required=False,
 	help="Paths to prepend to sys.path with SysPathBundle. Default: None."
