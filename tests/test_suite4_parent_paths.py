@@ -66,7 +66,8 @@ def test_prepend_parent_index_error() -> None:
 
 def test_parent_bundle() -> None:
 	try:
-		bundle = sp_prepend_parent_bundle((0, 1, 2, -1))
+		parent_indices = (0, 1, 2, -1)
+		bundle = sp_prepend_parent_bundle(parent_indices)
 		assert bundle
 
 		parent0 = _THIS_FILE.parents[0]
@@ -115,7 +116,8 @@ def test_parent_bundle_none() -> None:
 
 def test_prepend_bundle_index_error() -> None:
 	try:
+		parent_indices = (0, 1, 2, 2025)
 		with pytest.raises(IndexError):
-			sp_prepend_parent_bundle((0, 1, 2, 2025))
+			sp_prepend_parent_bundle(parent_indices)
 	finally:
 		reset_sys_path()
