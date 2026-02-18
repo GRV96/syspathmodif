@@ -45,7 +45,7 @@ def sp_prepend_parent_bundle(
 	Given the indices of parent directories of the file that calls this
 	function, the function passes the parent paths to a SysPathBundle then
 	returns the bundle. The parent paths are prepended to list sys.path in the
-	same order as parent_indices provides their indices. If argument
+	same order as argument parent_indices provides their indices. If
 	parent_indices is None or empty, this function leaves sys.path unchanged
 	and retuns an empty bundle.
 
