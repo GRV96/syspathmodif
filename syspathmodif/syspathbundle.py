@@ -1,9 +1,8 @@
 # __all__ declared at the module's end
 
-from pathlib import Path
 from typing import Iterable
 
-from strath import ensure_path_is_str
+from strath import Strath, ensure_path_is_str
 
 from .individual_paths_no_type_check import\
 	sp_prepend_no_type_check,\
@@ -29,7 +28,7 @@ class SysPathBundle:
 
 	def __init__(
 		self,
-		content: Iterable[str | Path | None] | None,
+		content: Iterable[Strath | None] | None,
 		cleared_on_del: bool = False
 	) -> None:
 		"""
@@ -63,7 +62,7 @@ class SysPathBundle:
 		"""
 		return len(self._content) > 0
 
-	def __contains__(self, some_path: str | Path | None) -> bool:
+	def __contains__(self, some_path: Strath | None) -> bool:
 		"""
 		Indicates whether this bundle contains the given path.
 
@@ -123,7 +122,7 @@ class SysPathBundle:
 			# the application ends, sys.path can be None.
 			self._content.clear()
 
-	def contains(self, some_path: str | Path | None) -> bool:
+	def contains(self, some_path: Strath | None) -> bool:
 		"""
 		DEPRECATED! Please use operator in instead.
 
@@ -143,7 +142,7 @@ class SysPathBundle:
 
 	def _fill_content(
 		self,
-		content: Iterable[str | Path | None] | None
+		content: Iterable[Strath | None] | None
 	) -> None:
 		if not content:
 			# content is None or empty.

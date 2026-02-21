@@ -1,9 +1,8 @@
 # __all__ declared at the module's end
 
-from pathlib import Path
 import sys
 
-from strath import ensure_path_is_str
+from strath import Strath, ensure_path_is_str
 
 from .individual_paths_no_type_check import\
 	sp_append_no_type_check,\
@@ -11,7 +10,7 @@ from .individual_paths_no_type_check import\
 	sp_remove_no_type_check
 
 
-def sp_append(some_path: str | Path | None) -> bool:
+def sp_append(some_path: Strath | None) -> bool:
 	"""
 	Adds the given path to the end of list sys.path if it does not already
 	contain the path. If the path is None, this function does not change
@@ -31,7 +30,7 @@ def sp_append(some_path: str | Path | None) -> bool:
 	return sp_append_no_type_check(some_path)
 
 
-def sp_contains(some_path: str | Path | None) -> bool:
+def sp_contains(some_path: Strath | None) -> bool:
 	"""
 	Indicates whether list sys.path contains the given path.
 
@@ -49,7 +48,7 @@ def sp_contains(some_path: str | Path | None) -> bool:
 	return some_path in sys.path
 
 
-def sp_prepend(some_path: str | Path | None) -> bool:
+def sp_prepend(some_path: Strath | None) -> bool:
 	"""
 	Adds the given path to the beginning of list sys.path if it does not
 	already contain the path. If the path is None, this function does not
@@ -69,7 +68,7 @@ def sp_prepend(some_path: str | Path | None) -> bool:
 	return sp_prepend_no_type_check(some_path)
 
 
-def sp_remove(some_path: str | Path | None) -> bool:
+def sp_remove(some_path: Strath | None) -> bool:
 	"""
 	Removes the given path from list sys.path if it contains the path.
 

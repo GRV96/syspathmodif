@@ -4,7 +4,7 @@ from pathlib import Path
 import sys
 
 # strath is a dependency of syspathmodif.
-from strath import ensure_path_is_str
+from strath import Strath, ensure_path_is_str
 
 
 INIT_SYS_PATH = list(sys.path)
@@ -42,7 +42,7 @@ reset_sys_path()
 
 
 def assert_path_in_sys_path(
-	some_path: str | Path | None,
+	some_path: Strath | None,
 	is_in_sys_path: bool
 ) -> None:
 	"""
@@ -65,7 +65,7 @@ def assert_path_in_sys_path(
 
 
 def assert_path_is_present(
-	some_path: str | Path | None,
+	some_path: Strath | None,
 	bundle: SysPathBundle,
 	is_in_sys_path: bool,
 	is_in_bundle: bool
@@ -94,7 +94,7 @@ def assert_path_is_present(
 	assert (some_path in bundle) == is_in_bundle
 
 
-def index_in_sys_path(some_path: str | Path | None) -> int:
+def index_in_sys_path(some_path: Strath | None) -> int:
 	"""
 	Indicates the index of the given path in list sys.path.
 
