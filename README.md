@@ -6,6 +6,12 @@ Cette bibliothèque offre des manières concises de modifier la liste `sys.path`
 L'utilisateur ne devrait pas avoir besoin d'interagir directement avec cette
 liste.
 
+### Le type `Strath`
+
+Dans la bibliothèque `strath`, une dépendance de `syspathmodif`, `Strath` est
+un alias de type (`TypeAlias`) représentant les chemins de fichier. Il
+correspond à `str | Path`.
+
 ### Contenu
 
 Les fonctions suivantes prennent un chemin de type `str` ou `pathlib.Path`
@@ -149,6 +155,11 @@ pytest tests
 
 This library offers concise manners to modify list `sys.path`.
 The user should not need to directly interact with that list.
+
+### Type `Strath`
+
+In library `strath`, a dependency of `syspathmodif`, `Strath` is a type alias
+(`TypeAlias`) that represents file paths. It corresponds to `str | Path`.
 
 ### Content
 
