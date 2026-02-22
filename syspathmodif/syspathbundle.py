@@ -124,7 +124,7 @@ class SysPathBundle:
 
 	def contains(self, some_path: Strath | None) -> bool:
 		"""
-		DEPRECATED! Please use operator in instead.
+		DEPRECATED since 1.7.0. Please use operator in instead.
 
 		Indicates whether this bundle contains the given path.
 
