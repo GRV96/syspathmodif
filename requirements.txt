@@ -1,1 +1,1 @@
-strath~=1.0
+strath~=1.1

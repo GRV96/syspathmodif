@@ -19,7 +19,7 @@ def _make_descriptions():
 
 	index_en = readme_content.index(title_en)
 	index_desc_en = index_en + len(title_en)
-	index_desc_end_en = readme_content.index("### Content", index_desc_en)
+	index_desc_end_en = readme_content.index("### Type `Strath`", index_desc_en)
 	index_end_en = readme_content.index("### Dependencies", index_en)
 
 	short_description = readme_content[index_desc_en: index_desc_end_en]
