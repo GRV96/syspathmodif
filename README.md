@@ -85,7 +85,7 @@ Les scripts dans le dossier `demos` montrent comment `syspathmodif` permet
 d'importer un module qui est indisponible tant qu'on n'a pas ajouté son chemin
 parent à `sys.path`. Toutes les démos dépendent du paquet `demo_package`.
 
-Davantage d'indications sont disponibles dans le dossier `demos`.
+Davantage d'indications sont disponibles dans le dossier [`demos`](./demos).
 
 ### Tests automatiques
 
@@ -177,7 +177,7 @@ The scripts in directory `demos` show how `syspathmodif` allows to import a
 module unavailable unless its parent path is added to `sys.path`. All demos
 depend on `demo_package`.
 
-More indications are available in directory `demos`.
+More indications are available in directory [`demos`](./demos).
 
 ### Automated Tests
 
