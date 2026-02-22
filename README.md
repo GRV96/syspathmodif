@@ -8,9 +8,10 @@ liste.
 
 ### Le type `Strath`
 
-Dans la bibliothèque `strath`, une dépendance de `syspathmodif`, `Strath` est
-un alias de type (`TypeAlias`) représentant les chemins de fichier. Il
-correspond à `str | Path`.
+La bibliothèque `strath`, une dépendance de `syspathmodif`, convertit les
+chemins de fichier en chaînes de caractères (`str`) ou en instances de
+`pathlib.Path`. Elle définit l'alias de type (`TypeAlias`) `Strath` comme un
+équivalent de `str | Path`.
 
 ### Contenu
 
@@ -158,8 +159,9 @@ The user should not need to directly interact with that list.
 
 ### Type `Strath`
 
-In library `strath`, a dependency of `syspathmodif`, `Strath` is a type alias
-(`TypeAlias`) that represents file paths. It corresponds to `str | Path`.
+Library `strath`, a dependency of `syspathmodif`, converts file paths to
+character strings (`str`) or `pathlib.Path` instances. It defines type alias
+(`TypeAlias`) `Strath` as an equivalent of `str | Path`.
 
 ### Content
 
